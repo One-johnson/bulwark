@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS */
+/* .showMessage {
+  display: block;
+  color: white;
+  background: red;
+  border-radius: 5px;
+  text-align: center;
+} */
+
+.showMessage {
+  display: block;
+  color: white;
+  padding: 8px;
+  background: red;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.message {
+  display: none;
+}
