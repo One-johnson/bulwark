@@ -1,31 +1,30 @@
 // App.js
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import Sidebar from "./Components/Sidebar";
+
 import Creche from "./pages/Class-Creche/Creche";
 import Primary from "./pages/Class-Primary/Primary";
 import Jhs from "./pages/Class-Jhs/Jhs";
 import Dashboard from "./Components/Dashboard";
 import Register from "./pages/LoginRegister/Register";
 import Login from "./pages/LoginRegister/Login";
-import Basic1Detail from "./pages/Basic1/Basic1Detail";
-import Basic2Detail from "./pagesBasic2/Basic2Detail";
-import Basic3Detail from "./pages/Basic3/Basic3Detail";
-import Basic4Detail from "./pages/Basic4/Basic4Detail";
-import Basic5Detail from "./pages/Basic5/Basic5Detail";
-import Basic6Detail from "./pages/Basic6/Basic6Detail";
-import Basic7Detail from "./pages/Basic7/Basic7Detail";
-import Basic8Detail from "./pages/Basic8/Basic8Detail";
-import KG1Detail from "./pages/Kg1/Kg1Detail";
-import KG2Detail from "./pages/Kg2/Kg2Detail";
-import Nursery1Detail from "./pages/Nursery1/Nursery1Detail";
-import Nursery2Detail from "./pages/Nursery2/Nursery2Detail";
+import Basic1Students from "./pages/Basic1/Basic1Students";
+import Basic2Students from "./pagesBasic2/Basic2Detail";
+import Basic3Students from "./pages/Basic3/Basic3Students";
+import Basic4Students from "./pages/Basic4/Basic4Students";
+import Basic5Students from "./pages/Basic5/Basic5Students";
+import Basic6Students from "./pages/Basic6/Basic6Students";
+import Basic7Students from "./pages/Basic7/Basic7Students";
+import Basic8Students from "./pages/Basic8/Basic8Students";
+import KG1Students from "./pages/Kg1/Kg1Students";
+import KG2Students from "./pages/Kg2/Kg2Students";
+import Nursery1Students from "./pages/Nursery1/Nursery1Detail";
+import Nursery2Students from "./pages/Nursery2/Nursery2Detail";
 import Basic9Students from "./pages/Basic9Students";
 
 function App() {
   return (
     <Router>
       <div className="flex h-screen">
-        {/* <Sidebar /> */}
         <div className="flex flex-col flex-1">
           <div className="overflow-y-auto h-full">
             <Routes>
@@ -36,20 +35,19 @@ function App() {
               <Route path="/Primary" element={<Primary />} />
               <Route path="/Jhs" element={<Jhs />} />
 
-              {/* <Route path="/Login" element={<AdminLogin />} /> */}
-              <Route path="/Basic1Detail" element={<Basic1Detail />} />
-              <Route path="/Basic2Detail" element={<Basic2Detail />} />
-              <Route path="/Basic3Detail" element={<Basic3Detail />} />
-              <Route path="/Basic4Detail" element={<Basic4Detail />} />
-              <Route path="/Basic5Detail" element={<Basic5Detail />} />
-              <Route path="/Basic6Detail" element={<Basic6Detail />} />
-              <Route path="/Basic7Detail" element={<Basic7Detail />} />
-              <Route path="/Basic8Detail" element={<Basic8Detail />} />
+              <Route path="/Basic1Students" element={<Basic1Students />} />
+              <Route path="/Basic2Students" element={<Basic2Students />} />
+              <Route path="/Basic3Students" element={<Basic3Students />} />
+              <Route path="/Basic4Students" element={<Basic4Students />} />
+              <Route path="/Basic5Students" element={<Basic5Students />} />
+              <Route path="/Basic6Students" element={<Basic6Students />} />
+              <Route path="/Basic7Students" element={<Basic7Students />} />
+              <Route path="/Basic8Students" element={<Basic8Students />} />
               <Route path="/Basic9Students" element={<Basic9Students />} />
-              <Route path="/Kg1Detail" element={<KG1Detail />} />
-              <Route path="/Kg2Detail" element={<KG2Detail />} />
-              <Route path="/Nursery1Detail" element={<Nursery1Detail />} />
-              <Route path="/Nursery2Detail" element={<Nursery2Detail />} />
+              <Route path="/Kg1Students" element={<KG1Students />} />
+              <Route path="/Kg2Students" element={<KG2Students />} />
+              <Route path="/Nursery1Students" element={<Nursery1Students />} />
+              <Route path="/Nursery2Students" element={<Nursery2Students />} />
             </Routes>
           </div>
         </div>
