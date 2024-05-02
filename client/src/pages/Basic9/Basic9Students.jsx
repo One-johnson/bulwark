@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import FormButton from "../../../Components/FormButton";
+import FormButton from "../../Components/FormButton";
 import axios from "axios";
 import Basic9Form from "./Basic9Form";
 
-const Basic9Detail = () => {
+const Basic9Students = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   const toggleFormVisibility = () => {
@@ -91,4 +91,4 @@ const Basic9Detail = () => {
   );
 };
 
-export default Basic9Detail;
+export default Basic9Students;

@@ -7,19 +7,19 @@ import Jhs from "./pages/Class-Jhs/Jhs";
 import Dashboard from "./Components/Dashboard";
 import Register from "./pages/LoginRegister/Register";
 import Login from "./pages/LoginRegister/Login";
-import Basic1Detail from "./pages/DetailPage/Basic1/Basic1Detail";
-import Basic2Detail from "./pages/DetailPage/Basic2/Basic2Detail";
-import Basic3Detail from "./pages/DetailPage/Basic3/Basic3Detail";
-import Basic4Detail from "./pages/DetailPage/Basic4/Basic4Detail";
-import Basic5Detail from "./pages/DetailPage/Basic5/Basic5Detail";
-import Basic6Detail from "./pages/DetailPage/Basic6/Basic6Detail";
-import Basic7Detail from "./pages/DetailPage/Basic7/Basic7Detail";
-import Basic8Detail from "./pages/DetailPage/Basic8/Basic8Detail";
-import Basic9Detail from "./pages/DetailPage/Basic9/Basic9Detail";
-import KG1Detail from "./pages/DetailPage/Kg1/Kg1Detail";
-import KG2Detail from "./pages/DetailPage/Kg2/Kg2Detail";
-import Nursery1Detail from "./pages/DetailPage/Nursery1/Nursery1Detail";
-import Nursery2Detail from "./pages/DetailPage/Nursery2/Nursery2Detail";
+import Basic1Detail from "./pages/Basic1/Basic1Detail";
+import Basic2Detail from "./pagesBasic2/Basic2Detail";
+import Basic3Detail from "./pages/Basic3/Basic3Detail";
+import Basic4Detail from "./pages/Basic4/Basic4Detail";
+import Basic5Detail from "./pages/Basic5/Basic5Detail";
+import Basic6Detail from "./pages/Basic6/Basic6Detail";
+import Basic7Detail from "./pages/Basic7/Basic7Detail";
+import Basic8Detail from "./pages/Basic8/Basic8Detail";
+import KG1Detail from "./pages/Kg1/Kg1Detail";
+import KG2Detail from "./pages/Kg2/Kg2Detail";
+import Nursery1Detail from "./pages/Nursery1/Nursery1Detail";
+import Nursery2Detail from "./pages/Nursery2/Nursery2Detail";
+import Basic9Students from "./pages/Basic9Students";
 
 function App() {
   return (
@@ -45,7 +45,7 @@ function App() {
               <Route path="/Basic6Detail" element={<Basic6Detail />} />
               <Route path="/Basic7Detail" element={<Basic7Detail />} />
               <Route path="/Basic8Detail" element={<Basic8Detail />} />
-              <Route path="/Basic9Detail" element={<Basic9Detail />} />
+              <Route path="/Basic9Students" element={<Basic9Students />} />
               <Route path="/Kg1Detail" element={<KG1Detail />} />
               <Route path="/Kg2Detail" element={<KG2Detail />} />
               <Route path="/Nursery1Detail" element={<Nursery1Detail />} />
