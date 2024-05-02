@@ -17,7 +17,7 @@ const Register = () => {
       UserName: userName,
       Password: password,
     }).then(() => {
-      navigateTo("/login");
+      navigateTo("/");
 
       //clear the form
       setEmail("");
