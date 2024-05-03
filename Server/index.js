@@ -58,10 +58,4 @@ app.post("/login", (req, res) => {
   });
 });
 
-app.post("/Basic9Detail", (req, res) => {
-  const SQL = "SELECT * FROM basic9_students ";
-  db.query(SQL, (err, results) => {
-    if (err) return res.json({ Message: "Error inside the server" });
-    return res.json(results);
-  });
-});
+

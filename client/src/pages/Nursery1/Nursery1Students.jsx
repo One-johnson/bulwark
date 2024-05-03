@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FormButton from "../../Components/FormButton";
-import Basic9Form from "../Basic9/Basic9Form";
+import Nursery1Form from "./Nursery1Form";
 
 
 const Nursery1Detail = () => {
@@ -18,7 +18,7 @@ const Nursery1Detail = () => {
   return (
     <div className="relative mr-16">
       <FormButton onClick={toggleFormVisibility} />
-      {isFormVisible && <Basic9Form onClose={handleCloseForm} />}
+      {isFormVisible && <Nursery1Form onClose={handleCloseForm} />}
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import FormButton from "../../Components/FormButton";
-import Basic9Form from "../Basic9/Basic9Form";
-
+import Kg2Form from "./Kg2Form";
 
 const Kg2Detail = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -18,7 +17,7 @@ const Kg2Detail = () => {
   return (
     <div className="relative mr-16">
       <FormButton onClick={toggleFormVisibility} />
-      {isFormVisible && <Basic9Form onClose={handleCloseForm} />}
+      {isFormVisible && <Kg2Form onClose={handleCloseForm} />}
     </div>
   );
 };

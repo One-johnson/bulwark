@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FormButton from "../../Components/FormButton";
-import axios from "axios";
+// import axios from "axios";
 import Basic9Form from "./Basic9Form";
 
 const Basic9Students = () => {
@@ -14,12 +14,7 @@ const Basic9Students = () => {
     setIsFormVisible(false);
   };
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3002/Basic9Detail")
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  }, []);
+
 
   return (
     <div>
