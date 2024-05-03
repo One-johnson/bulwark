@@ -8,7 +8,7 @@ import Dashboard from "./Components/Dashboard";
 import Register from "./pages/LoginRegister/Register";
 import Login from "./pages/LoginRegister/Login";
 import Basic1Students from "./pages/Basic1/Basic1Students";
-import Basic2Students from "./pagesBasic2/Basic2Detail";
+import Basic2Students from "./pages/Basic2/Basic2Students";
 import Basic3Students from "./pages/Basic3/Basic3Students";
 import Basic4Students from "./pages/Basic4/Basic4Students";
 import Basic5Students from "./pages/Basic5/Basic5Students";
@@ -17,9 +17,9 @@ import Basic7Students from "./pages/Basic7/Basic7Students";
 import Basic8Students from "./pages/Basic8/Basic8Students";
 import KG1Students from "./pages/Kg1/Kg1Students";
 import KG2Students from "./pages/Kg2/Kg2Students";
-import Nursery1Students from "./pages/Nursery1/Nursery1Detail";
-import Nursery2Students from "./pages/Nursery2/Nursery2Detail";
-import Basic9Students from "./pages/Basic9Students";
+import Nursery1Students from "./pages/Nursery1/Nursery1Students";
+import Nursery2Students from "./pages/Nursery2/Nursery2Students";
+import Basic9Students from "./pages/Basic9/Basic9Students";
 
 function App() {
   return (

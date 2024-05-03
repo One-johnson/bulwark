@@ -24,25 +24,25 @@ const Creche = () => {
           image={schoolbuilding}
           title="Nursery 1"
           description="Introductory class designed to foster early childhood development through play..."
-          link="/Nursery1Detail"
+          link="/Nursery1Students"
         />
         <Space
           image={brick}
           title="Nursery 2"
           description="Focuses on building foundational skills in language, math, and social interaction.."
-          link="/Nursery2Detail"
+          link="/Nursery2Students"
         />
         <Space
           image={bookshelf}
           title="Kindergarten (KG) 1"
           description="Continued exploration of foundational skills in preparation for primary education..."
-          link="/Kg1Detail"
+          link="/Kg1Students"
         />
         <Space
           image={students}
           title="Kindergarten (KG) 2"
           description="Continued exploration of foundational skills in preparation for primary education..."
-          link="/Kg2Detail"
+          link="/Kg2Students"
         />
       </div>
     </div>
