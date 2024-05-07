@@ -58,4 +58,47 @@ app.post("/login", (req, res) => {
   });
 });
 
+app.get("/nursery2", (req, res) => {
+  const sql = "SELECT * FROM nursery2students";
+  db.query(sql, (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
 
+app.post("/nursery2", (req, res) => {
+  const sql = "INSERT INTO nursery2students SET ?";
+  const values = req.body;
+  db.query(sql, values, (err, results) => {
+    if (err) return res.json(err);
+    return res.json(results);
+  });
+});
+
+app.get("/nursery2/view/:id", (req, res) => {
+  const sql = "SELECT * FROM nursery2students WHERE id = ?";
+  const id = req.params.id;
+  db.query(sql, [id], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+
+app.put("/nursery2/update/:id", (req, res) => {
+  const sql = "UPDATE nursery2students SET ? WHERE id =?";
+  const id = req.params.id;
+  const values = req.body;
+  db.query(sql, [values, id], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+
+app.delete("/nursery2/delete/:id", (req, res) => {
+  const sql = "DELETE FROM nursery2students WHERE id =?";
+  const id = req.params.id;
+  db.query(sql, [id], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});

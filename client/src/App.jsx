@@ -1,6 +1,7 @@
 // App.js
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Creche from "./pages/Class-Creche/Creche";
 import Primary from "./pages/Class-Primary/Primary";
 import Jhs from "./pages/Class-Jhs/Jhs";
@@ -18,8 +19,13 @@ import Basic8Students from "./pages/Basic8/Basic8Students";
 import KG1Students from "./pages/Kg1/Kg1Students";
 import KG2Students from "./pages/Kg2/Kg2Students";
 import Nursery1Students from "./pages/Nursery1/Nursery1Students";
-import Nursery2Students from "./pages/Nursery2/Nursery2Students";
+
 import Basic9Students from "./pages/Basic9/Basic9Students";
+
+//nursery 2 crud
+import Nursery2Students from "./pages/Nursery2/Nursery2Students";
+import View from "./pages/Nursery2/View";
+import Update from "./pages/Nursery2/Update";
 
 function App() {
   return (
@@ -27,6 +33,7 @@ function App() {
       <div className="flex h-screen">
         <div className="flex flex-col flex-1">
           <div className="overflow-y-auto h-full">
+            <ToastContainer/>
             <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/register" element={<Register />} />
@@ -47,7 +54,10 @@ function App() {
               <Route path="/Kg1Students" element={<KG1Students />} />
               <Route path="/Kg2Students" element={<KG2Students />} />
               <Route path="/Nursery1Students" element={<Nursery1Students />} />
-              <Route path="/Nursery2Students" element={<Nursery2Students />} />
+
+              <Route path="/nursery2Students" element={<Nursery2Students />} />
+              <Route path="/nursery2/view/:id" element={<View />} />
+              <Route path="/nursery2/edit/:id" element={<Update />} />
             </Routes>
           </div>
         </div>
