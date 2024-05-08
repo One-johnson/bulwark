@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 import { toast } from "react-toastify";
+import StatusOption from "../../Components/StatusOption";
 const Nursery1Form = ({ onClose }) => {
   const [values, setValues] = useState({
     registrationDate: "",
@@ -20,6 +21,7 @@ const Nursery1Form = ({ onClose }) => {
     religiousDenomination: "",
     houseNumber: "",
     phoneNumber: "",
+    status: "",
   });
 
   const inputStyle =
@@ -54,6 +56,7 @@ const Nursery1Form = ({ onClose }) => {
           religiousDenomination: "",
           houseNumber: "",
           phoneNumber: "",
+          status: "",
         });
       })
       .catch((err) => console.log(err));
@@ -77,6 +80,7 @@ const Nursery1Form = ({ onClose }) => {
       religiousDenomination: "",
       houseNumber: "",
       phoneNumber: "",
+      status: "",
     });
   };
 
@@ -103,6 +107,7 @@ const Nursery1Form = ({ onClose }) => {
                     value={values.registrationDate}
                     onChange={handleChange}
                     className={inputStyle}
+                    required="required"
                   />
                 </div>
                 <div>
@@ -116,6 +121,7 @@ const Nursery1Form = ({ onClose }) => {
                     value={values.firstName}
                     onChange={handleChange}
                     className={inputStyle}
+                    required="required"
                   />
                 </div>
                 <div>
@@ -129,6 +135,7 @@ const Nursery1Form = ({ onClose }) => {
                     value={values.middleName}
                     onChange={handleChange}
                     className={inputStyle}
+                    required="required"
                   />
                 </div>
                 <div>
@@ -142,6 +149,7 @@ const Nursery1Form = ({ onClose }) => {
                     value={values.lastName}
                     onChange={handleChange}
                     className={inputStyle}
+                    required="required"
                   />
                 </div>
                 <div>
@@ -155,6 +163,7 @@ const Nursery1Form = ({ onClose }) => {
                     value={values.dateOfBirth}
                     onChange={handleChange}
                     className={inputStyle}
+                    required="required"
                   />
                 </div>
                 <div>
@@ -168,20 +177,24 @@ const Nursery1Form = ({ onClose }) => {
                     value={values.age}
                     onChange={handleChange}
                     className={inputStyle}
+                    required="required"
                   />
                 </div>
                 <div>
                   <label htmlFor=" sex" className="block mb-2">
                     Sex
                   </label>
-                  <input
-                    type="text"
-                    id="sex"
-                    name="sex"
-                    value={values.sex}
+                  <select
+                    id="status"
+                    name="status"
+                    value={values.status}
                     onChange={handleChange}
                     className={inputStyle}
-                  />
+                    required="required"
+                  >
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
                 </div>
                 <div>
                   <label htmlFor=" nationality" className="block mb-2">
@@ -194,6 +207,7 @@ const Nursery1Form = ({ onClose }) => {
                     value={values.nationality}
                     onChange={handleChange}
                     className={inputStyle}
+                    required="required"
                   />
                 </div>
                 <div>
@@ -207,6 +221,7 @@ const Nursery1Form = ({ onClose }) => {
                     value={values.hometown}
                     onChange={handleChange}
                     className={inputStyle}
+                    required="required"
                   />
                 </div>
                 <div>
@@ -220,6 +235,7 @@ const Nursery1Form = ({ onClose }) => {
                     value={values.parentGuardian}
                     onChange={handleChange}
                     className={inputStyle}
+                    required="required"
                   />
                 </div>
                 <div>
@@ -233,6 +249,7 @@ const Nursery1Form = ({ onClose }) => {
                     value={values.address}
                     onChange={handleChange}
                     className={inputStyle}
+                    required="required"
                   />
                 </div>
 
@@ -247,6 +264,7 @@ const Nursery1Form = ({ onClose }) => {
                     value={values.occupation}
                     onChange={handleChange}
                     className={inputStyle}
+                    required="required"
                   />
                 </div>
                 <div>
@@ -263,6 +281,7 @@ const Nursery1Form = ({ onClose }) => {
                     value={values.religiousDenomination}
                     onChange={handleChange}
                     className={inputStyle}
+                    required="required"
                   />
                 </div>
                 <div>
@@ -276,6 +295,7 @@ const Nursery1Form = ({ onClose }) => {
                     value={values.houseNumber}
                     onChange={handleChange}
                     className={inputStyle}
+                    required="required"
                   />
                 </div>
                 <div>
@@ -289,7 +309,23 @@ const Nursery1Form = ({ onClose }) => {
                     value={values.phoneNumber}
                     onChange={handleChange}
                     className={inputStyle}
+                    required="required"
                   />
+                </div>
+                <div>
+                  <label htmlFor="status" className="block mb-2">
+                    Status
+                  </label>
+                  <select
+                    id="status"
+                    name="status"
+                    value={values.status}
+                    onChange={handleChange}
+                    className={inputStyle}
+                    required="required"
+                  >
+                    <StatusOption />
+                  </select>
                 </div>
               </div>
               <div className="col-span-full mt-6 flex justify-center font-bold">

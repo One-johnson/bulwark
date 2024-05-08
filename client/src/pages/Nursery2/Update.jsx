@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
+import StatusOption from "../../Components/StatusOption";
+
 const Update = () => {
   const { id } = useParams();
 
@@ -27,7 +29,6 @@ const Update = () => {
           religiousDenomination: res.data[0].religiousDenomination,
           houseNumber: res.data[0].houseNumber,
           phoneNumber: res.data[0].phoneNumber,
-         
         });
       })
       .catch((err) => console.log(err));
@@ -91,6 +92,7 @@ const Update = () => {
                     value={values.registrationDate}
                     onChange={handleChange}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -162,14 +164,16 @@ const Update = () => {
                   <label htmlFor=" sex" className="block mb-2">
                     Sex
                   </label>
-                  <input
-                    type="text"
-                    id="sex"
-                    name="sex"
-                    value={values.sex}
+                  <select
+                    id="status"
+                    name="status"
+                    value={values.status}
                     onChange={handleChange}
                     className={inputStyle}
-                  />
+                  >
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
                 </div>
                 <div>
                   <label htmlFor=" nationality" className="block mb-2">
@@ -279,22 +283,34 @@ const Update = () => {
                     className={inputStyle}
                   />
                 </div>
+                <div>
+                  <label htmlFor="status" className="block mb-2">
+                    Status
+                  </label>
+                  <select
+                    id="status"
+                    name="status"
+                    value={values.status}
+                    onChange={handleChange}
+                    className={inputStyle}
+                  >
+                    <StatusOption />
+                  </select>
+                </div>
               </div>
               <div className="col-span-full mt-6 flex justify-center font-bold">
+                <Link
+                  to="/Nursery2Students"
+                  className="mr-4 text-white bg-red-600  py-2 px-4 rounded font-bold hover:bg-red-700 transition-colors duration-300"
+                >
+                  CLOSE
+                </Link>
                 <button
                   type="submit"
                   className="mr-4 bg-green-600 text-white px-8 py-1 rounded-md hover:bg-green-700 transition-colors duration-300 text-center"
                 >
                   UPDATE
                 </button>
-                {/* <button
-                  type="button"
-                  onClick={handleCancel}
-                  className="ml-4 bg-red-500 text-white px-8 py-1 rounded-md hover:bg-red-600 transition-colors duration-300 text-center"
-                  
-                >
-                  BACK
-                </button> */}
               </div>
             </form>
           </div>
