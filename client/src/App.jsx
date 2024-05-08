@@ -24,8 +24,8 @@ import Basic9Students from "./pages/Basic9/Basic9Students";
 
 //nursery 2 crud
 import Nursery2Students from "./pages/Nursery2/Nursery2Students";
-import View from "./pages/Nursery2/View";
 import Update from "./pages/Nursery2/Update";
+import ViewForm from "./pages/Nursery2/ViewForm";
 
 function App() {
   return (
@@ -33,7 +33,7 @@ function App() {
       <div className="flex h-screen">
         <div className="flex flex-col flex-1">
           <div className="overflow-y-auto h-full">
-            <ToastContainer/>
+            <ToastContainer />
             <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/register" element={<Register />} />
@@ -56,7 +56,7 @@ function App() {
               <Route path="/Nursery1Students" element={<Nursery1Students />} />
 
               <Route path="/nursery2Students" element={<Nursery2Students />} />
-              <Route path="/nursery2/view/:id" element={<View />} />
+              <Route path="/nursery2/view/:id" element={<ViewForm />} />
               <Route path="/nursery2/edit/:id" element={<Update />} />
             </Routes>
           </div>

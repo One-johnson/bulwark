@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const View = () => {
+const ViewForm = () => {
   const { id } = useParams();
 
   const [student, setStudent] = useState([]);
@@ -269,4 +269,4 @@ const View = () => {
   );
 };
 
-export default View;
+export default ViewForm;

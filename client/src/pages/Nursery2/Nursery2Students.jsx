@@ -9,11 +9,11 @@ import { FiEdit3 } from "react-icons/fi";
 import PopConfirm from "../../Components/PopConfirm";
 import { toast } from "react-toastify";
 
-
 const Nursery2Students = () => {
   const [data, setData] = useState([]);
   const [refreshList, setRefreshList] = useState(false);
-    const [confirmDeleteId, setConfirmDeleteId] = useState(null); 
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -26,25 +26,23 @@ const Nursery2Students = () => {
       .catch((err) => console.log(err));
   };
 
-   const handleDelete = (id) => {
-     setConfirmDeleteId(id); // Set the ID of the item to delete
-   };
+  const handleDelete = (id) => {
+    setConfirmDeleteId(id); // Set the ID of the item to delete
+  };
 
-   const confirmDelete = () => {
-     axios
-       .delete("http://localhost:3002/nursery2/delete/" + confirmDeleteId)
-       .then((res) => {
-         setRefreshList(!refreshList);
-         setConfirmDeleteId(null); // Reset the confirmation ID
-          toast.success("Student deleted successfully!");
-       })
-       .catch((err) => console.log(err));
-   };
-const cancelDelete = () => {
-  setConfirmDeleteId(null); // Reset the confirmation ID
-};
-  
-  const [isFormVisible, setIsFormVisible] = useState(false);
+  const confirmDelete = () => {
+    axios
+      .delete("http://localhost:3002/nursery2/delete/" + confirmDeleteId)
+      .then((res) => {
+        setRefreshList(!refreshList);
+        setConfirmDeleteId(null); // Reset the confirmation ID
+        toast.success("Student deleted successfully!");
+      })
+      .catch((err) => console.log(err));
+  };
+  const cancelDelete = () => {
+    setConfirmDeleteId(null); // Reset the confirmation ID
+  };
 
   const toggleFormVisibility = () => {
     setIsFormVisible(!isFormVisible);
@@ -56,8 +54,9 @@ const cancelDelete = () => {
   };
 
   const tableHeadStyles =
-    "border-r px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider";
-  const tableDataStyles = "px-6 py-4 whitespace-nowrap border-r";
+    "border-r px-6 py-3 text-center text-xs font-medium text-gray-900 uppercase tracking-wider";
+  const tableDataStyles =
+    "px-6 py-4 whitespace-nowrap border-r text-sm text-gray-900";
   return (
     <div>
       <div className="relative mr-5">
@@ -216,25 +215,27 @@ const cancelDelete = () => {
                   </div>
                 </td>
 
-                <td className="px-6 py-4 text-md font-medium flex flex-col-1 items-center">
-                  <Link
-                    to={`/nursery2/view/${student.id}`}
-                    className="text-blue-600 mr-2"
-                  >
-                    <FaRegEye />
-                  </Link>
-                  <Link
-                    to={`/nursery2/edit/${student.id}`}
-                    className="text-green-600  mr-2"
-                  >
-                    <FiEdit3 />
-                  </Link>
-                  <button
-                    onClick={() => handleDelete(student.id)}
-                    className="text-red-600"
-                  >
-                    <FaRegTrashCan />
-                  </button>
+                <td className="px-6 py-4 text-md font-medium ">
+                  <div className="flex flex-col-1 items-center">
+                    <Link
+                      to={`/nursery2/view/${student.id}`}
+                      className="text-blue-600 mr-2"
+                    >
+                      <FaRegEye />
+                    </Link>
+                    <Link
+                      to={`/nursery2/edit/${student.id}`}
+                      className="text-green-600  mr-2"
+                    >
+                      <FiEdit3 />
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(student.id)}
+                      className="text-red-600"
+                    >
+                      <FaRegTrashCan />
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
