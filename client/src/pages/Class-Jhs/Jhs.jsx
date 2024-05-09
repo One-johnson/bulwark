@@ -26,21 +26,21 @@ const Jhs = () => {
           title="Basic 7"
           description="Introduction to more specialized subjects and deeper exploration
               of core concepts..."
-          link="/Basic7Students"
+          link="/Basic7StudentsList"
         />
         <Space
           image={calculator}
           title="Basic 8"
           description="Building on previous knowledge with advanced topics and critical
               thinking skills..."
-          link="/Basic8Students"
+          link="/Basic8StudentsList"
         />
         <Space
           image={grade}
           title="Basic 9"
           description=" Preparation for higher education with a focus on independent
               learning...."
-          link="/Basic9Students"
+          link="/Basic9StudentsList"
         />
       </div>
     </div>

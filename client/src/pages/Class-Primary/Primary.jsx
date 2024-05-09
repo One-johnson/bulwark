@@ -26,40 +26,40 @@ const Primary = () => {
           title="Basic 1"
           description="Introduction to fundamental concepts and skills in various
               subjects..."
-          link="/Basic1Students"
+          link="/Basic1StudentsList"
         />
         <Space
           image={educate}
           title="Basic 2"
           description="Building on foundational knowledge with more advanced topics and
               activities..."
-          link="/Basic2Students"
+          link="/Basic2StudentsList"
         />
         <Space
           image={education}
           title="Basic 3"
           description="Exploring deeper levels of understanding in core subjects....."
-          link="/Basic3Students"
+          link="/Basic3StudentsList"
         />
 
         <Space
           image={study}
           title="Basic 4"
           description=" Consolidating knowledge and skills for academic advancement..."
-          link="/Basic4Students"
+          link="/Basic4StudentsList"
         />
         <Space
           image={knowledge}
           title="Basic 5"
           description=" Preparing students for more complex learning experiences..."
-          link="/Basic5Students"
+          link="/Basic5StudentsList"
         />
         <Space
           image={diploma}
           title="Basic 6"
           description="  Final year of primary education, focusing on readiness for
               transition..."
-          link="/Basic6Students"
+          link="/Basic6StudentsList"
         />
       </div>
     </div>

@@ -1,97 +1,48 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
-const Basic2Form = ({ onSubmit, onClose }) => {
-  const [formData, setFormData] = useState({
-    studentId: "",
-    registrationDate: "",
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    dateOfBirth: "",
-    age: "",
-    sex: "",
-    nationality: "",
-    hometown: "",
-    parentGuardian: "",
-    address: "",
-    occupation: "",
-    religiousDenomination: "",
-    houseNumber: "",
-    phoneNumber: "",
-  });
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+
+const Nursery2ViewForm = () => {
+  const { id } = useParams();
+
+  const [student, setStudent] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3002/nursery2/view/" + id)
+      .then((res) => {
+        console.log(res);
+        setStudent(res.data[0]);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
+
+  if (student.length === 0) {
+    return <div>Loading...</div>;
+  }
+
   const inputStyle =
-    "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border-2";
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(formData);
-    setFormData({
-      studentId: "",
-      registrationDate: "",
-      firstName: "",
-      middleName: "",
-      lastName: "",
-      dateOfBirth: "",
-      age: "",
-      sex: "",
-      nationality: "",
-      hometown: "",
-      parentGuardian: "",
-      address: "",
-      occupation: "",
-      religiousDenomination: "",
-      houseNumber: "",
-      phoneNumber: "",
-    });
-  };
-
-  const handleCancel = () => {
-    onClose();
-    setFormData({
-      studentId: "",
-      registrationDate: "",
-      firstName: "",
-      middleName: "",
-      lastName: "",
-      dateOfBirth: "",
-      age: "",
-      sex: "",
-      nationality: "",
-      hometown: "",
-      parentGuardian: "",
-      address: "",
-      occupation: "",
-      religiousDenomination: "",
-      houseNumber: "",
-      phoneNumber: "",
-    });
-  };
-
+    "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none bg-gray-200";
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto ">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-300 bg-opacity-75">
       <div className="flex items-center justify-center min-h-screen px-4">
         <div className="relative w-full max-w-3xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
-            <h2 className="text-lg font-semibold mb-4 text-center">
-              Add New Student
+            <h2 className="text-2xl font-bold mb-4 text-center">
+              Student Details
             </h2>
-            <form onSubmit={handleSubmit} className="mx-auto">
+            <form className="mx-auto">
               <div className="grid grid-cols-2 gap-4">
-                {/* Inputs for all fields */}
                 <div>
-                  <label htmlFor="studentId" className="block mb-2">
-                    Student ID
+                  <label htmlFor="id" className="block mb-2">
+                    ID
                   </label>
                   <input
                     type="text"
-                    id="studentId"
-                    name="studentId"
-                    value={formData.studentId}
-                    onChange={handleChange}
+                    id="id"
+                    name="id"
+                    value={student.id}
+                    readOnly
                     className={inputStyle}
                   />
                 </div>
@@ -100,11 +51,11 @@ const Basic2Form = ({ onSubmit, onClose }) => {
                     Registration Date
                   </label>
                   <input
-                    type="date"
+                    type="text"
                     id="registrationDate"
                     name="registrationDate"
-                    value={formData.registrationDate}
-                    onChange={handleChange}
+                    value={student.registrationDate}
+                    readOnly
                     className={inputStyle}
                   />
                 </div>
@@ -116,9 +67,9 @@ const Basic2Form = ({ onSubmit, onClose }) => {
                     type="text"
                     id="firstName"
                     name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
+                    value={student.firstName}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -129,9 +80,9 @@ const Basic2Form = ({ onSubmit, onClose }) => {
                     type="text"
                     id="middleName"
                     name="middleName"
-                    value={formData.middleName}
-                    onChange={handleChange}
+                    value={student.middleName}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -142,9 +93,9 @@ const Basic2Form = ({ onSubmit, onClose }) => {
                     type="text"
                     id="lastName"
                     name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
+                    value={student.lastName}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -155,9 +106,9 @@ const Basic2Form = ({ onSubmit, onClose }) => {
                     type="date"
                     id="dateOfBirth"
                     name="dateOfBirth"
-                    value={formData.dateOfBirth}
-                    onChange={handleChange}
+                    value={student.dateOfBirth}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -166,37 +117,38 @@ const Basic2Form = ({ onSubmit, onClose }) => {
                   </label>
                   <input
                     type="text"
-                    id=" age"
-                    name=" age"
-                    value={formData.age}
-                    onChange={handleChange}
+                    id="age"
+                    name="age"
+                    value={student.age}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
-                  <label htmlFor=" sex" className="block mb-2">
+                  <label htmlFor="sex" className="block mb-2">
                     Sex
                   </label>
                   <input
                     type="text"
-                    id=" sex"
-                    name=" sex"
-                    value={formData.sex}
-                    onChange={handleChange}
+                    id="sex"
+                    name="sex"
+                    value={student.sex}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
+
                 <div>
                   <label htmlFor=" nationality" className="block mb-2">
                     Nationality
                   </label>
                   <input
                     type="text"
-                    id=" nationality"
-                    name=" nationality"
-                    value={formData.nationality}
-                    onChange={handleChange}
+                    id="nationality"
+                    name="nationality"
+                    value={student.nationality}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -205,11 +157,11 @@ const Basic2Form = ({ onSubmit, onClose }) => {
                   </label>
                   <input
                     type="text"
-                    id=" hometown"
-                    name=" hometown"
-                    value={formData.hometown}
-                    onChange={handleChange}
+                    id="hometown"
+                    name="hometown"
+                    value={student.hometown}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -218,11 +170,11 @@ const Basic2Form = ({ onSubmit, onClose }) => {
                   </label>
                   <input
                     type="text"
-                    id=" parentGuardian"
-                    name=" parentGuardian"
-                    value={formData.parentGuardian}
-                    onChange={handleChange}
+                    id="parentGuardian"
+                    name="parentGuardian"
+                    value={student.parentGuardian}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -231,25 +183,24 @@ const Basic2Form = ({ onSubmit, onClose }) => {
                   </label>
                   <input
                     type="text"
-                    id=" address"
-                    name=" address"
-                    value={formData.address}
-                    onChange={handleChange}
+                    id="address"
+                    name="address"
+                    value={student.address}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
-
                 <div>
                   <label htmlFor="  occupation" className="block mb-2">
                     Occupation
                   </label>
                   <input
                     type="text"
-                    id="  occupation"
-                    name="  occupation"
-                    value={formData.occupation}
-                    onChange={handleChange}
+                    id="occupation"
+                    name="occupation"
+                    value={student.occupation}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -261,11 +212,11 @@ const Basic2Form = ({ onSubmit, onClose }) => {
                   </label>
                   <input
                     type="text"
-                    id="  religiousDenomination"
-                    name="  religiousDenomination"
-                    value={formData.religiousDenomination}
-                    onChange={handleChange}
+                    id="religiousDenomination"
+                    name="religiousDenomination"
+                    value={student.religiousDenomination}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -274,11 +225,11 @@ const Basic2Form = ({ onSubmit, onClose }) => {
                   </label>
                   <input
                     type="text"
-                    id=" houseNumber"
-                    name=" houseNumber"
-                    value={formData.houseNumber}
-                    onChange={handleChange}
+                    id="houseNumber"
+                    name="houseNumber"
+                    value={student.houseNumber}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -287,31 +238,30 @@ const Basic2Form = ({ onSubmit, onClose }) => {
                   </label>
                   <input
                     type="text"
-                    id=" phoneNumber"
-                    name=" phoneNumber"
-                    value={formData.phoneNumber}
-                    onChange={handleChange}
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={student.phoneNumber}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
               </div>
-              <div className="col-span-full mt-6 flex justify-center font-bold">
-                <button
-                  type="submit"
-                  className="mr-4 bg-green-600 text-white px-8 py-1 rounded-md hover:bg-green-700 transition-colors duration-300 text-center"
-                >
-                  Save
-                </button>
-                <button
-                  type="button"
-                  onClick={handleCancel}
-                  className="ml-4 bg-red-500 text-white px-8 py-1 rounded-md hover:bg-red-600 transition-colors duration-300 text-center"
-                  onChange={handleChange}
-                >
-                  Close
-                </button>
-              </div>
             </form>
+
+            <div className="mt-8 text-center">
+              <Link
+                to="/Nursery2StudentsList"
+                className="mr-4 text-white bg-blue-700  py-2 px-4 rounded font-bold hover:bg-blue-800"
+              >
+                BACK
+              </Link>
+              <Link
+                to={`/nursery2/edit/${student.id}`}
+                className="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"
+              >
+                EDIT
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -319,8 +269,4 @@ const Basic2Form = ({ onSubmit, onClose }) => {
   );
 };
 
-Basic2Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
-export default Basic2Form;
+export default Nursery2ViewForm;

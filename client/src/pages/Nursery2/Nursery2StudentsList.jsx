@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Nursery2Form from "./Nursery2Form";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { RiAddLine } from "react-icons/ri";
@@ -8,8 +7,9 @@ import { FaRegEye } from "react-icons/fa";
 import { FiEdit3 } from "react-icons/fi";
 import PopConfirm from "../../Components/PopConfirm";
 import { toast } from "react-toastify";
+import AddStudentForm from "./AddStudentForm";
 
-const Nursery2Students = () => {
+const Nursery2StudentsList = () => {
   const [data, setData] = useState([]);
   const [refreshList, setRefreshList] = useState(false);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
@@ -66,7 +66,7 @@ const Nursery2Students = () => {
         >
           <RiAddLine className="text-xl" />
         </button>
-        {isFormVisible && <Nursery2Form onClose={handleCloseForm} />}
+        {isFormVisible && <AddStudentForm onClose={handleCloseForm} />}
       </div>
 
       {confirmDeleteId && (
@@ -79,7 +79,7 @@ const Nursery2Students = () => {
 
       <div className="overflow-x-auto px-4 ">
         <h2 className="text-center font-bold text-3xl p-5">
-          Nursery 2 Student List
+          Nursery 2 Students List
         </h2>
         <div className="flex justify-end mr-2 mb-10 "></div>
         <table className="min-w-full divide-y divide-gray-400 border border-gray-300 rounded-md">
@@ -88,6 +88,7 @@ const Nursery2Students = () => {
               <th scope="col" className={tableHeadStyles}>
                 ID
               </th>
+
               <th scope="col" className={tableHeadStyles}>
                 registration date
               </th>
@@ -133,7 +134,9 @@ const Nursery2Students = () => {
               <th scope="col" className={tableHeadStyles}>
                 phone number
               </th>
-
+              <th scope="col" className={tableHeadStyles}>
+                status
+              </th>
               <th scope="col" className={tableHeadStyles}>
                 Action
               </th>
@@ -214,6 +217,9 @@ const Nursery2Students = () => {
                     {student.phoneNumber}
                   </div>
                 </td>
+                <td className={tableDataStyles}>
+                  <div className="text-sm text-gray-900">{student.status}</div>
+                </td>
 
                 <td className="px-6 py-4 text-md font-medium ">
                   <div className="flex flex-col-1 items-center">
@@ -246,4 +252,4 @@ const Nursery2Students = () => {
   );
 };
 
-export default Nursery2Students;
+export default Nursery2StudentsList;

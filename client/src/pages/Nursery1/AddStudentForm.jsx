@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 import { toast } from "react-toastify";
-import StatusOption from "../../Components/StatusOption";
-const Nursery1Form = ({ onClose }) => {
+import StatusOptions from "../../Components/StatusOption";
+
+const AddStudentForm = ({ onClose }) => {
   const [values, setValues] = useState({
     registrationDate: "",
     firstName: "",
@@ -34,7 +35,7 @@ const Nursery1Form = ({ onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3002/nursery2", values)
+      .post("http://localhost:3002/nursery1", values)
       .then((res) => {
         console.log(res);
         // Show success toast
@@ -85,7 +86,7 @@ const Nursery1Form = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-400 bg-opacity-75">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-300 bg-opacity-75">
       <div className="flex items-center justify-center min-h-screen px-4">
         <div className="relative w-full max-w-3xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
@@ -187,7 +188,7 @@ const Nursery1Form = ({ onClose }) => {
                   <select
                     id="status"
                     name="status"
-                    value={values.status}
+                    value={values.sex}
                     onChange={handleChange}
                     className={inputStyle}
                     required="required"
@@ -324,7 +325,7 @@ const Nursery1Form = ({ onClose }) => {
                     className={inputStyle}
                     required="required"
                   >
-                    <StatusOption />
+                   <StatusOptions/>
                   </select>
                 </div>
               </div>
@@ -352,7 +353,7 @@ const Nursery1Form = ({ onClose }) => {
   );
 };
 
-Nursery1Form.propTypes = {
+AddStudentForm.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
-export default Nursery1Form;
+export default AddStudentForm;

@@ -31,86 +31,86 @@ function Body() {
           image={schoolbuilding}
           title="Nursery 1"
           description="Introductory class designed to foster early childhood development through play..."
-          link="/Nursery1Students"
+          link="/Nursery1StudentsList"
         />
         <Space
           image={brick}
           title="Nursery 2"
           description="Focuses on building foundational skills in language, math, and social interaction.."
-          link="/Nursery2Students"
+          link="/Nursery2StudentsList"
         />
         <Space
           image={bookshelf}
           title="Kindergarten (KG) 1"
           description="Continued exploration of foundational skills in preparation for primary education..."
-          link="/Kg1Students"
+          link="/Kg1StudentsList"
         />
         <Space
           image={students}
           title="Kindergarten (KG) 2"
           description="Continued exploration of foundational skills in preparation for primary education..."
-          link="/Kg2Students"
+          link="/Kg2StudentsList"
         />
         <Space
           image={classroom}
           title="Basic 1"
           description="Introduction to fundamental concepts and skills in various
               subjects..."
-          link="/Basic1Students"
+          link="/Basic1StudentsList"
         />
         <Space
           image={educate}
           title="Basic 2"
           description="Building on foundational knowledge with more advanced topics and
               activities..."
-          link="/Basic2Students"
+          link="/Basic2StudentsList"
         />
         <Space
           image={education}
           title="Basic 3"
           description="Exploring deeper levels of understanding in core subjects....."
-          link="/Basic3Students"
+          link="/Basic3StudentsList"
         />
 
         <Space
           image={study}
           title="Basic 4"
           description=" Consolidating knowledge and skills for academic advancement..."
-          link="/Basic4Students"
+          link="/Basic4StudentsList"
         />
         <Space
           image={knowledge}
           title="Basic 5"
           description=" Preparing students for more complex learning experiences..."
-          link="/Basic5Students"
+          link="/Basic5StudentsList"
         />
         <Space
           image={diploma}
           title="Basic 6"
           description="  Final year of primary education, focusing on readiness for
               transition..."
-          link="/Basic6Students"
+          link="/Basic6StudentsList"
         />
         <Space
           image={books}
           title="Basic 7"
           description="Introduction to more specialized subjects and deeper exploration
               of core concepts..."
-          link="/Basic7Students"
+          link="/Basic7StudentsList"
         />
         <Space
           image={calculator}
           title="Basic 8"
           description="Building on previous knowledge with advanced topics and critical
               thinking skills..."
-          link="/Basic8Students"
+          link="/Basic8StudentsList"
         />
         <Space
           image={grade}
           title="Basic 9"
           description=" Preparation for higher education with a focus on independent
               learning...."
-          link="/Basic9Students"
+          link="/Basic9StudentsList"
         />
       </div>
     </div>
