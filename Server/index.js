@@ -412,3 +412,87 @@ app.delete("/basic4/delete/:id", (req, res) => {
     return res.json(results);
   });
 });
+
+//Basic 5 route
+app.get("/basic5", (req, res) => {
+  const sql = "SELECT * FROM basic5students";
+  db.query(sql, (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.post("/basic5", (req, res) => {
+  const sql = "INSERT INTO basic5students SET ?";
+  const values = req.body;
+  db.query(sql, values, (err, results) => {
+    if (err) return res.json(err);
+    return res.json(results);
+  });
+});
+app.get("/basic5/view/:id", (req, res) => {
+  const sql = "SELECT * FROM basic5students WHERE id = ?";
+  const id = req.params.id;
+  db.query(sql, [id], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.put("/basic5/update/:id", (req, res) => {
+  const sql = "UPDATE basic5students SET ? WHERE id =?";
+  const id = req.params.id;
+  const values = req.body;
+  db.query(sql, [values, id], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.delete("/basic5/delete/:id", (req, res) => {
+  const sql = "DELETE FROM basic5students WHERE id =?";
+  const id = req.params.id;
+  db.query(sql, [id], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+
+//Basic 6 route
+app.get("/basic6", (req, res) => {
+  const sql = "SELECT * FROM basic6students";
+  db.query(sql, (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.post("/basic6", (req, res) => {
+  const sql = "INSERT INTO basic6students SET ?";
+  const values = req.body;
+  db.query(sql, values, (err, results) => {
+    if (err) return res.json(err);
+    return res.json(results);
+  });
+});
+app.get("/basic6/view/:id", (req, res) => {
+  const sql = "SELECT * FROM basic6students WHERE id = ?";
+  const id = req.params.id;
+  db.query(sql, [id], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.put("/basic6/update/:id", (req, res) => {
+  const sql = "UPDATE basic6students SET ? WHERE id =?";
+  const id = req.params.id;
+  const values = req.body;
+  db.query(sql, [values, id], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.delete("/basic6/delete/:id", (req, res) => {
+  const sql = "DELETE FROM basic6students WHERE id =?";
+  const id = req.params.id;
+  db.query(sql, [id], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});

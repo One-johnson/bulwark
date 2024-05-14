@@ -1,11 +1,41 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
-
-import { toast } from "react-toastify";
 import StatusOptions from "../../Components/StatusOption";
+import { toast } from "react-toastify";
 
-const AddStudentForm = ({ onClose }) => {
+const Basic5UpdateForm = () => {
+  const { id } = useParams();
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    axios
+      .get("http://localhost:3002/basic5/view/" + id)
+      .then((res) => {
+        console.log(res);
+        setValues({
+          ...values,
+          registrationDate: res.data[0].registrationDate,
+          firstName: res.data[0].firstName,
+          middleName: res.data[0].middleName,
+          lastName: res.data[0].lastName,
+          dateOfBirth: res.data[0].dateOfBirth,
+          age: res.data[0].age,
+          sex: res.data[0].sex,
+          nationality: res.data[0].nationality,
+          hometown: res.data[0].hometown,
+          parentGuardian: res.data[0].parentGuardian,
+          address: res.data[0].address,
+          occupation: res.data[0].occupation,
+          religiousDenomination: res.data[0].religiousDenomination,
+          houseNumber: res.data[0].houseNumber,
+          phoneNumber: res.data[0].phoneNumber,
+          status: res.data[0].status,
+        });
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   const [values, setValues] = useState({
     registrationDate: "",
     firstName: "",
@@ -25,75 +55,33 @@ const AddStudentForm = ({ onClose }) => {
     status: "",
   });
 
-  const inputStyle =
-    "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border-2";
+  const handleUpdate = (event) => {
+    event.preventDefault();
+    axios
+      .put("http://localhost:3002/Basic5/update/" + id, values)
+      .then((res) => {
+        console.log(res);
+        toast.success("Student updated successfully!");
+        navigate("/Basic5StudentsList");
+      })
+      .catch((err) => console.log(err));
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post("http://localhost:3002/basic4", values)
-      .then((res) => {
-        console.log(res);
-        // Show success toast
-        toast.success("Student added successfully!");
-        // Reset form fields
-        setValues({
-          registrationDate: "",
-          firstName: "",
-          middleName: "",
-          lastName: "",
-          dateOfBirth: "",
-          age: "",
-          sex: "",
-          nationality: "",
-          hometown: "",
-          parentGuardian: "",
-          address: "",
-          occupation: "",
-          religiousDenomination: "",
-          houseNumber: "",
-          phoneNumber: "",
-          status: "",
-        });
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const handleCancel = () => {
-    onClose();
-    setValues({
-      registrationDate: "",
-      firstName: "",
-      middleName: "",
-      lastName: "",
-      dateOfBirth: "",
-      age: "",
-      sex: "",
-      nationality: "",
-      hometown: "",
-      parentGuardian: "",
-      address: "",
-      occupation: "",
-      religiousDenomination: "",
-      houseNumber: "",
-      phoneNumber: "",
-      status: "",
-    });
-  };
-
+  const inputStyle =
+    "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border-2";
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-300 bg-opacity-75">
       <div className="flex items-center justify-center min-h-screen px-4">
         <div className="relative w-full max-w-3xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
             <h2 className="text-lg font-semibold mb-4 text-center">
-              Add New Student
+              Update Student
             </h2>
-            <form onSubmit={handleSubmit} className="mx-auto">
+            <form onSubmit={handleUpdate} className="mx-auto">
               <div className="grid grid-cols-2 gap-4">
                 {/* Inputs for all fields */}
 
@@ -108,7 +96,7 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.registrationDate}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
+                    readOnly
                   />
                 </div>
                 <div>
@@ -122,7 +110,6 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.firstName}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
                   />
                 </div>
                 <div>
@@ -136,7 +123,6 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.middleName}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
                   />
                 </div>
                 <div>
@@ -150,7 +136,6 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.lastName}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
                   />
                 </div>
                 <div>
@@ -164,7 +149,6 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.dateOfBirth}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
                   />
                 </div>
                 <div>
@@ -178,7 +162,6 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.age}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
                   />
                 </div>
                 <div>
@@ -191,9 +174,10 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.sex}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
                   >
-                    <option value="" className="text-gray-500">Select</option>
+                    <option value="" className="text-gray-500">
+                      Select
+                    </option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                   </select>
@@ -209,7 +193,6 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.nationality}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
                   />
                 </div>
                 <div>
@@ -223,7 +206,6 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.hometown}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
                   />
                 </div>
                 <div>
@@ -237,7 +219,6 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.parentGuardian}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
                   />
                 </div>
                 <div>
@@ -251,7 +232,6 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.address}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
                   />
                 </div>
 
@@ -266,7 +246,6 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.occupation}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
                   />
                 </div>
                 <div>
@@ -283,7 +262,6 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.religiousDenomination}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
                   />
                 </div>
                 <div>
@@ -297,7 +275,6 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.houseNumber}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
                   />
                 </div>
                 <div>
@@ -311,7 +288,6 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.phoneNumber}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
                   />
                 </div>
                 <div>
@@ -324,26 +300,23 @@ const AddStudentForm = ({ onClose }) => {
                     value={values.status}
                     onChange={handleChange}
                     className={inputStyle}
-                    required="required"
                   >
                     <StatusOptions />
                   </select>
                 </div>
               </div>
               <div className="col-span-full mt-6 flex justify-center font-bold">
+                <Link
+                  to="/Basic5StudentsList"
+                  className="mr-4 text-white bg-red-600  py-2 px-4 rounded font-bold hover:bg-red-700 transition-colors duration-300"
+                >
+                  CLOSE
+                </Link>
                 <button
                   type="submit"
                   className="mr-4 bg-green-600 text-white px-8 py-1 rounded-md hover:bg-green-700 transition-colors duration-300 text-center"
                 >
-                  Save
-                </button>
-                <button
-                  type="button"
-                  onClick={handleCancel}
-                  className="ml-4 bg-red-500 text-white px-8 py-1 rounded-md hover:bg-red-600 transition-colors duration-300 text-center"
-                  onChange={handleChange}
-                >
-                  Close
+                  UPDATE
                 </button>
               </div>
             </form>
@@ -354,7 +327,4 @@ const AddStudentForm = ({ onClose }) => {
   );
 };
 
-AddStudentForm.propTypes = {
-  onClose: PropTypes.func.isRequired,
-};
-export default AddStudentForm;
+export default Basic5UpdateForm;

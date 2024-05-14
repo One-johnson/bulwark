@@ -9,7 +9,7 @@ const Basic4ViewForm = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/basic3/view/" + id)
+      .get("http://localhost:3002/basic4/view/" + id)
       .then((res) => {
         console.log(res);
         setStudent(res.data[0]);

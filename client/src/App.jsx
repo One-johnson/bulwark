@@ -49,6 +49,15 @@ import Basic4StudentsList from "./pages/Basic4/Basic4StudentsList";
 import Basic4ViewForm from "./pages/Basic4/Basic4ViewForm";
 import Basic4UpdateForm from "./pages/Basic4/Basic4UpdateForm";
 
+// basic 5 crud
+import Basic5tudentsList from "./pages/Basic5/Basic5StudentsList";
+import Basic5ViewForm from "./pages/Basic5/Basic5ViewForm";
+import Basic5UpdateForm from "./pages/Basic5/Basic5UpdateForm";
+
+// basic 6 crud
+import Basic6tudentsList from "./pages/Basic6/Basic6StudentsList";
+import Basic6ViewForm from "./pages/Basic6/Basic6ViewForm";
+import Basic6UpdateForm from "./pages/Basic6/Basic6UpdateForm";
 function App() {
   return (
     <Router>
@@ -95,6 +104,22 @@ function App() {
               />
               <Route path="/basic4/view/:id" element={<Basic4ViewForm />} />
               <Route path="/basic4/edit/:id" element={<Basic4UpdateForm />} />
+
+              {/* basic 5 route */}
+              <Route
+                path="/Basic5StudentsList"
+                element={<Basic5tudentsList />}
+              />
+              <Route path="/basic5/view/:id" element={<Basic5ViewForm />} />
+              <Route path="/basic5/edit/:id" element={<Basic5UpdateForm />} />
+
+              {/* basic 6 route */}
+              <Route
+                path="/Basic6StudentsList"
+                element={<Basic6tudentsList />}
+              />
+              <Route path="/basic6/view/:id" element={<Basic6ViewForm />} />
+              <Route path="/basic6/edit/:id" element={<Basic6UpdateForm />} />
 
               {/* kg 2 route */}
               <Route path="/Kg2StudentsList" element={<Kg2StudentsList />} />

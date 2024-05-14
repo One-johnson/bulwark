@@ -35,7 +35,7 @@ const AddStudentForm = ({ onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3002/basic4", values)
+      .post("http://localhost:3002/basic6", values)
       .then((res) => {
         console.log(res);
         // Show success toast
