@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
 import StatusOptions from "../../Components/StatusOption";
+import { toast } from "react-toastify";
 
 const Nursery2UpdateForm = () => {
   const { id } = useParams();
@@ -60,6 +61,7 @@ const Nursery2UpdateForm = () => {
       .put("http://localhost:3002/nursery2/update/" + id, values)
       .then((res) => {
         console.log(res);
+        toast.success("Student updated successfully!");
         navigate("/Nursery2StudentsList");
       })
       .catch((err) => console.log(err));
@@ -173,7 +175,9 @@ const Nursery2UpdateForm = () => {
                     onChange={handleChange}
                     className={inputStyle}
                   >
-                    <option value="" className="text-gray-500">Select</option>
+                    <option value="" className="text-gray-500">
+                      Select
+                    </option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                   </select>

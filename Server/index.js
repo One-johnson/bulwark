@@ -103,7 +103,6 @@ app.delete("/nursery2/delete/:id", (req, res) => {
   });
 });
 
-
 //nursery 1 route
 app.get("/nursery1", (req, res) => {
   const sql = "SELECT * FROM nursery1students";

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 import StatusOptions from "../../Components/StatusOption";
 
 const Nursery1UpdateForm = () => {
@@ -60,6 +61,7 @@ const Nursery1UpdateForm = () => {
       .put("http://localhost:3002/nursery1/update/" + id, values)
       .then((res) => {
         console.log(res);
+        toast.success("Student updated successfully!");
         navigate("/Nursery1StudentsList");
       })
       .catch((err) => console.log(err));
