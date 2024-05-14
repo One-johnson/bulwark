@@ -148,3 +148,95 @@ app.delete("/nursery1/delete/:id", (req, res) => {
     return res.json(results);
   });
 });
+
+//KG 1 route
+app.get("/kg1", (req, res) => {
+  const sql = "SELECT * FROM kg1students";
+  db.query(sql, (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+
+app.post("/kg1", (req, res) => {
+  const sql = "INSERT INTO kg1students SET ?";
+  const values = req.body;
+  db.query(sql, values, (err, results) => {
+    if (err) return res.json(err);
+    return res.json(results);
+  });
+});
+
+app.get("/kg1/view/:id", (req, res) => {
+  const sql = "SELECT * FROM kg1students WHERE id = ?";
+  const id = req.params.id;
+  db.query(sql, [id], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+
+app.put("/kg1/update/:id", (req, res) => {
+  const sql = "UPDATE kg1students SET ? WHERE id =?";
+  const id = req.params.id;
+  const values = req.body;
+  db.query(sql, [values, id], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+
+app.delete("/kg1/delete/:id", (req, res) => {
+  const sql = "DELETE FROM kg1students WHERE id =?";
+  const id = req.params.id;
+  db.query(sql, [id], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+
+//KG 2 route
+app.get("/kg2", (req, res) => {
+  const sql = "SELECT * FROM kg2students";
+  db.query(sql, (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+
+app.post("/kg2", (req, res) => {
+  const sql = "INSERT INTO kg2students SET ?";
+  const values = req.body;
+  db.query(sql, values, (err, results) => {
+    if (err) return res.json(err);
+    return res.json(results);
+  });
+});
+
+app.get("/kg2/view/:id", (req, res) => {
+  const sql = "SELECT * FROM kg2students WHERE id = ?";
+  const id = req.params.id;
+  db.query(sql, [id], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+
+app.put("/kg2/update/:id", (req, res) => {
+  const sql = "UPDATE kg2students SET ? WHERE id =?";
+  const id = req.params.id;
+  const values = req.body;
+  db.query(sql, [values, id], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+
+app.delete("/kg2/delete/:id", (req, res) => {
+  const sql = "DELETE FROM kg2students WHERE id =?";
+  const id = req.params.id;
+  db.query(sql, [id], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});

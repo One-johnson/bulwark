@@ -1,6 +1,9 @@
 const StatusOptions = () => {
   return (
     <>
+      <option value="" className="text-gray-200">
+        Select Status
+      </option>
       <option value="fresher" className="text-red-600 font-bold">
         Fresher
       </option>
