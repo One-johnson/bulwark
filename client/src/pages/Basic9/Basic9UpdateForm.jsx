@@ -1,62 +1,102 @@
+import { useState, useEffect } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import StatusOptions from "../../Components/StatusOption";
+import { toast } from "react-toastify";
 
-const Basic7ViewForm = () => {
+const Basic9UpdateForm = () => {
   const { id } = useParams();
 
-  const [student, setStudent] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("http://localhost:3002/basic7/view/" + id)
+      .get("http://localhost:3002/basic9/view/" + id)
       .then((res) => {
         console.log(res);
-        setStudent(res.data[0]);
+        setValues({
+          ...values,
+          registrationDate: res.data[0].registrationDate,
+          firstName: res.data[0].firstName,
+          middleName: res.data[0].middleName,
+          lastName: res.data[0].lastName,
+          dateOfBirth: res.data[0].dateOfBirth,
+          age: res.data[0].age,
+          sex: res.data[0].sex,
+          nationality: res.data[0].nationality,
+          hometown: res.data[0].hometown,
+          parentGuardian: res.data[0].parentGuardian,
+          address: res.data[0].address,
+          occupation: res.data[0].occupation,
+          religiousDenomination: res.data[0].religiousDenomination,
+          houseNumber: res.data[0].houseNumber,
+          phoneNumber: res.data[0].phoneNumber,
+          status: res.data[0].status,
+        });
       })
       .catch((err) => console.log(err));
-  }, [id]);
+  }, []);
 
-  if (student.length === 0) {
-    return <div>Loading...</div>;
-  }
+  const [values, setValues] = useState({
+    registrationDate: "",
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    dateOfBirth: "",
+    age: "",
+    sex: "",
+    nationality: "",
+    hometown: "",
+    parentGuardian: "",
+    address: "",
+    occupation: "",
+    religiousDenomination: "",
+    houseNumber: "",
+    phoneNumber: "",
+    status: "",
+  });
+
+  const handleUpdate = (event) => {
+    event.preventDefault();
+    axios
+      .put("http://localhost:3002/Basic9/update/" + id, values)
+      .then((res) => {
+        console.log(res);
+        toast.success("Student updated successfully!");
+        navigate("/Basic9StudentsList");
+      })
+      .catch((err) => console.log(err));
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
+  };
 
   const inputStyle =
-    "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none bg-gray-200";
+    "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border-2";
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-300 bg-opacity-75">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-300 bg-opacity-85">
       <div className="flex items-center justify-center min-h-screen px-4">
         <div className="relative w-full max-w-3xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
-            <h2 className="text-2xl font-bold mb-4 text-center">
-              Student Details
+            <h2 className="text-lg font-semibold mb-4 text-center">
+              Update Student
             </h2>
-            <form className="mx-auto">
+            <form onSubmit={handleUpdate} className="mx-auto">
               <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="id" className="block mb-2">
-                    ID
-                  </label>
-                  <input
-                    type="text"
-                    id="id"
-                    name="id"
-                    value={student.id}
-                    readOnly
-                    className={inputStyle}
-                  />
-                </div>
+                {/* Inputs for all fields */}
+
                 <div>
                   <label htmlFor="registrationDate" className="block mb-2">
                     Registration Date
                   </label>
                   <input
-                    type="text"
+                    type="date"
                     id="registrationDate"
                     name="registrationDate"
-                    value={student.registrationDate}
-                    readOnly
+                    value={values.registrationDate}
+                    onChange={handleChange}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -67,9 +107,9 @@ const Basic7ViewForm = () => {
                     type="text"
                     id="firstName"
                     name="firstName"
-                    value={student.firstName}
+                    value={values.firstName}
+                    onChange={handleChange}
                     className={inputStyle}
-                    readOnly
                   />
                 </div>
                 <div>
@@ -80,9 +120,9 @@ const Basic7ViewForm = () => {
                     type="text"
                     id="middleName"
                     name="middleName"
-                    value={student.middleName}
+                    value={values.middleName}
+                    onChange={handleChange}
                     className={inputStyle}
-                    readOnly
                   />
                 </div>
                 <div>
@@ -93,9 +133,9 @@ const Basic7ViewForm = () => {
                     type="text"
                     id="lastName"
                     name="lastName"
-                    value={student.lastName}
+                    value={values.lastName}
+                    onChange={handleChange}
                     className={inputStyle}
-                    readOnly
                   />
                 </div>
                 <div>
@@ -106,9 +146,9 @@ const Basic7ViewForm = () => {
                     type="date"
                     id="dateOfBirth"
                     name="dateOfBirth"
-                    value={student.dateOfBirth}
+                    value={values.dateOfBirth}
+                    onChange={handleChange}
                     className={inputStyle}
-                    readOnly
                   />
                 </div>
                 <div>
@@ -119,25 +159,29 @@ const Basic7ViewForm = () => {
                     type="text"
                     id="age"
                     name="age"
-                    value={student.age}
+                    value={values.age}
+                    onChange={handleChange}
                     className={inputStyle}
-                    readOnly
                   />
                 </div>
                 <div>
-                  <label htmlFor="sex" className="block mb-2">
+                  <label htmlFor=" sex" className="block mb-2">
                     Sex
                   </label>
-                  <input
-                    type="text"
+                  <select
                     id="sex"
                     name="sex"
-                    value={student.sex}
+                    value={values.sex}
+                    onChange={handleChange}
                     className={inputStyle}
-                    readOnly
-                  />
+                  >
+                    <option value="" className="text-gray-500">
+                      Select
+                    </option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
                 </div>
-
                 <div>
                   <label htmlFor=" nationality" className="block mb-2">
                     Nationality
@@ -146,9 +190,9 @@ const Basic7ViewForm = () => {
                     type="text"
                     id="nationality"
                     name="nationality"
-                    value={student.nationality}
+                    value={values.nationality}
+                    onChange={handleChange}
                     className={inputStyle}
-                    readOnly
                   />
                 </div>
                 <div>
@@ -159,9 +203,9 @@ const Basic7ViewForm = () => {
                     type="text"
                     id="hometown"
                     name="hometown"
-                    value={student.hometown}
+                    value={values.hometown}
+                    onChange={handleChange}
                     className={inputStyle}
-                    readOnly
                   />
                 </div>
                 <div>
@@ -172,9 +216,9 @@ const Basic7ViewForm = () => {
                     type="text"
                     id="parentGuardian"
                     name="parentGuardian"
-                    value={student.parentGuardian}
+                    value={values.parentGuardian}
+                    onChange={handleChange}
                     className={inputStyle}
-                    readOnly
                   />
                 </div>
                 <div>
@@ -185,11 +229,12 @@ const Basic7ViewForm = () => {
                     type="text"
                     id="address"
                     name="address"
-                    value={student.address}
+                    value={values.address}
+                    onChange={handleChange}
                     className={inputStyle}
-                    readOnly
                   />
                 </div>
+
                 <div>
                   <label htmlFor="  occupation" className="block mb-2">
                     Occupation
@@ -198,9 +243,9 @@ const Basic7ViewForm = () => {
                     type="text"
                     id="occupation"
                     name="occupation"
-                    value={student.occupation}
+                    value={values.occupation}
+                    onChange={handleChange}
                     className={inputStyle}
-                    readOnly
                   />
                 </div>
                 <div>
@@ -214,9 +259,9 @@ const Basic7ViewForm = () => {
                     type="text"
                     id="religiousDenomination"
                     name="religiousDenomination"
-                    value={student.religiousDenomination}
+                    value={values.religiousDenomination}
+                    onChange={handleChange}
                     className={inputStyle}
-                    readOnly
                   />
                 </div>
                 <div>
@@ -227,9 +272,9 @@ const Basic7ViewForm = () => {
                     type="text"
                     id="houseNumber"
                     name="houseNumber"
-                    value={student.houseNumber}
+                    value={values.houseNumber}
+                    onChange={handleChange}
                     className={inputStyle}
-                    readOnly
                   />
                 </div>
                 <div>
@@ -240,28 +285,41 @@ const Basic7ViewForm = () => {
                     type="text"
                     id="phoneNumber"
                     name="phoneNumber"
-                    value={student.phoneNumber}
+                    value={values.phoneNumber}
+                    onChange={handleChange}
                     className={inputStyle}
-                    readOnly
                   />
                 </div>
+                <div>
+                  <label htmlFor="status" className="block mb-2">
+                    Status
+                  </label>
+                  <select
+                    id="status"
+                    name="status"
+                    value={values.status}
+                    onChange={handleChange}
+                    className={inputStyle}
+                  >
+                    <StatusOptions />
+                  </select>
+                </div>
+              </div>
+              <div className="col-span-full mt-6 flex justify-center font-bold">
+                <Link
+                  to="/Basic9StudentsList"
+                  className="mr-4 text-white bg-red-600  py-2 px-4 rounded font-bold hover:bg-red-800 transition-colors duration-300"
+                >
+                  CLOSE
+                </Link>
+                <button
+                  type="submit"
+                  className="mr-4 bg-green-600 text-white px-8 py-1 rounded-md hover:bg-green-800 transition-colors duration-300 text-center"
+                >
+                  UPDATE
+                </button>
               </div>
             </form>
-
-            <div className="mt-8 text-center">
-              <Link
-                to="/Basic7StudentsList"
-                className="mr-4 text-white bg-blue-700  py-2 px-4 rounded font-bold hover:bg-blue-800"
-              >
-                BACK
-              </Link>
-              <Link
-                to={`/basic7/edit/${student.id}`}
-                className="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"
-              >
-                EDIT
-              </Link>
-            </div>
           </div>
         </div>
       </div>
@@ -269,4 +327,4 @@ const Basic7ViewForm = () => {
   );
 };
 
-export default Basic7ViewForm;
+export default Basic9UpdateForm;

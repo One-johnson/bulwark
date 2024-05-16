@@ -59,6 +59,20 @@ import Basic6tudentsList from "./pages/Basic6/Basic6StudentsList";
 import Basic6ViewForm from "./pages/Basic6/Basic6ViewForm";
 import Basic6UpdateForm from "./pages/Basic6/Basic6UpdateForm";
 
+// basic 7 crud
+import Basic7tudentsList from "./pages/Basic7/Basic7StudentsList";
+import Basic7ViewForm from "./pages/Basic7/Basic7ViewForm";
+import Basic7UpdateForm from "./pages/Basic7/Basic7UpdateForm";
+
+// basic 8 crud
+import Basic8tudentsList from "./pages/Basic8/Basic8StudentsList";
+import Basic8ViewForm from "./pages/Basic8/Basic8ViewForm";
+import Basic8UpdateForm from "./pages/Basic8/Basic8UpdateForm";
+
+// basic 9 crud
+import Basic9tudentsList from "./pages/Basic9/Basic9StudentsList";
+import Basic9ViewForm from "./pages/Basic9/Basic9ViewForm";
+import Basic9UpdateForm from "./pages/Basic9/Basic9UpdateForm";
 
 function App() {
   return (
@@ -122,6 +136,30 @@ function App() {
               />
               <Route path="/basic6/view/:id" element={<Basic6ViewForm />} />
               <Route path="/basic6/edit/:id" element={<Basic6UpdateForm />} />
+
+              {/* basic 7 route */}
+              <Route
+                path="/Basic7StudentsList"
+                element={<Basic7tudentsList />}
+              />
+              <Route path="/basic7/view/:id" element={<Basic7ViewForm />} />
+              <Route path="/basic7/edit/:id" element={<Basic7UpdateForm />} />
+
+              {/* basic 8 route */}
+              <Route
+                path="/Basic8StudentsList"
+                element={<Basic8tudentsList />}
+              />
+              <Route path="/basic8/view/:id" element={<Basic8ViewForm />} />
+              <Route path="/basic8/edit/:id" element={<Basic8UpdateForm />} />
+
+              {/* basic 9 route */}
+              <Route
+                path="/Basic9StudentsList"
+                element={<Basic9tudentsList />}
+              />
+              <Route path="/basic9/view/:id" element={<Basic9ViewForm />} />
+              <Route path="/basic9/edit/:id" element={<Basic9UpdateForm />} />
 
               {/* kg 2 route */}
               <Route path="/Kg2StudentsList" element={<Kg2StudentsList />} />

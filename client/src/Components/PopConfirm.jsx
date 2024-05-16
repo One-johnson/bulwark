@@ -1,23 +1,41 @@
-
+import { useState } from "react";
 import PropTypes from "prop-types";
+import { BiLoaderCircle } from "react-icons/bi";
 
 const PopConfirm = ({ message, onCancel, onConfirm }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleConfirm = async () => {
+    setIsLoading(true);
+    await onConfirm();
+    setIsLoading(false);
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-400 bg-opacity-75 transition-opacity duration-300">
-      <div className="bg-white p-8 rounded-lg shadow-lg transform transition-transform duration-300">
-        <p className="text-lg mb-6">{message}</p>
-        <div className="flex justify-end">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-400 bg-opacity-75">
+      <div className="bg-white p-10 rounded-lg shadow-lg">
+        <p className="text-xl mb-6">{message}</p>
+        <div className="flex justify-center">
           <button
-            className="mr-4 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors duration-300"
+            className="mr-4 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
             onClick={onCancel}
+            disabled={isLoading}
           >
             CANCEL
           </button>
           <button
-            className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors duration-300"
-            onClick={onConfirm}
+            className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+            onClick={handleConfirm}
+            disabled={isLoading}
           >
-            CONFIRM
+            {isLoading ? (
+              <div className="flex items-center">
+                <BiLoaderCircle className="animate-spin mr-3" />
+                <span>Logging out...</span>
+              </div>
+            ) : (
+              "CONFIRM"
+            )}
           </button>
         </div>
       </div>

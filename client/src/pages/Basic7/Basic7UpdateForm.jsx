@@ -4,13 +4,13 @@ import axios from "axios";
 import StatusOptions from "../../Components/StatusOption";
 import { toast } from "react-toastify";
 
-const Basic6UpdateForm = () => {
+const Basic7UpdateForm = () => {
   const { id } = useParams();
 
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("http://localhost:3002/basic6/view/" + id)
+      .get("http://localhost:3002/basic7/view/" + id)
       .then((res) => {
         console.log(res);
         setValues({
@@ -58,11 +58,11 @@ const Basic6UpdateForm = () => {
   const handleUpdate = (event) => {
     event.preventDefault();
     axios
-      .put("http://localhost:3002/Basic6/update/" + id, values)
+      .put("http://localhost:3002/Basic7/update/" + id, values)
       .then((res) => {
         console.log(res);
         toast.success("Student updated successfully!");
-        navigate("/Basic6StudentsList");
+        navigate("/Basic7StudentsList");
       })
       .catch((err) => console.log(err));
   };
@@ -307,7 +307,7 @@ const Basic6UpdateForm = () => {
               </div>
               <div className="col-span-full mt-6 flex justify-center font-bold">
                 <Link
-                  to="/Basic6StudentsList"
+                  to="/Basic7StudentsList"
                   className="mr-4 text-white bg-red-600  py-2 px-4 rounded font-bold hover:bg-red-700 transition-colors duration-300"
                 >
                   CLOSE
@@ -327,4 +327,4 @@ const Basic6UpdateForm = () => {
   );
 };
 
-export default Basic6UpdateForm;
+export default Basic7UpdateForm;

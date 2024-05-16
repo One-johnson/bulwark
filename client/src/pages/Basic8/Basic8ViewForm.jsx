@@ -2,14 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const Basic7ViewForm = () => {
+const Basic8ViewForm = () => {
   const { id } = useParams();
 
   const [student, setStudent] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/basic7/view/" + id)
+      .get("http://localhost:3002/basic8/view/" + id)
       .then((res) => {
         console.log(res);
         setStudent(res.data[0]);
@@ -24,7 +24,7 @@ const Basic7ViewForm = () => {
   const inputStyle =
     "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none bg-gray-200";
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-300 bg-opacity-75">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-300 bg-opacity-85">
       <div className="flex items-center justify-center min-h-screen px-4">
         <div className="relative w-full max-w-3xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
@@ -250,14 +250,14 @@ const Basic7ViewForm = () => {
 
             <div className="mt-8 text-center">
               <Link
-                to="/Basic7StudentsList"
-                className="mr-4 text-white bg-blue-700  py-2 px-4 rounded font-bold hover:bg-blue-800"
+                to="/Basic8StudentsList"
+                className="mr-4 text-white bg-blue-800  py-2 px-4 rounded font-bold hover:bg-blue-800"
               >
                 BACK
               </Link>
               <Link
-                to={`/basic7/edit/${student.id}`}
-                className="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"
+                to={`/basic8/edit/${student.id}`}
+                className="bg-green-800 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"
               >
                 EDIT
               </Link>
@@ -269,4 +269,4 @@ const Basic7ViewForm = () => {
   );
 };
 
-export default Basic7ViewForm;
+export default Basic8ViewForm;
