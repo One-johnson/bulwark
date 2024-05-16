@@ -82,15 +82,15 @@ const Nursery2StudentsList = () => {
 
       <div className="flex justify-center items-center h-screen">
         <div className="overflow-x-auto px-4">
-          <h2 className="fixed left-5 top-[110px] font-bold text-3xl p-5 bg-violet-700 rounded-lg px-4 py-4">
-            <Link to="/dashboard" className="flex items-center text-gray-200">
+          <div className="fixed left-5 top-[110px] font-bold text-3xl p-5 bg-violet-700 rounded-lg px-4 py-4 flex items-center text-gray-200">
+            <Link to="/dashboard">
               <BiArrowBack
                 className="mr-2"
                 style={{ width: "40px", height: "40px" }}
               />
-              NURSERY ONE (1) STUDENTS' LIST
             </Link>
-          </h2>
+            <h2>NURSERY ONE (1) STUDENTS' LIST</h2>
+          </div>
 
           <table className="min-w-full divide-y divide-gray-400 border border-gray-300 rounded-md">
             <thead className="bg-gray-100">

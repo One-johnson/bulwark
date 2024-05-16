@@ -58,6 +58,7 @@ app.post("/login", (req, res) => {
   });
 });
 
+//route for nursery 2
 app.get("/nursery2", (req, res) => {
   const sql = "SELECT * FROM nursery2students";
   db.query(sql, (err, results) => {
@@ -65,7 +66,6 @@ app.get("/nursery2", (req, res) => {
     return res.json(results);
   });
 });
-
 app.post("/nursery2", (req, res) => {
   const sql = "INSERT INTO nursery2students SET ?";
   const values = req.body;
@@ -74,7 +74,6 @@ app.post("/nursery2", (req, res) => {
     return res.json(results);
   });
 });
-
 app.get("/nursery2/view/:id", (req, res) => {
   const sql = "SELECT * FROM nursery2students WHERE id = ?";
   const id = req.params.id;
@@ -83,7 +82,6 @@ app.get("/nursery2/view/:id", (req, res) => {
     return res.json(results);
   });
 });
-
 app.put("/nursery2/update/:id", (req, res) => {
   const sql = "UPDATE nursery2students SET ? WHERE id =?";
   const id = req.params.id;
@@ -93,7 +91,6 @@ app.put("/nursery2/update/:id", (req, res) => {
     return res.json(results);
   });
 });
-
 app.delete("/nursery2/delete/:id", (req, res) => {
   const sql = "DELETE FROM nursery2students WHERE id =?";
   const id = req.params.id;
@@ -111,7 +108,6 @@ app.get("/nursery1", (req, res) => {
     return res.json(results);
   });
 });
-
 app.post("/nursery1", (req, res) => {
   const sql = "INSERT INTO nursery1students SET ?";
   const values = req.body;
@@ -120,7 +116,6 @@ app.post("/nursery1", (req, res) => {
     return res.json(results);
   });
 });
-
 app.get("/nursery1/view/:id", (req, res) => {
   const sql = "SELECT * FROM nursery1students WHERE id = ?";
   const id = req.params.id;
@@ -129,7 +124,6 @@ app.get("/nursery1/view/:id", (req, res) => {
     return res.json(results);
   });
 });
-
 app.put("/nursery1/update/:id", (req, res) => {
   const sql = "UPDATE nursery1students SET ? WHERE id =?";
   const id = req.params.id;
@@ -139,7 +133,6 @@ app.put("/nursery1/update/:id", (req, res) => {
     return res.json(results);
   });
 });
-
 app.delete("/nursery1/delete/:id", (req, res) => {
   const sql = "DELETE FROM nursery1students WHERE id =?";
   const id = req.params.id;
@@ -157,7 +150,6 @@ app.get("/kg1", (req, res) => {
     return res.json(results);
   });
 });
-
 app.post("/kg1", (req, res) => {
   const sql = "INSERT INTO kg1students SET ?";
   const values = req.body;
@@ -166,7 +158,6 @@ app.post("/kg1", (req, res) => {
     return res.json(results);
   });
 });
-
 app.get("/kg1/view/:id", (req, res) => {
   const sql = "SELECT * FROM kg1students WHERE id = ?";
   const id = req.params.id;
@@ -175,7 +166,6 @@ app.get("/kg1/view/:id", (req, res) => {
     return res.json(results);
   });
 });
-
 app.put("/kg1/update/:id", (req, res) => {
   const sql = "UPDATE kg1students SET ? WHERE id =?";
   const id = req.params.id;
@@ -185,7 +175,6 @@ app.put("/kg1/update/:id", (req, res) => {
     return res.json(results);
   });
 });
-
 app.delete("/kg1/delete/:id", (req, res) => {
   const sql = "DELETE FROM kg1students WHERE id =?";
   const id = req.params.id;
@@ -203,7 +192,6 @@ app.get("/kg2", (req, res) => {
     return res.json(results);
   });
 });
-
 app.post("/kg2", (req, res) => {
   const sql = "INSERT INTO kg2students SET ?";
   const values = req.body;
@@ -212,7 +200,6 @@ app.post("/kg2", (req, res) => {
     return res.json(results);
   });
 });
-
 app.get("/kg2/view/:id", (req, res) => {
   const sql = "SELECT * FROM kg2students WHERE id = ?";
   const id = req.params.id;
@@ -221,7 +208,6 @@ app.get("/kg2/view/:id", (req, res) => {
     return res.json(results);
   });
 });
-
 app.put("/kg2/update/:id", (req, res) => {
   const sql = "UPDATE kg2students SET ? WHERE id =?";
   const id = req.params.id;
@@ -231,7 +217,6 @@ app.put("/kg2/update/:id", (req, res) => {
     return res.json(results);
   });
 });
-
 app.delete("/kg2/delete/:id", (req, res) => {
   const sql = "DELETE FROM kg2students WHERE id =?";
   const id = req.params.id;
@@ -249,7 +234,6 @@ app.get("/basic1", (req, res) => {
     return res.json(results);
   });
 });
-
 app.post("/basic1", (req, res) => {
   const sql = "INSERT INTO basic1students SET ?";
   const values = req.body;
@@ -258,7 +242,6 @@ app.post("/basic1", (req, res) => {
     return res.json(results);
   });
 });
-
 app.get("/basic1/view/:id", (req, res) => {
   const sql = "SELECT * FROM basic1students WHERE id = ?";
   const id = req.params.id;
@@ -267,7 +250,6 @@ app.get("/basic1/view/:id", (req, res) => {
     return res.json(results);
   });
 });
-
 app.put("/basic1/update/:id", (req, res) => {
   const sql = "UPDATE basic1students SET ? WHERE id =?";
   const id = req.params.id;
@@ -277,7 +259,6 @@ app.put("/basic1/update/:id", (req, res) => {
     return res.json(results);
   });
 });
-
 app.delete("/basic1/delete/:id", (req, res) => {
   const sql = "DELETE FROM basic1students WHERE id =?";
   const id = req.params.id;

@@ -1,10 +1,20 @@
-import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FiHome, FiLogOut } from "react-icons/fi";
 import { BsBook, BsAward, BsGem } from "react-icons/bs";
 import Logo from "../../../images/school.png"; // Import your logo image or SVG
+import PopConfirm from "../../../Components/PopConfirm";
 
 function Sidebar() {
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setShowLogoutConfirm(false);
+    // Navigate to login page after logout
+    navigate("/");
+  };
 
   return (
     <div className="bg-violet-900 h-full left-0 top-0 z-50 w-64 fixed flex flex-col">
@@ -68,16 +78,23 @@ function Sidebar() {
           </li>
           <hr />
           <li>
-            <Link
-              to="/"
+            <button
               className="text-gray-400 hover:bg-white hover:text-violet-800 px-4 py-2 rounded flex items-center mb-1 mt-40"
+              onClick={() => setShowLogoutConfirm(true)}
             >
               <FiLogOut className="inline-block mr-2" />
               Logout
-            </Link>
+            </button>
           </li>
         </ul>
       </div>
+      {showLogoutConfirm && (
+        <PopConfirm
+          message="Are you sure you want to log out?"
+          onCancel={() => setShowLogoutConfirm(false)}
+          onConfirm={handleLogout}
+        />
+      )}
     </div>
   );
 }
