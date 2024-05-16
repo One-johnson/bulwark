@@ -46,19 +46,14 @@ function Navbar() {
           <FiUser className="text-xl cursor-pointer" />
           {/* Dropdown */}
           {isDropdownOpen && (
-            <div className="text-gray-500 font-normal absolute top-full right-0 bg-white border shadow rounded-2xl mt-1 py-3 px-3 w-60">
+            <div className="text-gray-500 font-normal absolute top-full right-0 bg-white border shadow rounded-lg mt-1 py-3 px-3 w-60">
               <Link
                 to="/profile"
                 className="flex items-center w-full text-left px-4 py-2 hover:bg-gray-200 rounded-lg focus:outline-none"
               >
                 <FiUser className="mr-2 text-xl text-gray-600" /> Profile
               </Link>
-              {/* <Link
-                to="/settings"
-                className="flex items-center w-full text-left px-4 py-2 hover:bg-gray-200 rounded-lg focus:outline-none"
-              >
-                <FiSettings className="mr-2 text-xl text-gray-600" /> Settings
-              </Link> */}
+
               <button
                 className="flex items-center w-full text-left px-4 py-2 hover:bg-gray-200 rounded-lg focus:outline-none"
                 onClick={() => setShowLogoutConfirm(true)}

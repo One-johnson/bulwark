@@ -14,7 +14,7 @@ const PopConfirm = ({ message, onCancel, onConfirm }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-400 bg-opacity-75">
       <div className="bg-white p-10 rounded-lg shadow-lg">
-        <p className="text-xl mb-6">{message}</p>
+        <p className="text-xl mb-6 font-semibold">{message}</p>
         <div className="flex justify-center">
           <button
             className="mr-4 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
