@@ -86,9 +86,9 @@ const AddStudentForm = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-300 bg-opacity-75">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-800 bg-opacity-80">
       <div className="flex items-center justify-center min-h-screen px-4">
-        <div className="relative w-full max-w-3xl mx-auto">
+        <div className="relative w-full max-w-5xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
             <h2 className="text-lg font-semibold mb-4 text-center">
               Add New Student
@@ -186,13 +186,16 @@ const AddStudentForm = ({ onClose }) => {
                     Sex
                   </label>
                   <select
-                    id="status"
-                    name="status"
+                    id="sex"
+                    name="sex"
                     value={values.sex}
                     onChange={handleChange}
                     className={inputStyle}
                     required="required"
                   >
+                    <option value="" className="text-gray-500">
+                      Select
+                    </option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                   </select>
@@ -325,7 +328,7 @@ const AddStudentForm = ({ onClose }) => {
                     className={inputStyle}
                     required="required"
                   >
-                   <StatusOptions/>
+                    <StatusOptions />
                   </select>
                 </div>
               </div>

@@ -175,6 +175,9 @@ const Nursery1UpdateForm = () => {
                     onChange={handleChange}
                     className={inputStyle}
                   >
+                    <option value="" className="text-gray-500">
+                      Select
+                    </option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                   </select>

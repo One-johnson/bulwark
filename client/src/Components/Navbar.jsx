@@ -1,21 +1,13 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import { FiUser, FiLogOut } from "react-icons/fi"; // Import icons from react-icons library
 import Logo from "../images/school.png";
-import PopConfirm from "../Components/PopConfirm";
 
 function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
-  const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
-  };
-  const handleLogout = () => {
-    setShowLogoutConfirm(false);
-    // Navigate to login page after logout
-    navigate("/");
   };
 
   return (
@@ -54,23 +46,13 @@ function Navbar() {
                 <FiUser className="mr-2 text-xl text-gray-600" /> Profile
               </Link>
 
-              <button
-                className="flex items-center w-full text-left px-4 py-2 hover:bg-gray-200 rounded-lg focus:outline-none"
-                onClick={() => setShowLogoutConfirm(true)}
-              >
+              <button className="flex items-center w-full text-left px-4 py-2 hover:bg-gray-200 rounded-lg focus:outline-none">
                 <FiLogOut className="mr-2 text-xl text-gray-600" /> Sign Out
               </button>
             </div>
           )}
         </div>
       </div>
-      {showLogoutConfirm && (
-        <PopConfirm
-          message="Are you sure you want to log out?"
-          onCancel={() => setShowLogoutConfirm(false)}
-          onConfirm={handleLogout}
-        />
-      )}
     </div>
   );
 }
