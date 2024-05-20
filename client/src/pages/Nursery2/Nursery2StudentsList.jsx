@@ -37,7 +37,7 @@ const Nursery2StudentsList = () => {
             style={{ width: "40px", height: "40px" }}
           />
         </Link>
-        <h2>NURSERY ONE (1) STUDENTS' LIST</h2>
+        <h2>NURSERY TWO (2) STUDENTS' LIST</h2>
       </div>
 
       <div className="flex justify-center items-center min-h-screen px-4 py-6 mt-5">

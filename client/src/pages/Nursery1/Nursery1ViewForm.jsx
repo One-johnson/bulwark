@@ -251,13 +251,13 @@ const Nursery1ViewForm = () => {
             <div className="mt-8 text-center">
               <Link
                 to="/Nursery1StudentsList"
-                className="mr-4 text-white bg-blue-700  py-2 px-4 rounded font-bold hover:bg-blue-800"
+                className="mr-4 text-white bg-blue-500  py-2 px-4 rounded-md font-bold hover:bg-blue-800 transition duration-300"
               >
                 BACK
               </Link>
               <Link
                 to={`/nursery1/edit/${student.id}`}
-                className="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"
+                className="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-md transition duration-300"
               >
                 EDIT
               </Link>

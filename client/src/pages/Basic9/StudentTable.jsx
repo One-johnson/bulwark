@@ -48,6 +48,17 @@ const StudentTable = () => {
 
   const columns = [
     {
+      name: "Profile",
+      selector: (row) => (
+        <img
+          src={row.profilePicture || "default-profile.png"}
+          alt={row.firstName}
+          className="w-10 h-10 rounded-full"
+        />
+      ),
+      style: { borderRight: "1px solid #eee" },
+    },
+    {
       name: "ID",
       selector: (row) => row.id,
       sortable: true,
@@ -156,13 +167,25 @@ const StudentTable = () => {
       name: "Action",
       cell: (row) => (
         <div className="flex flex-col-1 items-center">
-          <Link to={`/basic9/view/${row.id}`} className="text-blue-600 mr-2">
+          <Link
+            to={`/basic9/view/${row.id}`}
+            className="text-blue-600 mr-2"
+            title="View Details"
+          >
             <FaRegEye />
           </Link>
-          <Link to={`/basic9/edit/${row.id}`} className="text-green-600  mr-2">
+          <Link
+            to={`/basic9/edit/${row.id}`}
+            className="text-green-600  mr-2"
+            title="Edit"
+          >
             <FaRegEdit />
           </Link>
-          <button onClick={() => handleDelete(row.id)} className="text-red-600">
+          <button
+            onClick={() => handleDelete(row.id)}
+            className="text-red-600"
+            title="Delete"
+          >
             <FaRegTrashCan />
           </button>
         </div>
@@ -189,7 +212,7 @@ const StudentTable = () => {
 
   return (
     <div>
-      <div className="text-end">
+      <div className="text-end mb-4">
         <input
           type="text"
           placeholder="Search..."

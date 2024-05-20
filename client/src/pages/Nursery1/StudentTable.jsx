@@ -55,102 +55,117 @@ const StudentTable = () => {
         borderRight: "1px solid #eee",
       },
     },
-
     {
       name: "Registration Date",
       selector: (row) => row.registrationDate,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 3,
     },
     {
       name: "First Name",
       selector: (row) => row.firstName,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 2,
     },
     {
       name: "Middle Name",
       selector: (row) => row.middleName,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 3,
     },
     {
       name: "Last Name",
       selector: (row) => row.lastName,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 2,
     },
     {
       name: "Date of Birth",
       selector: (row) => row.dateOfBirth,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 3,
     },
     {
       name: "Age",
       selector: (row) => row.age,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 1,
     },
     {
       name: "Sex",
       selector: (row) => row.sex,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 1,
     },
     {
       name: "Nationality",
       selector: (row) => row.nationality,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 3,
     },
     {
       name: "Hometown",
       selector: (row) => row.hometown,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 3,
     },
     {
       name: "Parent/Guardian",
       selector: (row) => row.parentGuardian,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 3,
     },
     {
       name: "Address",
       selector: (row) => row.address,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 1,
     },
     {
       name: "Occupation",
       selector: (row) => row.occupation,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 3,
     },
     {
       name: "Religious Denomination",
       selector: (row) => row.religiousDenomination,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 3,
     },
     {
       name: "House Number",
       selector: (row) => row.houseNumber,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 3,
     },
     {
       name: "Phone Number",
       selector: (row) => row.phoneNumber,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 3,
     },
     {
       name: "Status",
       selector: (row) => row.status,
       sortable: true,
       style: { borderRight: "1px solid #eee" },
+      grow: 1,
     },
     {
       name: "Action",
@@ -170,6 +185,7 @@ const StudentTable = () => {
           </button>
         </div>
       ),
+      grow: 1,
     },
   ];
 
@@ -179,6 +195,13 @@ const StudentTable = () => {
         backgroundColor: "#f3f4f6",
         color: "#000",
         fontWeight: "bold",
+        whiteSpace: "normal",
+        textAlign: "center",
+      },
+    },
+    cell: {
+      style: {
+        textAlign: "center",
       },
     },
     rows: {
@@ -218,6 +241,7 @@ const StudentTable = () => {
         pointerOnHover
         selectableRows={false}
         fixedHeader
+        fixedHeaderScrollHeight="600px"
       />
     </div>
   );

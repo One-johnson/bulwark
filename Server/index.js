@@ -1,10 +1,30 @@
 const express = require("express");
 const app = express();
+const express = require("express");
+const path = require("path");
 const mysql = require("mysql");
 const cors = require("cors");
 
+// Set up storage configuration
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/"); // Directory where files will be stored
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // Ensure unique file names
+  },
+});
+
+// Initialize multer with the storage configuration
+const upload = multer({ storage });
+
+// Other required middlewares
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
+// Static route to serve uploaded files
+app.use('/uploads', express.static('uploads'));
 
 //running the server
 app.listen(3002, () => {
@@ -570,9 +590,10 @@ app.get("/basic9", (req, res) => {
     return res.json(results);
   });
 });
-app.post("/basic9", (req, res) => {
+app.post("/basic9", upload.single("profilePicture"), (req, res) => {
+   const { body, file } = req;
   const sql = "INSERT INTO basic9students SET ?";
-  const values = req.body;
+  const values = { ...body, profilePicture: file ? file.path : null };
   db.query(sql, values, (err, results) => {
     if (err) return res.json(err);
     return res.json(results);
@@ -586,10 +607,14 @@ app.get("/basic9/view/:id", (req, res) => {
     return res.json(results);
   });
 });
-app.put("/basic9/update/:id", (req, res) => {
+app.put("/basic9/update/:id", upload.single("profilePicture"), (req, res) => {
+   const { body, file } = req;
   const sql = "UPDATE basic9students SET ? WHERE id =?";
   const id = req.params.id;
-  const values = req.body;
+   const values = {
+     ...body,
+     profilePicture: file ? file.path : body.profilePicture,
+   };
   db.query(sql, [values, id], (err, results) => {
     if (err) return res.json({ Message: "Error inside server" });
     return res.json(results);
@@ -603,3 +628,4 @@ app.delete("/basic9/delete/:id", (req, res) => {
     return res.json(results);
   });
 });
+

@@ -328,7 +328,7 @@ const AddStudentForm = ({ onClose }) => {
                     className={inputStyle}
                     required="required"
                   >
-                    <StatusOptions />
+                    <StatusOptions/>
                   </select>
                 </div>
               </div>

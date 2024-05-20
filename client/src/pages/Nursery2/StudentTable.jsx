@@ -179,6 +179,8 @@ const StudentTable = () => {
         backgroundColor: "#f3f4f6",
         color: "#000",
         fontWeight: "bold",
+        whiteSpace: "normal",
+        wordWrap: "break-word",
       },
     },
     rows: {

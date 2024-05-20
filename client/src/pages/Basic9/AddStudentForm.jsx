@@ -7,6 +7,7 @@ import StatusOptions from "../../Components/StatusOption";
 
 const AddStudentForm = ({ onClose }) => {
   const [values, setValues] = useState({
+    profilePicture: null,
     registrationDate: "",
     firstName: "",
     middleName: "",
@@ -42,6 +43,7 @@ const AddStudentForm = ({ onClose }) => {
         toast.success("Student added successfully!");
         // Reset form fields
         setValues({
+          profilePicture: null,
           registrationDate: "",
           firstName: "",
           middleName: "",
@@ -58,6 +60,7 @@ const AddStudentForm = ({ onClose }) => {
           houseNumber: "",
           phoneNumber: "",
           status: "",
+          
         });
       })
       .catch((err) => console.log(err));
@@ -66,6 +69,7 @@ const AddStudentForm = ({ onClose }) => {
   const handleCancel = () => {
     onClose();
     setValues({
+      profilePicture: null,
       registrationDate: "",
       firstName: "",
       middleName: "",
@@ -96,6 +100,18 @@ const AddStudentForm = ({ onClose }) => {
             <form onSubmit={handleSubmit} className="mx-auto">
               <div className="grid grid-cols-2 gap-4">
                 {/* Inputs for all fields */}
+                <div>
+                  <label htmlFor="profilePicture" className="block mb-2">
+                    Profile Picture
+                  </label>
+                  <input
+                    type="file"
+                    id="profilePicture"
+                    name="profilePicture"
+                    onChange={handleChange}
+                    className={inputStyle}
+                  />
+                </div>
 
                 <div>
                   <label htmlFor="registrationDate" className="block mb-2">
@@ -193,7 +209,9 @@ const AddStudentForm = ({ onClose }) => {
                     className={inputStyle}
                     required="required"
                   >
-                    <option value="" className="text-gray-500">Select</option>
+                    <option value="" className="text-gray-500">
+                      Select
+                    </option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                   </select>
