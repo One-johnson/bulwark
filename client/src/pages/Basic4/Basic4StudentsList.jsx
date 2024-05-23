@@ -31,14 +31,14 @@ const Basic4StudentsList = () => {
         {isFormVisible && <AddStudentForm onClose={handleCloseForm} />}
       </div>
 
-      <div className="fixed ml-10 top-[110px] font-bold text-2xl bg-violet-700 rounded-lg px-4 py-3 flex items-center text-gray-200 z-10">
-        <Link to="/Jhs">
+      <div className="fixed ml-10 top-[110px] font-bold text-2xl bg-violet-700 rounded-lg px-4 py-2 flex items-center text-gray-200 z-10">
+        <Link to="/Primary">
           <BiArrowBack
             className="mr-2"
             style={{ width: "40px", height: "40px" }}
           />
         </Link>
-        <h2>BASIC FOUR (4) STUDENTS' LIST</h2>
+        <h2>BASIC FOUR (4) LEARNERS' LIST</h2>
       </div>
 
       <div className="flex flex-col items-center min-h-screen px-4 py-6 pt-32">
