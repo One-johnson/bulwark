@@ -3,13 +3,8 @@
 @tailwind utilities;
 
 /* CSS */
-/* .showMessage {
-  display: block;
-  color: white;
-  background: red;
-  border-radius: 5px;
-  text-align: center;
-} */
+
+
 
 .showMessage {
   display: block;

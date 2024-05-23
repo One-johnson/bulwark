@@ -13,12 +13,12 @@ function Navbar() {
   return (
     <div className="h-20 bg-white flex items-center justify-between px-5 border shadow fixed top-0 right-0 left-0">
       {/* Logo (Dashboard) */}
-      <div className="text-gray-500 text-2xl font-bold flex items-center">
+      <div className="text-gray-500 text-2xl font-bold flex items-center ml-4">
         <img src={Logo} alt="School Logo" className="w-[60px] h-[50px]" />
       </div>
 
       {/* Navigation */}
-      <div className="flex items-center text-gray-500">
+      <div className="flex items-center text-gray-500 mr-8">
         {/* Navigation Links */}
         <Link to="/creche" className="ml-4">
           Creche
