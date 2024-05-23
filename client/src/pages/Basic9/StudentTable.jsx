@@ -10,9 +10,10 @@ import DataTable from "react-data-table-component";
 import PopConfirm from "../../Components/PopConfirm";
 import { toast } from "react-toastify";
 
-const StudentTable = ({ searchText }) => {
+const StudentTable = () => {
   const [data, setData] = useState([]);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+    const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     axios
@@ -231,6 +232,16 @@ const StudentTable = ({ searchText }) => {
           onConfirm={confirmDelete}
         />
       )}
+      <div className="w-full max-w-[1500px] p-3 mb-2 text-end">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          className="px-4 py-2 border rounded-lg w-full max-w-sm mx-auto focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border"
+        />
+      </div>
+
       <DataTable
         columns={columns}
         data={filteredData}
@@ -246,7 +257,7 @@ const StudentTable = ({ searchText }) => {
   );
 };
 StudentTable.propTypes = {
-  searchText: PropTypes.string.isRequired,
+  searchText: PropTypes.string,
 };
 
 export default StudentTable;

@@ -9,7 +9,6 @@ import StudentTable from "./StudentTable";
 
 const Basic9StudentsList = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [searchText, setSearchText] = useState("");
 
   const toggleFormVisibility = () => {
     setIsFormVisible(!isFormVisible);
@@ -42,19 +41,9 @@ const Basic9StudentsList = () => {
         <h2>BASIC NINE (9) STUDENTS' LIST</h2>
       </div>
 
-      <div className="flex flex-col items-center min-h-screen px-4 py-6 mt-40">
-        <div className="w-full max-w-[1500px] mb-6 text-end">
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            className="px-4 py-2 border rounded-lg w-full max-w-sm mx-auto"
-          />
-        </div>
-
-        <div className="w-full max-w-[1500px] border border-gray-100 rounded-lg">
-          <StudentTable searchText={searchText} />
+      <div className="flex flex-col items-center min-h-screen px-4 py-6 pt-32">
+        <div className="w-full max-w-[1500px] border border-gray-100 rounded-lg mt-16 px-3">
+          <StudentTable />
         </div>
       </div>
     </div>
