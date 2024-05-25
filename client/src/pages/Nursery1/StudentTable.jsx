@@ -1,4 +1,3 @@
-// StudentTable.js
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -9,24 +8,35 @@ import PropTypes from "prop-types";
 import DataTable from "react-data-table-component";
 import PopConfirm from "../../Components/PopConfirm";
 import { toast } from "react-toastify";
+import { CSVLink } from "react-csv";
+import { BiSolidFileExport } from "react-icons/bi";
 
 const StudentTable = () => {
   const [data, setData] = useState([]);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
   const [searchText, setSearchText] = useState("");
+  const [filters, setFilters] = useState({
+    age: "",
+    status: "",
+    gender: "",
+  });
 
   useEffect(() => {
     axios
       .get("http://localhost:3002/nursery1/")
       .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.error(err);
+        toast.error("Error fetching data. Please try again later.");
+      });
   }, []);
 
   const handleDelete = (id) => {
     setConfirmDeleteId(id);
   };
 
-  const confirmDelete = () => {
+  const confirmDelete = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     axios
       .delete("http://localhost:3002/nursery1/delete/" + confirmDeleteId)
       .then((res) => {
@@ -34,30 +44,45 @@ const StudentTable = () => {
         setConfirmDeleteId(null);
         toast.success("Student deleted successfully!");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.error(err);
+        toast.error("Error deleting student. Please try again later.");
+      });
   };
 
   const cancelDelete = () => {
     setConfirmDeleteId(null);
+    toast.info("Delete action canceled.");
   };
 
-  const filteredData = data.filter((student) =>
-    Object.values(student).some((value) =>
-      String(value).toLowerCase().includes(searchText.toLowerCase())
-    )
-  );
+  const handleFilterChange = (e) => {
+    setFilters({
+      ...filters,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const filteredData = data.filter((student) => {
+    return (
+      (filters.age ? student.age === filters.age : true) &&
+      (filters.status ? student.status === filters.status : true) &&
+      (filters.gender ? student.sex === filters.gender : true) &&
+      Object.values(student).some((value) =>
+        String(value).toLowerCase().includes(searchText.toLowerCase())
+      )
+    );
+  });
 
   const columns = [
     {
       name: "ID",
       selector: (row) => row.id,
-      sortable: true,
+      sortable: false,
       style: {
         borderRight: "1px solid #eee",
       },
-      center: "true",
+      center: true,
     },
-
     {
       name: "Registration Date",
       selector: (row) => row.registrationDate,
@@ -227,7 +252,8 @@ const StudentTable = () => {
     <div className="max-h-[80vh] overflow-y-auto">
       {confirmDeleteId && (
         <PopConfirm
-          message="Are you sure you want to delete this student?"
+          message="Are you sure you want to delete this learner?"
+          warning="This action will delete the learner permanently and cannot be undone."
           onCancel={cancelDelete}
           onConfirm={confirmDelete}
         />
@@ -241,7 +267,37 @@ const StudentTable = () => {
           className="px-4 py-2 border rounded-lg w-full max-w-sm mx-auto focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border"
         />
       </div>
-
+      <div className="filters mb-4 space-x-4">
+        <select name="age" onChange={handleFilterChange}>
+          <option value="">All Ages</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          {/* Add more options as needed */}
+        </select>
+        <select name="status" onChange={handleFilterChange}>
+          <option value="">All Statuses</option>
+          <option value="fresher">fresher</option>
+          <option value="continuing">continuing</option>
+          <option value="completed">completed</option>
+        </select>
+        <select name="gender" onChange={handleFilterChange}>
+          <option value="">All Genders</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <div className="text-xs font-bold text-gray-600 mb-3 cursor-pointer items-center justify-end mr-4 grid">
+        <CSVLink
+          data={filteredData}
+          filename={"students.csv"}
+          title="Export CSV"
+        >
+          <BiSolidFileExport className="text-blue-600 text-2xl" />
+        </CSVLink>
+        CSV
+      </div>
       <DataTable
         columns={columns}
         data={filteredData}
@@ -256,6 +312,7 @@ const StudentTable = () => {
     </div>
   );
 };
+
 StudentTable.propTypes = {
   searchText: PropTypes.string,
 };

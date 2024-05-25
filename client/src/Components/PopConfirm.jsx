@@ -1,41 +1,34 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { BiLoaderCircle } from "react-icons/bi";
 
-const PopConfirm = ({ message, onCancel, onConfirm }) => {
-  const [isLoading, setIsLoading] = useState(false);
+const PopConfirm = ({ message, onCancel, onConfirm, warning }) => {
+  const [isConfirming, setIsConfirming] = useState(false);
 
   const handleConfirm = async () => {
-    setIsLoading(true);
+    setIsConfirming(true);
     await onConfirm();
-    setIsLoading(false);
+    setIsConfirming(false);
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-70">
-      <div className="bg-white px-8 py-10 rounded-2xl shadow-lg">
-        <p className="text-xl mb-6 font-semibold">{message}</p>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-700 bg-opacity-80">
+      <div className="bg-white px-10 py-6 rounded-2xl shadow-lg relative">
+        <p className="text-lg mb-6 font-bold">{message} </p>
+        <p className="text-red-600 mb-6 text-md font-medium">{warning} </p>
         <div className="flex justify-end">
           <button
-            className="mr-4 bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 font-semibold"
+            className="mr-4 bg-white text-gray-700 px-4 py-2 border border-gray-200 rounded-full hover:bg-gray-100 font-semibold"
             onClick={onCancel}
-            disabled={isLoading}
+            disabled={isConfirming}
           >
             CANCEL
           </button>
           <button
-            className="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 font-semibold"
+            className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-700 font-semibold"
             onClick={handleConfirm}
-            disabled={isLoading}
+            disabled={isConfirming}
           >
-            {isLoading ? (
-              <div className="flex items-center">
-                <BiLoaderCircle className="animate-spin mr-3" />
-                <span>Logging out...</span>
-              </div>
-            ) : (
-              "CONFIRM"
-            )}
+            DELETE
           </button>
         </div>
       </div>
@@ -44,6 +37,7 @@ const PopConfirm = ({ message, onCancel, onConfirm }) => {
 };
 
 PopConfirm.propTypes = {
+  warning: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   onCancel: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired,
