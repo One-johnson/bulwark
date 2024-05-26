@@ -10,6 +10,7 @@ import PopConfirm from "../../Components/PopConfirm";
 import { toast } from "react-toastify";
 import { CSVLink } from "react-csv";
 import { BiSolidFileExport } from "react-icons/bi";
+import CustomSelect from "../../assets/CustomSelect";
 
 const StudentTable = () => {
   const [data, setData] = useState([]);
@@ -258,36 +259,54 @@ const StudentTable = () => {
           onConfirm={confirmDelete}
         />
       )}
-      <div className="w-full max-w-[1500px] p-3 mb-2 text-end">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-          className="px-4 py-2 border rounded-lg w-full max-w-sm mx-auto focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border"
-        />
+      <div className="flex p-2 mb-6">
+        <div className="filters flex items-center space-x-4">
+          <CustomSelect
+            name="age"
+            value={filters.age}
+            onChange={handleFilterChange}
+            options={[
+              { value: "", label: "All Ages" },
+              { value: "1", label: "1" },
+              { value: "2", label: "2" },
+              { value: "3", label: "3" },
+              { value: "4", label: "4" },
+              // Add more options as needed
+            ]}
+          />
+          <CustomSelect
+            name="status"
+            value={filters.status}
+            onChange={handleFilterChange}
+            options={[
+              { value: "", label: "All Statuses" },
+              { value: "fresher", label: "fresher" },
+              { value: "continuing", label: "continuing" },
+              { value: "completed", label: "completed" },
+            ]}
+          />
+          <CustomSelect
+            name="gender"
+            value={filters.gender}
+            onChange={handleFilterChange}
+            options={[
+              { value: "", label: "All Genders" },
+              { value: "male", label: "Male" },
+              { value: "female", label: "Female" },
+            ]}
+          />
+        </div>
+        <div className="w-full max-w-[1500px] text-end">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            className="px-4 py-2 border rounded-lg w-full max-w-sm mx-auto focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border"
+          />
+        </div>
       </div>
-      <div className="filters mb-4 space-x-4">
-        <select name="age" onChange={handleFilterChange}>
-          <option value="">All Ages</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          {/* Add more options as needed */}
-        </select>
-        <select name="status" onChange={handleFilterChange}>
-          <option value="">All Statuses</option>
-          <option value="fresher">fresher</option>
-          <option value="continuing">continuing</option>
-          <option value="completed">completed</option>
-        </select>
-        <select name="gender" onChange={handleFilterChange}>
-          <option value="">All Genders</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-      </div>
+
       <div className="text-xs font-bold text-gray-600 mb-3 cursor-pointer items-center justify-end mr-4 grid">
         <CSVLink
           data={filteredData}
