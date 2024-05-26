@@ -6,9 +6,15 @@ import { BiArrowBack } from "react-icons/bi";
 import Navbar from "../../Components/Navbar";
 import AddStudentForm from "./AddStudentForm";
 import StudentTable from "./StudentTable";
+import CustomSelect from "../../assets/CustomSelect";
 
 const Nursery1StudentsList = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [filters, setFilters] = useState({
+    age: "",
+    status: "",
+    gender: "",
+  });
 
   const toggleFormVisibility = () => {
     setIsFormVisible(!isFormVisible);
@@ -17,12 +23,18 @@ const Nursery1StudentsList = () => {
   const handleCloseForm = () => {
     setIsFormVisible(false);
   };
+  const handleFilterChange = (e) => {
+    setFilters({
+      ...filters,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <div>
       <Navbar />
       <div className="mx-4 sm:mx-8 md:mx-auto md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-2xl">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items">
           <div className="relative">
             <button
               onClick={toggleFormVisibility}
@@ -33,7 +45,7 @@ const Nursery1StudentsList = () => {
             {isFormVisible && <AddStudentForm onClose={handleCloseForm} />}
           </div>
 
-          <div className="fixed top-[110px] font-bold text-xl sm:text-2xl bg-violet-700 rounded-lg px-4 py-2 flex items-center text-gray-200 z-10">
+          <div className="fixed top-[110px] ml-4 font-bold text-xl sm:text-2xl bg-violet-700 rounded-lg px-4 py-2 flex items-center text-gray-200 z-10">
             <Link to="/Creche">
               <BiArrowBack
                 className="mr-2"
@@ -44,9 +56,46 @@ const Nursery1StudentsList = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center min-h-screen px-4 py-6 pt-32">
-          <div className="w-full border border-gray-100 rounded-lg mt-16 px-3">
-            <StudentTable />
+        <div className="filters flex items-center space-x-4 pt-60">
+          <CustomSelect
+            name="age"
+            value={filters.age}
+            onChange={handleFilterChange}
+            options={[
+              { value: "", label: "All Ages" },
+              { value: "1", label: "1" },
+              { value: "2", label: "2" },
+              { value: "3", label: "3" },
+              { value: "4", label: "4" },
+              // Add more options as needed
+            ]}
+          />
+          <CustomSelect
+            name="status"
+            value={filters.status}
+            onChange={handleFilterChange}
+            options={[
+              { value: "", label: "All Statuses" },
+              { value: "fresher", label: "fresher" },
+              { value: "continuing", label: "continuing" },
+              { value: "completed", label: "completed" },
+            ]}
+          />
+          <CustomSelect
+            name="gender"
+            value={filters.gender}
+            onChange={handleFilterChange}
+            options={[
+              { value: "", label: "All Genders" },
+              { value: "male", label: "Male" },
+              { value: "female", label: "Female" },
+            ]}
+          />
+        </div>
+
+        <div className="flex flex-col items-center min-h-screen px-4 py-6">
+          <div className="w-full border border-gray-100 rounded-lg px-3">
+            <StudentTable filters={filters} />
           </div>
         </div>
       </div>

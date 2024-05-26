@@ -10,17 +10,11 @@ import PopConfirm from "../../Components/PopConfirm";
 import { toast } from "react-toastify";
 import { CSVLink } from "react-csv";
 import { BiSolidFileExport } from "react-icons/bi";
-import CustomSelect from "../../assets/CustomSelect";
 
-const StudentTable = () => {
+const StudentTable = ({ filters }) => {
   const [data, setData] = useState([]);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
   const [searchText, setSearchText] = useState("");
-  const [filters, setFilters] = useState({
-    age: "",
-    status: "",
-    gender: "",
-  });
 
   useEffect(() => {
     axios
@@ -54,13 +48,6 @@ const StudentTable = () => {
   const cancelDelete = () => {
     setConfirmDeleteId(null);
     toast.info("Delete action canceled.");
-  };
-
-  const handleFilterChange = (e) => {
-    setFilters({
-      ...filters,
-      [e.target.name]: e.target.value,
-    });
   };
 
   const filteredData = data.filter((student) => {
@@ -259,52 +246,15 @@ const StudentTable = () => {
           onConfirm={confirmDelete}
         />
       )}
-      <div className="flex p-2 mb-6">
-        <div className="filters flex items-center space-x-4">
-          <CustomSelect
-            name="age"
-            value={filters.age}
-            onChange={handleFilterChange}
-            options={[
-              { value: "", label: "All Ages" },
-              { value: "1", label: "1" },
-              { value: "2", label: "2" },
-              { value: "3", label: "3" },
-              { value: "4", label: "4" },
-              // Add more options as needed
-            ]}
-          />
-          <CustomSelect
-            name="status"
-            value={filters.status}
-            onChange={handleFilterChange}
-            options={[
-              { value: "", label: "All Statuses" },
-              { value: "fresher", label: "fresher" },
-              { value: "continuing", label: "continuing" },
-              { value: "completed", label: "completed" },
-            ]}
-          />
-          <CustomSelect
-            name="gender"
-            value={filters.gender}
-            onChange={handleFilterChange}
-            options={[
-              { value: "", label: "All Genders" },
-              { value: "male", label: "Male" },
-              { value: "female", label: "Female" },
-            ]}
-          />
-        </div>
-        <div className="w-full max-w-[1500px] text-end">
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            className="px-4 py-2 border rounded-lg w-full max-w-sm mx-auto focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border"
-          />
-        </div>
+
+      <div className="w-full max-w-[1500px] text-end">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          className="px-4 py-2 border rounded-lg w-full max-w-sm mx-auto focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border"
+        />
       </div>
 
       <div className="text-xs font-bold text-gray-600 mb-3 cursor-pointer items-center justify-end mr-4 grid">
@@ -334,6 +284,7 @@ const StudentTable = () => {
 
 StudentTable.propTypes = {
   searchText: PropTypes.string,
+  filters: PropTypes.object.isRequired,
 };
 
 export default StudentTable;
