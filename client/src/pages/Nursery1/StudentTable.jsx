@@ -11,10 +11,10 @@ import { toast } from "react-toastify";
 import { CSVLink } from "react-csv";
 import { BiSolidFileExport } from "react-icons/bi";
 
-const StudentTable = ({ filters }) => {
+const StudentTable = ({ filters, searchText }) => {
   const [data, setData] = useState([]);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
-  const [searchText, setSearchText] = useState("");
+
 
   useEffect(() => {
     axios
@@ -237,7 +237,7 @@ const StudentTable = ({ filters }) => {
   };
 
   return (
-    <div className="max-h-[80vh] overflow-y-auto">
+    <div className="">
       {confirmDeleteId && (
         <PopConfirm
           message="Are you sure you want to delete this learner?"
@@ -247,15 +247,7 @@ const StudentTable = ({ filters }) => {
         />
       )}
 
-      <div className="w-full max-w-[1500px] text-end">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-          className="px-4 py-2 border rounded-lg w-full max-w-sm mx-auto focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border"
-        />
-      </div>
+      
 
       <div className="text-xs font-bold text-gray-600 mb-3 cursor-pointer items-center justify-end mr-4 grid">
         <CSVLink

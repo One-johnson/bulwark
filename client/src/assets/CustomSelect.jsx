@@ -30,7 +30,7 @@ const CustomSelect = ({ name, value, onChange, options }) => {
   return (
     <div ref={selectRef} className="relative w-[160px] text-gray-900 ">
       <div
-        className="block w-full bg-white border-2 border-gray-200 font-bold px-4 py-2 pr-8 rounded-lg leading-tight focus:outline-none cursor-pointer hover:border-gray-800 transition duration-300 focus:border-violet-800"
+        className="block w-full bg-white shadow border-2 border-gray-200 font-bold px-4 py-2 pr-8 rounded-lg leading-tight focus:outline-none cursor-pointer hover:border-gray-800 transition duration-300 focus:border-violet-800"
         onClick={handleToggle}
       >
         {selectedOption ? selectedOption.label : "Select..."}
