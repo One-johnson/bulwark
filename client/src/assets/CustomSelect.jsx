@@ -37,11 +37,11 @@ const CustomSelect = ({ name, value, onChange, options }) => {
         <FiChevronDown className="absolute inset-y-0 right-0 m-auto h-4 w-4 mr-2" />
       </div>
       {isOpen && (
-        <ul className="absolute z-10 w-full bg-white border border-gray-400 rounded-md shadow-lg max-h-60 overflow-y-auto mt-[1px]">
+        <ul className="absolute z-10 w-full bg-white border rounded-md shadow-xl max-h-60 overflow-y-auto mt-[1px]">
           {options.map((option) => (
             <li
               key={option.value}
-              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              className="px-4 py-2 hover:bg-violet-100 cursor-pointer "
               onClick={() => handleOptionClick(option.value)}
             >
               {option.label}
