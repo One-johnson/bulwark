@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { FaRegEye, FaRegEdit } from "react-icons/fa";
-import { FaFileExcel, FaRegTrashCan, FaFilePdf } from "react-icons/fa6";
+import { FaRegEye, FaRegEdit} from "react-icons/fa";
+import { BsFileEarmarkPdfFill, BsFileEarmarkExcelFill } from "react-icons/bs";
+import { FaFileExcel, FaRegTrashCan,  } from "react-icons/fa6";
 import StatusTag from "../../Components/StatusTag";
 import PropTypes from "prop-types";
 import DataTable from "react-data-table-component";
@@ -305,10 +306,10 @@ const StudentTable = ({ filters, searchText }) => {
           filename={"students.csv"}
           title="Export CSV"
         >
-          <FaFileExcel className="text-green-700 " />
+          <BsFileEarmarkExcelFill className="text-green-700 " />
         </CSVLink>
         <button onClick={exportPDF} title="Export PDF">
-          <FaFilePdf className="text-red-700" />
+          <BsFileEarmarkPdfFill className="text-red-700" />
         </button>
       </div>
       <DataTable
