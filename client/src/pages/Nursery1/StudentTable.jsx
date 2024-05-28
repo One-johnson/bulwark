@@ -1,17 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { FaRegEye, FaRegEdit} from "react-icons/fa";
-import { BsFileEarmarkPdfFill, BsFileEarmarkExcelFill } from "react-icons/bs";
-import { FaFileExcel, FaRegTrashCan,  } from "react-icons/fa6";
+import { FaRegEye, FaRegEdit } from "react-icons/fa";
+import { FaRegTrashCan } from "react-icons/fa6";
 import StatusTag from "../../Components/StatusTag";
 import PropTypes from "prop-types";
 import DataTable from "react-data-table-component";
 import PopConfirm from "../../Components/PopConfirm";
 import { toast } from "react-toastify";
-import { CSVLink } from "react-csv";
-import jsPDF from "jspdf";
-import "jspdf-autotable";
+import ExportCSV from "../../assets/ExportCSV";
+import ExportPDF from "../../assets/ExportPDF";
 
 const StudentTable = ({ filters, searchText }) => {
   const [data, setData] = useState([]);
@@ -236,58 +234,6 @@ const StudentTable = ({ filters, searchText }) => {
       },
     },
   };
- const exportPDF = () => {
-   const doc = new jsPDF({ orientation: "landscape" });
-   doc.text("Student Data", 14, 10);
-   doc.autoTable({
-     head: [
-       [
-         "ID",
-         "Registration Date",
-         "First Name",
-         "Middle Name",
-         "Last Name",
-         "Date of Birth",
-         "Age",
-         "Sex",
-         "Nationality",
-         "Hometown",
-         "Parent/Guardian",
-         "Address",
-         "Occupation",
-         "Religious Denomination",
-         "House Number",
-         "Phone Number",
-         "Status",
-       ],
-     ],
-     body: filteredData.map((student) => [
-       student.id,
-       student.registrationDate,
-       student.firstName,
-       student.middleName,
-       student.lastName,
-       student.dateOfBirth,
-       student.age,
-       student.sex,
-       student.nationality,
-       student.hometown,
-       student.parentGuardian,
-       student.address,
-       student.occupation,
-       student.religiousDenomination,
-       student.houseNumber,
-       student.phoneNumber,
-       student.status,
-     ]),
-     startY: 20,
-     styles: { fontSize: 8 },
-     headStyles: { fillColor: [233, 233, 233] },
-     margin: { top: 10 },
-   });
-   doc.save("students.pdf");
- };
-
 
   return (
     <div className="">
@@ -299,19 +245,11 @@ const StudentTable = ({ filters, searchText }) => {
           onConfirm={confirmDelete}
         />
       )}
-
-      <div className="m-3 cursor-pointer items-center justify-end flex space-x-2 text-[20px]">
-        <CSVLink
-          data={filteredData}
-          filename={"students.csv"}
-          title="Export CSV"
-        >
-          <BsFileEarmarkExcelFill className="text-green-700 " />
-        </CSVLink>
-        <button onClick={exportPDF} title="Export PDF">
-          <BsFileEarmarkPdfFill className="text-red-700" />
-        </button>
+      <div className="m-3 cursor-pointer items-center justify-end flex space-x-2">
+        <ExportCSV data={filteredData} />
+        <ExportPDF data={filteredData} />
       </div>
+
       <DataTable
         columns={columns}
         data={filteredData}
