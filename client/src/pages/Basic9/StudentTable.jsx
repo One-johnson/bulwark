@@ -258,7 +258,7 @@ const StudentTable = ({ filters, searchText }) => {
         highlightOnHover
         pointerOnHover
         selectableRows={false}
-        fixedHeader
+        fixedHeader={true}
         fixedHeaderScrollHeight="400px"
       />
     </div>

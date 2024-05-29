@@ -40,28 +40,32 @@ const Basic3StudentsList = () => {
     <div>
       <Navbar />
       <div className="mx-4 sm:mx-8 md:mx-auto md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-2xl">
-        <div className="flex justify-between items">
+        <div className="flex justify-between items mt-[90px]">
           <div className="relative">
             <button
               onClick={toggleFormVisibility}
-              className="fixed top-[110px] right-[30px] bg-violet-800 hover:bg-gray-200 border hover:text-violet-800 text-white py-2 px-2 rounded-full transition duration-300 flex items-center z-10"
+              className="fixed right-[30px] bg-violet-800 hover:bg-gray-200 border hover:text-violet-800 text-white py-2 px-2 
+              rounded-full transition duration-300 flex items-center z-10"
             >
               <RiAddLine className="text-xl" />
             </button>
             {isFormVisible && <AddStudentForm onClose={handleCloseForm} />}
           </div>
 
-          <div className="fixed top-[110px] font-bold text-xl sm:text-2xl bg-violet-700 rounded-lg px-4 py-2 flex items-center text-gray-200 z-10">
+          <div
+            className="fixed font-bold text-xl sm:text-xl bg-violet-700 
+          rounded-lg px-4 py-2 flex items-center text-gray-200 z-10"
+          >
             <Link to="/Primary">
               <BiArrowBack
                 className="mr-2"
-                style={{ width: "40px", height: "40px" }}
+                style={{ width: "30px", height: "30px" }}
               />
             </Link>
             <h2>BASIC THREE (3) LEARNERS' LIST</h2>
           </div>
         </div>
-        <div className="pt-60 flex items-center justify-between">
+        <div className="mt-[90px] flex items-center justify-between">
           <div className="filters flex items-center space-x-4 ">
             <CustomSelect
               name="age"
@@ -112,7 +116,7 @@ const Basic3StudentsList = () => {
           </div>
         </div>
 
-        <div className="py-6">
+        <div className="pt-4 flex-grow">
           <div className="w-full border border-gray-100 rounded-lg px-3">
             <StudentTable filters={filters} searchText={searchText} />
           </div>
