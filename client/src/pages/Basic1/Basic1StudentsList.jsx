@@ -73,10 +73,11 @@ const Basic1StudentsList = () => {
               onChange={handleFilterChange}
               options={[
                 { value: "", label: "All Ages" },
-                { value: "1", label: "1" },
-                { value: "2", label: "2" },
-                { value: "3", label: "3" },
-                { value: "4", label: "4" },
+                { value: "1-4", label: "1-4" },
+                { value: "5-9", label: "5-9" },
+                { value: "10-12", label: "10-12" },
+                { value: "13-15", label: "13-15" },
+                { value: "16-18", label: "16-18" },
                 // Add more options as needed
               ]}
             />

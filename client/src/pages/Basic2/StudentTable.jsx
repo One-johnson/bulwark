@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { FaRegEye, FaRegEdit } from "react-icons/fa";
@@ -14,6 +15,7 @@ import ExportPDF from "../../assets/ExportPDF";
 const StudentTable = ({ filters, searchText }) => {
   const [data, setData] = useState([]);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -49,9 +51,21 @@ const StudentTable = ({ filters, searchText }) => {
     toast.info("Delete action canceled.");
   };
 
+  const parseAgeRange = (range) => {
+    if (!range) return null;
+    const [min, max] = range.split("-").map(Number);
+    return { min, max };
+  };
+
+  const ageRange = parseAgeRange(filters.age);
+
   const filteredData = data.filter((student) => {
+    const ageMatch = ageRange
+      ? student.age >= ageRange.min && student.age <= ageRange.max
+      : true;
+
     return (
-      (filters.age ? student.age === filters.age : true) &&
+      ageMatch &&
       (filters.status ? student.status === filters.status : true) &&
       (filters.gender ? student.sex === filters.gender : true) &&
       Object.values(student).some((value) =>
@@ -59,6 +73,11 @@ const StudentTable = ({ filters, searchText }) => {
       )
     );
   });
+
+  const handleRowClick = (row) => {
+    navigate(`/basic2/view/${row.id}`);
+    console.log("Row clicked:", row);
+  };
 
   const columns = [
     {
@@ -258,8 +277,9 @@ const StudentTable = ({ filters, searchText }) => {
         highlightOnHover
         pointerOnHover
         selectableRows={false}
-        fixedHeader
+        fixedHeader={true}
         fixedHeaderScrollHeight="400px"
+        onRowClicked={handleRowClick}
       />
     </div>
   );
