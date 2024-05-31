@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import ExportCSV from "../../assets/ExportCSV";
 import ExportPDF from "../../assets/ExportPDF";
 
+
 const StudentTable = ({ filters, searchText }) => {
   const [data, setData] = useState([]);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
@@ -74,14 +75,10 @@ const StudentTable = ({ filters, searchText }) => {
     );
   });
 
-
-
   const handleRowClick = (row) => {
     navigate(`/basic9/view/${row.id}`);
     console.log("Row clicked:", row);
   };
-
-
 
   const columns = [
     {

@@ -3,6 +3,30 @@ import "jspdf-autotable";
 import { BsFileEarmarkPdfFill } from "react-icons/bs";
 import PropTypes from "prop-types";
 
+const generateReport = (data) => {
+  const ageCount = {};
+  const genderCount = { male: 0, female: 0 };
+
+  data.forEach((student) => {
+    const age = student.age;
+    const gender = student.sex.toLowerCase();
+
+    // Count by age
+    if (ageCount[age]) {
+      ageCount[age]++;
+    } else {
+      ageCount[age] = 1;
+    }
+
+    // Count by gender
+    if (genderCount[gender] !== undefined) {
+      genderCount[gender]++;
+    }
+  });
+
+  return { ageCount, genderCount };
+};
+
 const ExportPDF = ({ data }) => {
   const exportPDF = () => {
     const doc = new jsPDF({ orientation: "landscape" });
@@ -53,6 +77,33 @@ const ExportPDF = ({ data }) => {
       headStyles: { fillColor: [100, 100, 100] },
       margin: { top: 10 },
     });
+    // Generate and Add Report Data
+    const { ageCount, genderCount } = generateReport(data);
+
+    let finalY = doc.lastAutoTable.finalY || 10;
+    finalY += 10;
+
+    doc.setFontSize(12);
+    doc.text("Report Data", 14, finalY);
+
+    finalY += 10;
+    doc.setFontSize(10);
+    doc.text("Number of Students by Age:", 14, finalY);
+
+    Object.entries(ageCount).forEach(([age, count]) => {
+      finalY += 8;
+      doc.text(`Age ${age}: ${count} students`, 14, finalY);
+    });
+
+    finalY += 10;
+    doc.text("Number of Students by Gender:", 14, finalY);
+
+    finalY += 8;
+    doc.text(`Male: ${genderCount.male} students`, 14, finalY);
+
+    finalY += 8;
+    doc.text(`Female: ${genderCount.female} students`, 14, finalY);
+
     doc.save("students.pdf");
   };
 
