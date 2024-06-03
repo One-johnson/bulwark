@@ -5,12 +5,12 @@ import { toast } from "react-toastify";
 import StatusOptions from "../../Components/StatusOption";
 
 const Nursery1UpdateForm = () => {
-  const { id } = useParams();
+  const { customID } = useParams();
 
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("http://localhost:3002/nursery1/view/" + id)
+      .get("http://localhost:3002/nursery1/view/" + customID)
       .then((res) => {
         console.log(res);
         setValues({
@@ -58,7 +58,7 @@ const Nursery1UpdateForm = () => {
   const handleUpdate = (event) => {
     event.preventDefault();
     axios
-      .put("http://localhost:3002/nursery1/update/" + id, values)
+      .put("http://localhost:3002/nursery1/update/" + customID, values)
       .then((res) => {
         console.log(res);
         toast.success("Student updated successfully!");

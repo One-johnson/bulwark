@@ -176,9 +176,12 @@ function App() {
                 path="/Nursery1StudentsList"
                 element={<Nursery1StudentsList />}
               />
-              <Route path="/nursery1/view/:id" element={<Nursery1ViewForm />} />
               <Route
-                path="/nursery1/edit/:id"
+                path="/nursery1/view/:customID"
+                element={<Nursery1ViewForm />}
+              />
+              <Route
+                path="/nursery1/edit/:customID"
                 element={<Nursery1UpdateForm />}
               />
 
