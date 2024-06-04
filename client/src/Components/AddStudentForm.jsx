@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 import { toast } from "react-toastify";
-import StatusOptions from "../../Components/StatusOption";
+import StatusOptions from "./StatusOption";
+
 
 const AddStudentForm = ({ onClose }) => {
   const [values, setValues] = useState({
@@ -35,7 +36,7 @@ const AddStudentForm = ({ onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3002/basic9", values)
+      .post("http://localhost:3002/nursery1", values)
       .then((res) => {
         console.log(res);
         // Show success toast
@@ -84,10 +85,6 @@ const AddStudentForm = ({ onClose }) => {
       status: "",
     });
   };
-
-
-
-
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-800 bg-opacity-80">
@@ -353,7 +350,6 @@ const AddStudentForm = ({ onClose }) => {
                 </button>
               </div>
             </form>
-           
           </div>
         </div>
       </div>

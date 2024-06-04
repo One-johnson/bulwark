@@ -94,82 +94,82 @@ function App() {
                 path="/Basic1StudentsList"
                 element={<Basic1StudentsList />}
               />
-              <Route path="/basic1/view/:id" element={<Basic1ViewForm />} />
-              <Route path="/basic1/edit/:id" element={<Basic1UpdateForm />} />
+              <Route path="/basic1/view/:customID" element={<Basic1ViewForm />} />
+              <Route path="/basic1/edit/:customID" element={<Basic1UpdateForm />} />
 
               {/* basic 2 route */}
               <Route
                 path="/Basic2StudentsList"
                 element={<Basic2StudentsList />}
               />
-              <Route path="/basic2/view/:id" element={<Basic2ViewForm />} />
-              <Route path="/basic2/edit/:id" element={<Basic2UpdateForm />} />
+              <Route path="/basic2/view/:customID" element={<Basic2ViewForm />} />
+              <Route path="/basic2/edit/:customID" element={<Basic2UpdateForm />} />
 
               {/* basic 3 route */}
               <Route
                 path="/Basic3StudentsList"
                 element={<Basic3StudentsList />}
               />
-              <Route path="/basic3/view/:id" element={<Basic3ViewForm />} />
-              <Route path="/basic3/edit/:id" element={<Basic3UpdateForm />} />
+              <Route path="/basic3/view/:customID" element={<Basic3ViewForm />} />
+              <Route path="/basic3/edit/:customID" element={<Basic3UpdateForm />} />
 
               {/* basic 4 route */}
               <Route
                 path="/Basic4StudentsList"
                 element={<Basic4StudentsList />}
               />
-              <Route path="/basic4/view/:id" element={<Basic4ViewForm />} />
-              <Route path="/basic4/edit/:id" element={<Basic4UpdateForm />} />
+              <Route path="/basic4/view/:customID" element={<Basic4ViewForm />} />
+              <Route path="/basic4/edit/:customID" element={<Basic4UpdateForm />} />
 
               {/* basic 5 route */}
               <Route
                 path="/Basic5StudentsList"
                 element={<Basic5tudentsList />}
               />
-              <Route path="/basic5/view/:id" element={<Basic5ViewForm />} />
-              <Route path="/basic5/edit/:id" element={<Basic5UpdateForm />} />
+              <Route path="/basic5/view/:customID" element={<Basic5ViewForm />} />
+              <Route path="/basic5/edit/:customID" element={<Basic5UpdateForm />} />
 
               {/* basic 6 route */}
               <Route
                 path="/Basic6StudentsList"
                 element={<Basic6tudentsList />}
               />
-              <Route path="/basic6/view/:id" element={<Basic6ViewForm />} />
-              <Route path="/basic6/edit/:id" element={<Basic6UpdateForm />} />
+              <Route path="/basic6/view/:customID" element={<Basic6ViewForm />} />
+              <Route path="/basic6/edit/:customID" element={<Basic6UpdateForm />} />
 
               {/* basic 7 route */}
               <Route
                 path="/Basic7StudentsList"
                 element={<Basic7tudentsList />}
               />
-              <Route path="/basic7/view/:id" element={<Basic7ViewForm />} />
-              <Route path="/basic7/edit/:id" element={<Basic7UpdateForm />} />
+              <Route path="/basic7/view/:customID" element={<Basic7ViewForm />} />
+              <Route path="/basic7/edit/:customID" element={<Basic7UpdateForm />} />
 
               {/* basic 8 route */}
               <Route
                 path="/Basic8StudentsList"
                 element={<Basic8tudentsList />}
               />
-              <Route path="/basic8/view/:id" element={<Basic8ViewForm />} />
-              <Route path="/basic8/edit/:id" element={<Basic8UpdateForm />} />
+              <Route path="/basic8/view/:customID" element={<Basic8ViewForm />} />
+              <Route path="/basic8/edit/:customID" element={<Basic8UpdateForm />} />
 
               {/* basic 9 route */}
               <Route
                 path="/Basic9StudentsList"
                 element={<Basic9tudentsList />}
               />
-              <Route path="/basic9/view/:id" element={<Basic9ViewForm />} />
-              <Route path="/basic9/edit/:id" element={<Basic9UpdateForm />} />
+              <Route path="/basic9/view/:customID" element={<Basic9ViewForm />} />
+              <Route path="/basic9/edit/:customID" element={<Basic9UpdateForm />} />
 
               {/* kg 2 route */}
               <Route path="/Kg2StudentsList" element={<Kg2StudentsList />} />
-              <Route path="/kg2/view/:id" element={<Kg2ViewForm />} />
-              <Route path="/kg2/edit/:id" element={<Kg2UpdateForm />} />
+              <Route path="/kg2/view/:customID" element={<Kg2ViewForm />} />
+              <Route path="/kg2/edit/:customID" element={<Kg2UpdateForm />} />
 
               {/* kg route */}
               <Route path="/Kg1StudentsList" element={<Kg1StudentsList />} />
-              <Route path="/kg1/view/:id" element={<Kg1ViewForm />} />
-              <Route path="/kg1/edit/:id" element={<Kg1UpdateForm />} />
+              <Route path="/kg1/view/:customID" element={<Kg1ViewForm />} />
+              <Route path="/kg1/edit/:customID" element={<Kg1UpdateForm />} />
 
               {/* nursery1 route */}
               <Route
