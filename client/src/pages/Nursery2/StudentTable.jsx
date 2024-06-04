@@ -27,8 +27,8 @@ const StudentTable = ({ filters, searchText }) => {
       });
   }, []);
 
-  const handleDelete = (id) => {
-    setConfirmDeleteId(id);
+  const handleDelete = (customID) => {
+    setConfirmDeleteId(customID);
   };
 
   const confirmDelete = async () => {
@@ -36,7 +36,7 @@ const StudentTable = ({ filters, searchText }) => {
     axios
       .delete("http://localhost:3002/nursery2/delete/" + confirmDeleteId)
       .then((res) => {
-        setData(data.filter((student) => student.id !== confirmDeleteId));
+        setData(data.filter((student) => student.customID !== confirmDeleteId));
         setConfirmDeleteId(null);
         toast.success("Student deleted successfully!");
       })
@@ -75,14 +75,14 @@ const StudentTable = ({ filters, searchText }) => {
   });
 
   const handleRowClick = (row) => {
-    navigate(`/nursery2/view/${row.id}`);
+    navigate(`/nursery2/view/${row.customID}`);
     console.log("Row clicked:", row);
   };
 
   const columns = [
     {
-      name: "ID",
-      selector: (row) => row.id,
+      name: "Student ID",
+      selector: (row) => row.customID,
       sortable: false,
       style: {
         borderRight: "1px solid #eee",
@@ -206,21 +206,21 @@ const StudentTable = ({ filters, searchText }) => {
       cell: (row) => (
         <div className="flex items-center justify-center space-x-4">
           <Link
-            to={`/nursery2/view/${row.id}`}
+            to={`/nursery2/view/${row.customID}`}
             className="text-blue-600 text-lg"
             title="View Details"
           >
             <FaRegEye />
           </Link>
           <Link
-            to={`/nursery2/edit/${row.id}`}
+            to={`/nursery2/edit/${row.customID}`}
             className="text-green-600   text-lg"
             title="Edit"
           >
             <FaRegEdit />
           </Link>
           <button
-            onClick={() => handleDelete(row.id)}
+            onClick={() => handleDelete(row.customID)}
             className="text-red-600 text-lg"
             title="Delete"
           >

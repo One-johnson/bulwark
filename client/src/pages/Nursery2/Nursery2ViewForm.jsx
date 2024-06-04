@@ -3,19 +3,19 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const Nursery2ViewForm = () => {
-  const { id } = useParams();
+  const { customID } = useParams();
 
   const [student, setStudent] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/nursery2/view/" + id)
+      .get("http://localhost:3002/nursery2/view/" + customID)
       .then((res) => {
         console.log(res);
         setStudent(res.data[0]);
       })
       .catch((err) => console.log(err));
-  }, [id]);
+  }, [customID]);
 
   if (student.length === 0) {
     return <div>Loading...</div>;
@@ -39,9 +39,9 @@ const Nursery2ViewForm = () => {
                   </label>
                   <input
                     type="text"
-                    id="id"
-                    name="id"
-                    value={student.id}
+                    id="customID"
+                    name="customID"
+                    value={student.customID}
                     readOnly
                     className={inputStyle}
                   />
@@ -256,7 +256,7 @@ const Nursery2ViewForm = () => {
                 BACK
               </Link>
               <Link
-                to={`/nursery2/edit/${student.id}`}
+                to={`/nursery2/edit/${student.customID}`}
                 className="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"
               >
                 EDIT

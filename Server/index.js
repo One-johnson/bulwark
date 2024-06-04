@@ -19,23 +19,6 @@ const db = mysql.createConnection({
   database: "bulwarkdb",
 });
 
-// Function to generate custom student IDs
-function generateCustomID(callback) {
-  const sql = "SELECT MAX(customID) AS max_id FROM nursery1students";
-  db.query(sql, (err, result) => {
-    if (err) {
-      callback(err, null);
-      return;
-    }
-    let nextID = "EPCS001"; // Default ID if no records exist
-    if (result[0].max_id) {
-      const lastID = parseInt(result[0].max_id.slice(4)); // Extract numeric part
-      nextID = "EPCS" + ("000" + (lastID + 1)).slice(-3); // Increment and format
-    }
-    callback(null, nextID);
-  });
-}
-
 //create  ROUTE for register
 app.post("/register", (req, res) => {
   const sentEmail = req.body.Email;
@@ -75,6 +58,12 @@ app.post("/login", (req, res) => {
   });
 });
 
+function generateRandomID() {
+  const randomSuffix = Math.floor(Math.random() * 10000); // Generate a random number between 0 and 9999
+  const paddedSuffix = String(randomSuffix).padStart(4, "0"); // Ensure the suffix has at least 4 digits
+  return `EPCS${paddedSuffix}`;
+}
+
 //route for nursery 2
 app.get("/nursery2", (req, res) => {
   const sql = "SELECT * FROM nursery2students";
@@ -84,34 +73,45 @@ app.get("/nursery2", (req, res) => {
   });
 });
 app.post("/nursery2", (req, res) => {
-  const sql = "INSERT INTO nursery2students SET ?";
-  const values = req.body;
-  db.query(sql, values, (err, results) => {
-    if (err) return res.json(err);
-    return res.json(results);
+  generateCustomID((err, customID) => {
+    if (err) {
+      return res.json({ Message: "Error generating custom ID" });
+    }
+    const student = req.body;
+    student.customID = customID; // Add custom ID to student object
+    const sql = "INSERT INTO nursery2students SET ?";
+    db.query(sql, student, (err, result) => {
+      if (err) {
+        return res.json({ Message: "Error adding student" });
+      }
+      return res.json({
+        Message: "Student added successfully",
+        customID: customID,
+      });
+    });
   });
 });
-app.get("/nursery2/view/:id", (req, res) => {
-  const sql = "SELECT * FROM nursery2students WHERE id = ?";
-  const id = req.params.id;
-  db.query(sql, [id], (err, results) => {
+app.get("/nursery2/view/:customID", (req, res) => {
+  const sql = "SELECT * FROM nursery2students WHERE customID = ?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
     if (err) return res.json({ Message: "Error inside server" });
     return res.json(results);
   });
 });
-app.put("/nursery2/update/:id", (req, res) => {
-  const sql = "UPDATE nursery2students SET ? WHERE id =?";
-  const id = req.params.id;
+app.put("/nursery2/update/:customID", (req, res) => {
+  const sql = "UPDATE nursery2students SET ? WHERE customID =?";
+  const customID = req.params.customID;
   const values = req.body;
-  db.query(sql, [values, id], (err, results) => {
+  db.query(sql, [values, customID], (err, results) => {
     if (err) return res.json({ Message: "Error inside server" });
     return res.json(results);
   });
 });
-app.delete("/nursery2/delete/:id", (req, res) => {
-  const sql = "DELETE FROM nursery2students WHERE id =?";
-  const id = req.params.id;
-  db.query(sql, [id], (err, results) => {
+app.delete("/nursery2/delete/:customID", (req, res) => {
+  const sql = "DELETE FROM nursery2students WHERE customID =?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
     if (err) return res.json({ Message: "Error inside server" });
     return res.json(results);
   });
@@ -127,22 +127,13 @@ app.get("/nursery1", (req, res) => {
 });
 // Add a new student to nursery1
 app.post("/nursery1", (req, res) => {
-  generateCustomID((err, customID) => {
-    if (err) {
-      return res.json({ Message: "Error generating custom ID" });
-    }
-    const student = req.body;
-    student.customID = customID; // Add custom ID to student object
-    const sql = "INSERT INTO nursery1students SET ?";
-    db.query(sql, student, (err, result) => {
-      if (err) {
-        return res.json({ Message: "Error adding student" });
-      }
-      return res.json({
-        Message: "Student added successfully",
-        customID: customID,
-      });
-    });
+  const insertSql = "INSERT INTO nursery1students SET ?";
+  const customID = generateRandomID();
+  const values = { ...req.body, customID };
+
+  db.query(insertSql, values, (err, results) => {
+    if (err) return res.json(err);
+    return res.json(results);
   });
 });
 

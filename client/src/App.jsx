@@ -190,9 +190,12 @@ function App() {
                 path="/Nursery2StudentsList"
                 element={<Nursery2StudentsList />}
               />
-              <Route path="/nursery2/view/:id" element={<Nursery2ViewForm />} />
               <Route
-                path="/nursery2/edit/:id"
+                path="/nursery2/view/:customID"
+                element={<Nursery2ViewForm />}
+              />
+              <Route
+                path="/nursery2/edit/:customID"
                 element={<Nursery2UpdateForm />}
               />
             </Routes>
