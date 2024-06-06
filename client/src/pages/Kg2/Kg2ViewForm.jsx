@@ -3,19 +3,19 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const Kg2ViewForm = () => {
-  const { id } = useParams();
+  const { customID } = useParams();
 
   const [student, setStudent] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/kg2/view/" + id)
+      .get("http://localhost:3002/kg2/view/" + customID)
       .then((res) => {
         console.log(res);
         setStudent(res.data[0]);
       })
       .catch((err) => console.log(err));
-  }, [id]);
+  }, [customID]);
 
   if (student.length === 0) {
     return <div>Loading...</div>;
@@ -34,14 +34,14 @@ const Kg2ViewForm = () => {
             <form className="mx-auto">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="id" className="block mb-2">
-                    ID
+                  <label htmlFor="customID" className="block mb-2">
+                    Student ID
                   </label>
                   <input
                     type="text"
-                    id="id"
-                    name="id"
-                    value={student.id}
+                    id="customID"
+                    name="customID"
+                    value={student.customID}
                     readOnly
                     className={inputStyle}
                   />
@@ -256,7 +256,7 @@ const Kg2ViewForm = () => {
                 BACK
               </Link>
               <Link
-                to={`/kg2/edit/${student.id}`}
+                to={`/kg2/edit/${student.customID}`}
                 className="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"
               >
                 EDIT

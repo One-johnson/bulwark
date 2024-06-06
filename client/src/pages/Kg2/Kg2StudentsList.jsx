@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { RiAddLine } from "react-icons/ri";
 import { BiArrowBack } from "react-icons/bi";
 import Navbar from "../../Components/Navbar";
-import AddStudentForm from "../../Components/AddStudentForm";
+import AddStudentForm from "./AddStudentForm";
 import StudentTable from "./StudentTable";
 import CustomSelect from "../../assets/CustomSelect";
 import { BiSearch } from "react-icons/bi";

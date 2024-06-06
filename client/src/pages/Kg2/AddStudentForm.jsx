@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 import { toast } from "react-toastify";
-import StatusOptions from "./StatusOption";
-
+import StatusOptions from "../../Components/StatusOption";
 
 const AddStudentForm = ({ onClose }) => {
   const [values, setValues] = useState({
@@ -36,7 +35,7 @@ const AddStudentForm = ({ onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3002/nursery1", values)
+      .post("http://localhost:3002/kg2", values)
       .then((res) => {
         console.log(res);
         // Show success toast

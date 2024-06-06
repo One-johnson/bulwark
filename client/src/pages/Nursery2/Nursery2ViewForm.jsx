@@ -35,7 +35,7 @@ const Nursery2ViewForm = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="id" className="block mb-2">
-                    ID
+                    Student ID
                   </label>
                   <input
                     type="text"

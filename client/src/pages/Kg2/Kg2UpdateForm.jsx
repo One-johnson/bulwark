@@ -5,12 +5,12 @@ import StatusOptions from "../../Components/StatusOption";
 import { toast } from "react-toastify";
 
 const Kg2UpdateForm = () => {
-  const { id } = useParams();
+  const { customID } = useParams();
 
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("http://localhost:3002/kg2/view/" + id)
+      .get("http://localhost:3002/kg2/view/" + customID)
       .then((res) => {
         console.log(res);
         setValues({
@@ -58,7 +58,7 @@ const Kg2UpdateForm = () => {
   const handleUpdate = (event) => {
     event.preventDefault();
     axios
-      .put("http://localhost:3002/kg2/update/" + id, values)
+      .put("http://localhost:3002/kg2/update/" + customID, values)
       .then((res) => {
         console.log(res);
         toast.success("Student updated successfully!");

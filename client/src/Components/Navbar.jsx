@@ -19,17 +19,7 @@ function Navbar() {
 
       {/* Navigation */}
       <div className="flex items-center text-gray-500 mr-8">
-        {/* Navigation Links */}
-        <Link to="/creche" className="ml-4">
-          Creche
-        </Link>
-        <Link to="/primary" className="ml-4">
-          Primary
-        </Link>
-        <Link to="/jhs" className="ml-4">
-          JHS
-        </Link>
-
+      
         {/* Profile Dropdown */}
         <div
           className="relative bg-gray-100 p-2 rounded-full ml-20"

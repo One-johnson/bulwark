@@ -7,7 +7,7 @@ import Navbar from "../../Components/Navbar";
 import StudentTable from "./StudentTable";
 import CustomSelect from "../../assets/CustomSelect";
 import { BiSearch } from "react-icons/bi";
-import AddStudentForm from "../../Components/AddStudentForm";
+import AddStudentForm from "./AddStudentForm";
 
 const Nursery1StudentsList = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
