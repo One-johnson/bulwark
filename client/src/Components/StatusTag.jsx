@@ -1,23 +1,23 @@
 import PropTypes from "prop-types";
 
 const StatusTag = ({ status }) => {
-  let bgColor, textColor, border;
+  let bgColor, textColor;
 
   switch (status) {
     case "fresher":
-      bgColor = "bg-red-100";
-      textColor = "text-red-600";
-      border = "border-red-500";
+      bgColor = "bg-red-600";
+      textColor = "text-white";
+
       break;
     case "continuing":
-      bgColor = "bg-yellow-100";
-      textColor = "text-yellow-600";
-      border = "border-yellow-500";
+      bgColor = "bg-orange-500";
+      textColor = "text-white";
+
       break;
     case "completed":
-      bgColor = "bg-green-100";
-      textColor = "text-green-600";
-      border = "border-green-500";
+      bgColor = "bg-green-700";
+      textColor = "text-white";
+
       break;
     default:
       bgColor = "bg-gray-200";
@@ -26,7 +26,7 @@ const StatusTag = ({ status }) => {
 
   return (
     <span
-      className={`${bgColor} ${textColor} ${border} font-bold py-1 px-4 rounded-lg inline-block text-center border text-sm`}
+      className={`${bgColor} ${textColor} font-medium py-1 px-4 rounded-xl inline-block text-center text-sm`}
     >
       {status}
     </span>
