@@ -1,293 +1,167 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
 import axios from "axios";
-import { FaRegEye, FaRegEdit } from "react-icons/fa";
-import { FaRegTrashCan } from "react-icons/fa6";
+import { InputText } from "primereact/inputtext";
 import StatusTag from "../../Components/StatusTag";
-import PropTypes from "prop-types";
-import DataTable from "react-data-table-component";
-import PopConfirm from "../../Components/PopConfirm";
-import { toast } from "react-toastify";
-import ExportCSV from "../../assets/ExportCSV";
-import ExportPDF from "../../assets/ExportPDF";
 
-const StudentTable = ({ filters, searchText }) => {
+const StudentTable = () => {
   const [data, setData] = useState([]);
-  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [globalFilterValue, setGlobalFilterValue] = useState("");
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get("http://localhost:3002/nursery1/")
-      .then((res) => setData(res.data))
-      .catch((err) => {
-        console.error(err);
-        toast.error("Error fetching data. Please try again later.");
-      });
-  }, []);
-
-  const handleDelete = (customID) => {
-    setConfirmDeleteId(customID);
-  };
-
-  const confirmDelete = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    axios
-      .delete("http://localhost:3002/nursery1/delete/" + confirmDeleteId)
       .then((res) => {
-        setData(data.filter((student) => student.customID !== confirmDeleteId));
-        setConfirmDeleteId(null);
-        toast.success("Student deleted successfully!");
+        setData(res.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.error(err);
-        toast.error("Error deleting student. Please try again later.");
+        setLoading(false);
       });
+  }, []);
+
+  const onGlobalFilterChange = (e) => {
+    setGlobalFilterValue(e.target.value);
   };
 
-  const cancelDelete = () => {
-    setConfirmDeleteId(null);
-    toast.info("Delete action canceled.");
-  };
-
-  const parseAgeRange = (range) => {
-    if (!range) return null;
-    const [min, max] = range.split("-").map(Number);
-    return { min, max };
-  };
-
-  const ageRange = parseAgeRange(filters.age);
-
-  const filteredData = data.filter((student) => {
-    const ageMatch = ageRange
-      ? student.age >= ageRange.min && student.age <= ageRange.max
-      : true;
-
-    return (
-      ageMatch &&
-      (filters.status ? student.status === filters.status : true) &&
-      (filters.gender ? student.sex === filters.gender : true) &&
-      Object.values(student).some((value) =>
-        String(value).toLowerCase().includes(searchText.toLowerCase())
-      )
-    );
-  });
-
-  const handleRowClick = (row) => {
-    navigate(`/nursery1/view/${row.customID}`);
-    console.log("Row clicked:", row);
-  };
-
-  const columns = [
-    {
-      name: "Student ID",
-      selector: (row) => row.customID,
-      sortable: false,
-      style: {
-        borderRight: "1px solid #eee",
-      },
-      center: true,
-    },
-    {
-      name: "Registration Date",
-      selector: (row) => row.registrationDate,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "First Name",
-      selector: (row) => row.firstName,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "Middle Name",
-      selector: (row) => row.middleName,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "Last Name",
-      selector: (row) => row.lastName,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "Date of Birth",
-      selector: (row) => row.dateOfBirth,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "Age",
-      selector: (row) => row.age,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "Sex",
-      selector: (row) => row.sex,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "Nationality",
-      selector: (row) => row.nationality,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "Hometown",
-      selector: (row) => row.hometown,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "Parent/Guardian",
-      selector: (row) => row.parentGuardian,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "Address",
-      selector: (row) => row.address,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "Occupation",
-      selector: (row) => row.occupation,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "Religious Denomination",
-      selector: (row) => row.religiousDenomination,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "House Number",
-      selector: (row) => row.houseNumber,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "Phone Number",
-      selector: (row) => row.phoneNumber,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "Status",
-      selector: (row) => <StatusTag status={row.status} />,
-      sortable: true,
-      style: { borderRight: "1px solid #eee" },
-      center: "true",
-    },
-    {
-      name: "Action",
-      cell: (row) => (
-        <div className="flex items-center justify-center space-x-4">
-          <Link
-            to={`/nursery1/view/${row.customID}`}
-            className="text-blue-600 text-lg"
-            title="View Details"
-          >
-            <FaRegEye />
-          </Link>
-          <Link
-            to={`/nursery1/edit/${row.customID}`}
-            className="text-green-600   text-lg"
-            title="Edit"
-          >
-            <FaRegEdit />
-          </Link>
-          <button
-            onClick={() => handleDelete(row.customID)}
-            className="text-red-600 text-lg"
-            title="Delete"
-          >
-            <FaRegTrashCan />
-          </button>
-        </div>
-      ),
-    },
-  ];
-
-  const customStyles = {
-    headCells: {
-      style: {
-        backgroundColor: "#f3f4f6",
-        color: "gray",
-        fontWeight: "bold",
-        fontSize: "16px",
-      },
-    },
-    cells: {
-      style: {
-        fontSize: "14px",
-      },
-    },
-    rows: {
-      style: {
-        "&:hover": {
-          backgroundColor: "#f3f4f6",
-        },
-      },
-    },
-  };
-
-  return (
-    <div className="">
-      {confirmDeleteId && (
-        <PopConfirm
-          message="Are you sure you want to delete this learner?"
-          warning="This action will delete the learner permanently and cannot be undone."
-          onCancel={cancelDelete}
-          onConfirm={confirmDelete}
-        />
-      )}
-      <div className="m-3 cursor-pointer items-center justify-end flex space-x-2">
-        <ExportCSV data={filteredData} />
-        <ExportPDF data={filteredData} />
-      </div>
-
-      <DataTable
-        columns={columns}
-        data={filteredData}
-        pagination
-        customStyles={customStyles}
-        highlightOnHover
-        pointerOnHover
-        selectableRows={false}
-        fixedHeader={true}
-        fixedHeaderScrollHeight="400px"
-        onRowClicked={handleRowClick}
+  const filterHeader = (
+    <div className="flex justify-end">
+      <InputText
+        value={globalFilterValue}
+        onChange={onGlobalFilterChange}
+        placeholder="Global Search"
+        className="mr-2 px-3 py-2 border rounded-lg"
       />
     </div>
   );
-};
 
-StudentTable.propTypes = {
-  searchText: PropTypes.string,
-  filters: PropTypes.object.isRequired,
+  return (
+    <div className="overflow-x-auto">
+      <DataTable
+        value={data}
+        paginator
+        rows={10}
+        loading={loading}
+        globalFilter={globalFilterValue}
+        header={filterHeader}
+        emptyMessage="No students found."
+        className="datatable-responsive"
+        paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} students"
+        showGridlines
+        stripedRows
+        responsiveLayout="scroll"
+      >
+        <Column
+          field="customID"
+          header="Student ID"
+          filter
+          filterPlaceholder="Search ID"
+        />
+        <Column
+          field="registrationDate"
+          header="Registration Date"
+          filter
+          filterPlaceholder="Search Date"
+        />
+        <Column
+          field="firstName"
+          header="First Name"
+          filter
+          filterPlaceholder="Search First Name"
+        />
+        <Column
+          field="middleName"
+          header="Middle Name"
+          filter
+          filterPlaceholder="Search Middle Name"
+        />
+        <Column
+          field="lastName"
+          header="Last Name"
+          filter
+          filterPlaceholder="Search Last Name"
+        />
+        <Column
+          field="dateOfBirth"
+          header="Date of Birth"
+          filter
+          filterPlaceholder="Search DOB"
+        />
+        <Column
+          field="age"
+          header="Age"
+          filter
+          filterPlaceholder="Search Age"
+        />
+        <Column
+          field="sex"
+          header="Sex"
+          filter
+          filterPlaceholder="Search Sex"
+        />
+        <Column
+          field="nationality"
+          header="Nationality"
+          filter
+          filterPlaceholder="Search Nationality"
+        />
+        <Column
+          field="hometown"
+          header="Hometown"
+          filter
+          filterPlaceholder="Search Hometown"
+        />
+        <Column
+          field="parentGuardian"
+          header="Parent/Guardian"
+          filter
+          filterPlaceholder="Search Parent/Guardian"
+        />
+        <Column
+          field="address"
+          header="Address"
+          filter
+          filterPlaceholder="Search Address"
+        />
+        <Column
+          field="occupation"
+          header="Occupation"
+          filter
+          filterPlaceholder="Search Occupation"
+        />
+        <Column
+          field="religiousDenomination"
+          header="Religious Denomination"
+          filter
+          filterPlaceholder="Search Religion"
+        />
+        <Column
+          field="houseNumber"
+          header="House Number"
+          filter
+          filterPlaceholder="Search House Number"
+        />
+        <Column
+          field="phoneNumber"
+          header="Phone Number"
+          filter
+          filterPlaceholder="Search Phone Number"
+        />
+        <Column
+          field="status"
+          header="Status"
+          filter
+          filterPlaceholder="Search Status"
+          body={(rowData) => <StatusTag status={rowData.status} />}
+        />
+      </DataTable>
+    </div>
+  );
 };
 
 export default StudentTable;
