@@ -18,7 +18,7 @@ const StudentTable = ({ filters, searchText }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/nursery1/")
+      .get("http://localhost:3002/nursery2/")
       .then((res) => setData(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -29,7 +29,7 @@ const StudentTable = ({ filters, searchText }) => {
 
   const confirmDelete = () => {
     axios
-      .delete("http://localhost:3002/nursery1/delete/" + confirmDeleteId)
+      .delete("http://localhost:3002/nursery2/delete/" + confirmDeleteId)
       .then(() => {
         setData(data.filter((student) => student.customID !== confirmDeleteId));
         setConfirmDeleteId(null);
@@ -66,7 +66,7 @@ const StudentTable = ({ filters, searchText }) => {
   });
 
   const handleRowClick = (row) => {
-    navigate(`/nursery1/view/${row.customID}`);
+    navigate(`/nursery2/view/${row.customID}`);
     console.log("Row clicked:", row);
   };
 
@@ -178,11 +178,11 @@ const StudentTable = ({ filters, searchText }) => {
       center: true,
       cell: (row) => (
         <div className="flex space-x-3 items-center text-lg">
-          <Link to={`/nursery1/view/${row.customID}`} className="text-blue-600">
+          <Link to={`/nursery2/view/${row.customID}`} className="text-blue-600">
             <FaRegEye />
           </Link>
           <Link
-            to={`/nursery1/edit/${row.customID}`}
+            to={`/nursery2/edit/${row.customID}`}
             className="text-green-600"
           >
             <FaRegEdit />

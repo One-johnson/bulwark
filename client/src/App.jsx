@@ -10,6 +10,7 @@ import Dashboard from "./Components/Dashboard";
 import Register from "./pages/LoginRegister/Register";
 import Login from "./pages/LoginRegister/Login";
 import Nursery1Routes from "./routes/crecheRoutes/Nursery1Routes";
+import Nursery2Routes from "./routes/crecheRoutes/Nursery2Routes";
 
 function App() {
   return (
@@ -26,8 +27,8 @@ function App() {
               <Route path="/Primary" element={<Primary />} />
               <Route path="/Jhs" element={<Jhs />} />
 
-              {/* nursery1 route */}
               <Route path="/*" element={<Nursery1Routes />} />
+              <Route path="/*" element={<Nursery2Routes />} />
             </Routes>
           </div>
         </div>
