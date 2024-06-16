@@ -67,10 +67,10 @@ const Nursery1StudentsList = () => {
               onChange={handleFilterChange}
               options={[
                 { value: "", label: "All Ages" },
-                { value: "1-4", label: "1-4" },
-                { value: "5-8", label: "5-8" },
-                { value: "9-12", label: "9-12" },
-                { value: "13-17", label: "13-17" },
+                { value: "1-4" },
+                { value: "5-8" },
+                { value: "9-12" },
+                { value: "13-17" },
 
                 // Add more options as needed
               ]}
@@ -81,9 +81,9 @@ const Nursery1StudentsList = () => {
               onChange={handleFilterChange}
               options={[
                 { value: "", label: "All Statuses" },
-                { value: "fresher", label: "fresher" },
-                { value: "continuing", label: "continuing" },
-                { value: "completed", label: "completed" },
+                { value: "fresher" },
+                { value: "continuing" },
+                { value: "completed" },
               ]}
             />
             <CustomSelect
@@ -92,8 +92,8 @@ const Nursery1StudentsList = () => {
               onChange={handleFilterChange}
               options={[
                 { value: "", label: "All Genders" },
-                { value: "male", label: "Male" },
-                { value: "female", label: "Female" },
+                { value: "male" },
+                { value: "female" },
               ]}
             />
           </div>

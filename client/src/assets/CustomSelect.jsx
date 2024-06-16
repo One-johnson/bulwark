@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { FiChevronDown } from "react-icons/fi";
+import StatusTag from "../Components/StatusTag"; 
 
 const CustomSelect = ({ name, value, onChange, options }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +34,16 @@ const CustomSelect = ({ name, value, onChange, options }) => {
         className="block w-full bg-white shadow-md border-2 border-gray-200 font-bold px-4 py-2 pr-8 rounded-lg leading-tight focus:outline-none cursor-pointer hover:border-violet-800 transition duration-300 focus:border-violet-800 "
         onClick={handleToggle}
       >
-        {selectedOption ? selectedOption.label : "Select..."}
+        {selectedOption ? (
+          <div className="flex items-center space-x-2">
+            {selectedOption.value && (
+              <StatusTag status={selectedOption.value} />
+            )}
+            <span>{selectedOption.label}</span>
+          </div>
+        ) : (
+          "Select..."
+        )}
         <FiChevronDown className="absolute inset-y-0 right-0 m-auto h-4 w-4 mr-2 text-gray-600 " />
       </div>
       {isOpen && (
@@ -41,10 +51,11 @@ const CustomSelect = ({ name, value, onChange, options }) => {
           {options.map((option) => (
             <li
               key={option.value}
-              className="px-4 py-2 hover:bg-gray-100 cursor-pointer "
+              className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center space-x-2"
               onClick={() => handleOptionClick(option.value)}
             >
-              {option.label}
+              {option.value && <StatusTag status={option.value} />}
+              <span>{option.label}</span>
             </li>
           ))}
         </ul>

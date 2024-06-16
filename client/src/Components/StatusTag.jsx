@@ -10,12 +10,12 @@ const StatusTag = ({ status }) => {
 
       break;
     case "continuing":
-      bgColor = "bg-orange-500";
+      bgColor = "bg-orange-600";
       textColor = "text-white";
 
       break;
     case "completed":
-      bgColor = "bg-green-700";
+      bgColor = "bg-green-600";
       textColor = "text-white";
 
       break;
@@ -26,7 +26,7 @@ const StatusTag = ({ status }) => {
 
   return (
     <span
-      className={`${bgColor} ${textColor} font-medium py-1 px-4 rounded-xl inline-block text-center text-sm`}
+      className={`${bgColor} ${textColor} font-medium py-1 px-3 rounded-xl inline-block text-sm`}
     >
       {status}
     </span>
