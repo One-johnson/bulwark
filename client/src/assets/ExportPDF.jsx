@@ -108,9 +108,9 @@ const ExportPDF = ({ data }) => {
   };
 
   return (
-    <div className="bg-red-600 font-bold text-[15px] p-2 text-white flex items-center rounded-lg">
+    <div className="bg-red-600 font-medium p-2 text-white flex items-center rounded-lg">
       <button onClick={exportPDF} title="Export PDF">
-        <BsFileEarmarkPdfFill className=" mr-2" />
+        <BsFileEarmarkPdfFill className=" mr-2 text-[20px]" />
       </button>
       PDF
     </div>

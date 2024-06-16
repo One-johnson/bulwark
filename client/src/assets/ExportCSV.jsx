@@ -6,7 +6,7 @@ const ExportCSV = ({ data }) => {
   return (
     <div className="bg-green-600 p-2 text-white flex items-center rounded-lg">
       <CSVLink data={data} filename={"students.csv"} title="Export CSV">
-        <BsFileEarmarkExcelFill className="  mr-1" />
+        <BsFileEarmarkExcelFill className="  mr-1 text-[20px]" />
       </CSVLink>
       CSV
     </div>

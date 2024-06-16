@@ -30,18 +30,18 @@ const CustomSelect = ({ name, value, onChange, options }) => {
   return (
     <div ref={selectRef} className="relative w-[160px] text-gray-900 ">
       <div
-        className="block w-full bg-white shadow border-2 border-gray-200 font-bold px-4 py-2 pr-8 rounded-lg leading-tight focus:outline-none cursor-pointer hover:border-gray-800 transition duration-300 focus:border-violet-800"
+        className="block w-full bg-white shadow-md border-2 border-gray-200 font-bold px-4 py-2 pr-8 rounded-lg leading-tight focus:outline-none cursor-pointer hover:border-violet-800 transition duration-300 focus:border-violet-800 "
         onClick={handleToggle}
       >
         {selectedOption ? selectedOption.label : "Select..."}
-        <FiChevronDown className="absolute inset-y-0 right-0 m-auto h-4 w-4 mr-2" />
+        <FiChevronDown className="absolute inset-y-0 right-0 m-auto h-4 w-4 mr-2 text-gray-600 " />
       </div>
       {isOpen && (
-        <ul className="absolute z-10 w-full bg-white border rounded-md shadow-xl max-h-60 overflow-y-auto mt-[1px]">
+        <ul className="absolute z-10 w-full bg-white border rounded-md shadow-xl max-h-60 overflow-y-auto mt-[2px] transition duration-300">
           {options.map((option) => (
             <li
               key={option.value}
-              className="px-4 py-2 hover:bg-violet-100 cursor-pointer "
+              className="px-4 py-2 hover:bg-gray-100 cursor-pointer "
               onClick={() => handleOptionClick(option.value)}
             >
               {option.label}
