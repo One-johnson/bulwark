@@ -51,7 +51,7 @@ const CustomSelect = ({ name, value, onChange, options }) => {
           {options.map((option) => (
             <li
               key={option.value}
-              className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center space-x-2"
+              className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center space-x-2 "
               onClick={() => handleOptionClick(option.value)}
             >
               {option.value && <StatusTag status={option.value} />}
@@ -71,7 +71,7 @@ CustomSelect.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
+      // label: PropTypes.string.isRequired,
     })
   ).isRequired,
 };
