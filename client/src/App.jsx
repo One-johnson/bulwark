@@ -28,6 +28,11 @@ import Kg2StudentsList from "./pages/Kg2/Kg2StudentsList";
 import Kg2UpdateForm from "./pages/Kg2/Kg2UpdateForm";
 import Kg2ViewForm from "./pages/Kg2/Kg2ViewForm";
 
+//basic1
+import Basic1StudentsList from "./pages/Basic1/Basic1StudentsList";
+import Basic1UpdateForm from "./pages/Basic1/Basic1UpdateForm";
+import Basic1ViewForm from "./pages/Basic1/Basic1ViewForm";
+
 function App() {
   return (
     <Router>
@@ -79,6 +84,11 @@ function App() {
               <Route path="/kg2StudentsList" element={<Kg2StudentsList />} />
               <Route path="/kg2/view/:customID" element={<Kg2ViewForm />} />
               <Route path="/kg2/edit/:customID" element={<Kg2UpdateForm />} />
+
+              {/* basic1 routes */}
+              <Route path="/basic1StudentsList" element={<Basic1StudentsList />} />
+              <Route path="/basic1/view/:customID" element={<Basic1ViewForm />} />
+              <Route path="/basic1/edit/:customID" element={<Basic1UpdateForm />} />
             </Routes>
           </div>
         </div>
