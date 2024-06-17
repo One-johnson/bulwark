@@ -49,9 +49,9 @@ import Basic4UpdateForm from "./pages/Basic4/Basic4UpdateForm";
 import Basic4ViewForm from "./pages/Basic4/Basic4ViewForm";
 
 //basic4
-import Basic4StudentsList from "./pages/Basic4/Basic4StudentsList";
-import Basic4UpdateForm from "./pages/Basic4/Basic4UpdateForm";
-import Basic4ViewForm from "./pages/Basic4/Basic4ViewForm";
+import Basic5StudentsList from "./pages/Basic5/Basic5StudentsList";
+import Basic5UpdateForm from "./pages/Basic5/Basic5UpdateForm";
+import Basic5ViewForm from "./pages/Basic5/Basic5ViewForm";
 
 
 function App() {
@@ -159,6 +159,20 @@ function App() {
               <Route
                 path="/basic4/edit/:customID"
                 element={<Basic4UpdateForm />}
+              />
+
+              {/* basic5 routes */}
+              <Route
+                path="/basic5StudentsList"
+                element={<Basic5StudentsList />}
+              />
+              <Route
+                path="/basic5/view/:customID"
+                element={<Basic5ViewForm />}
+              />
+              <Route
+                path="/basic5/edit/:customID"
+                element={<Basic5UpdateForm />}
               />
             </Routes>
           </div>
