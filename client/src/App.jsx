@@ -18,6 +18,11 @@ import Nursery2StudentsList from "./pages/Nursery2/Nursery2StudentsList";
 import Nursery2UpdateForm from "./pages/Nursery2/Nursery2UpdateForm";
 import Nursery2ViewForm from "./pages/Nursery2/Nursery2ViewForm";
 
+//kg1
+import Kg1StudentsList from "./pages/Kg1/Kg1StudentsList";
+import Kg1UpdateForm from "./pages/Kg1/Kg1UpdateForm";
+import Kg1ViewForm from "./pages/Kg1/Kg1ViewForm";
+
 function App() {
   return (
     <Router>
@@ -59,6 +64,19 @@ function App() {
               <Route
                 path="/nursery2/edit/:customID"
                 element={<Nursery2UpdateForm />}
+              />
+              {/* Kg1 routes */}
+              <Route
+                path="/kg1StudentsList"
+                element={<Kg1StudentsList />}
+              />
+              <Route
+                path="/kg1/view/:customID"
+                element={<Kg1ViewForm />}
+              />
+              <Route
+                path="/kg1/edit/:customID"
+                element={<Kg1UpdateForm />}
               />
             </Routes>
           </div>

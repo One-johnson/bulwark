@@ -56,7 +56,7 @@ const Nursery1StudentsList = () => {
                 style={{ width: "30px", height: "30px" }}
               />
             </Link>
-            <h2>NURSERY ONE (1) LEARNERS' LIST</h2>
+            <h2>KG ONE (1) LEARNERS' LIST</h2>
           </div>
         </div>
         <div className="flex items-center justify-between mt-[60px]">

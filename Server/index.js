@@ -109,7 +109,6 @@ app.delete("/nursery1/delete/:customID", (req, res) => {
   });
 });
 
-
 //nursery 2 route
 app.get("/nursery2", (req, res) => {
   const sql = "SELECT * FROM nursery2students";
@@ -155,7 +154,6 @@ app.delete("/nursery2/delete/:customID", (req, res) => {
   });
 });
 
-
 //kg1 route
 app.get("/kg1", (req, res) => {
   const sql = "SELECT * FROM kg1students";
@@ -194,6 +192,51 @@ app.put("/kg1/update/:customID", (req, res) => {
 });
 app.delete("/kg1/delete/:customID", (req, res) => {
   const sql = "DELETE FROM kg1students WHERE customID =?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+
+//kg2 route
+app.get("/kg2", (req, res) => {
+  const sql = "SELECT * FROM kg2students";
+  db.query(sql, (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+// Add a new student to nursery1
+app.post("/kg2", (req, res) => {
+  const insertSql = "INSERT INTO kg2students SET ?";
+  const customID = generateRandomID();
+  const values = { ...req.body, customID };
+
+  db.query(insertSql, values, (err, results) => {
+    if (err) return res.json(err);
+    return res.json(results);
+  });
+});
+app.get("/kg2/view/:customID", (req, res) => {
+  const sql = "SELECT * FROM kg2students WHERE customID = ?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.put("/kg2/update/:customID", (req, res) => {
+  const sql = "UPDATE kg2students SET ? WHERE customID =?";
+  const customID = req.params.customID;
+  const values = req.body;
+  db.query(sql, [values, customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.delete("/kg2/delete/:customID", (req, res) => {
+  const sql = "DELETE FROM kg2students WHERE customID =?";
   const customID = req.params.customID;
   db.query(sql, [customID], (err, results) => {
     if (err) return res.json({ Message: "Error inside server" });
