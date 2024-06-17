@@ -38,6 +38,22 @@ import Basic2StudentsList from "./pages/Basic2/Basic2StudentsList";
 import Basic2UpdateForm from "./pages/Basic2/Basic2UpdateForm";
 import Basic2ViewForm from "./pages/Basic2/Basic2ViewForm";
 
+//basic3
+import Basic3StudentsList from "./pages/Basic3/Basic3StudentsList";
+import Basic3UpdateForm from "./pages/Basic3/Basic3UpdateForm";
+import Basic3ViewForm from "./pages/Basic3/Basic3ViewForm";
+
+//basic4
+import Basic4StudentsList from "./pages/Basic4/Basic4StudentsList";
+import Basic4UpdateForm from "./pages/Basic4/Basic4UpdateForm";
+import Basic4ViewForm from "./pages/Basic4/Basic4ViewForm";
+
+//basic4
+import Basic4StudentsList from "./pages/Basic4/Basic4StudentsList";
+import Basic4UpdateForm from "./pages/Basic4/Basic4UpdateForm";
+import Basic4ViewForm from "./pages/Basic4/Basic4ViewForm";
+
+
 function App() {
   return (
     <Router>
@@ -116,6 +132,33 @@ function App() {
               <Route
                 path="/basic2/edit/:customID"
                 element={<Basic2UpdateForm />}
+              />
+
+              {/* basic3 routes */}
+              <Route
+                path="/basic3StudentsList"
+                element={<Basic3StudentsList />}
+              />
+              <Route
+                path="/basic3/view/:customID"
+                element={<Basic3ViewForm />}
+              />
+              <Route
+                path="/basic3/edit/:customID"
+                element={<Basic3UpdateForm />}
+              />
+              {/* basic4 routes */}
+              <Route
+                path="/basic4StudentsList"
+                element={<Basic4StudentsList />}
+              />
+              <Route
+                path="/basic4/view/:customID"
+                element={<Basic4ViewForm />}
+              />
+              <Route
+                path="/basic4/edit/:customID"
+                element={<Basic4UpdateForm />}
               />
             </Routes>
           </div>

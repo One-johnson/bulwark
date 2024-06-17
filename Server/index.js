@@ -334,3 +334,137 @@ app.delete("/basic2/delete/:customID", (req, res) => {
   });
 });
 
+//basic 3 route
+app.get("/basic3", (req, res) => {
+  const sql = "SELECT * FROM basic3students";
+  db.query(sql, (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+// Add a new student to nursery1
+app.post("/basic3", (req, res) => {
+  const insertSql = "INSERT INTO basic3students SET ?";
+  const customID = generateRandomID();
+  const values = { ...req.body, customID };
+
+  db.query(insertSql, values, (err, results) => {
+    if (err) return res.json(err);
+    return res.json(results);
+  });
+});
+app.get("/basic3/view/:customID", (req, res) => {
+  const sql = "SELECT * FROM basic3students WHERE customID = ?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.put("/basic3/update/:customID", (req, res) => {
+  const sql = "UPDATE basic3students SET ? WHERE customID =?";
+  const customID = req.params.customID;
+  const values = req.body;
+  db.query(sql, [values, customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.delete("/basic3/delete/:customID", (req, res) => {
+  const sql = "DELETE FROM basic3students WHERE customID =?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+
+//basic 4 route
+app.get("/basic4", (req, res) => {
+  const sql = "SELECT * FROM basic4students";
+  db.query(sql, (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+// Add a new student to nursery1
+app.post("/basic4", (req, res) => {
+  const insertSql = "INSERT INTO basic4students SET ?";
+  const customID = generateRandomID();
+  const values = { ...req.body, customID };
+
+  db.query(insertSql, values, (err, results) => {
+    if (err) return res.json(err);
+    return res.json(results);
+  });
+});
+app.get("/basic4/view/:customID", (req, res) => {
+  const sql = "SELECT * FROM basic4students WHERE customID = ?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.put("/basic4/update/:customID", (req, res) => {
+  const sql = "UPDATE basic4students SET ? WHERE customID =?";
+  const customID = req.params.customID;
+  const values = req.body;
+  db.query(sql, [values, customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.delete("/basic4/delete/:customID", (req, res) => {
+  const sql = "DELETE FROM basic4students WHERE customID =?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+
+//basic 5 route
+app.get("/basic5", (req, res) => {
+  const sql = "SELECT * FROM basic5students";
+  db.query(sql, (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+// Add a new student to nursery1
+app.post("/basic5", (req, res) => {
+  const insertSql = "INSERT INTO basic5students SET ?";
+  const customID = generateRandomID();
+  const values = { ...req.body, customID };
+
+  db.query(insertSql, values, (err, results) => {
+    if (err) return res.json(err);
+    return res.json(results);
+  });
+});
+app.get("/basic5/view/:customID", (req, res) => {
+  const sql = "SELECT * FROM basic5students WHERE customID = ?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.put("/basic5/update/:customID", (req, res) => {
+  const sql = "UPDATE basic5students SET ? WHERE customID =?";
+  const customID = req.params.customID;
+  const values = req.body;
+  db.query(sql, [values, customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.delete("/basic5/delete/:customID", (req, res) => {
+  const sql = "DELETE FROM basic5students WHERE customID =?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
