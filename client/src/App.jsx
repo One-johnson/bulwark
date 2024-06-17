@@ -21,7 +21,7 @@ import Nursery2ViewForm from "./pages/Nursery2/Nursery2ViewForm";
 //kg1
 import Kg1StudentsList from "./pages/Kg1/Kg1StudentsList";
 import Kg1UpdateForm from "./pages/Kg1/Kg1UpdateForm";
-import Kg1ViewForm from "./pages/Kg1/Kg1ViewForm"
+import Kg1ViewForm from "./pages/Kg1/Kg1ViewForm";
 
 //kg2
 import Kg2StudentsList from "./pages/Kg2/Kg2StudentsList";
@@ -32,6 +32,11 @@ import Kg2ViewForm from "./pages/Kg2/Kg2ViewForm";
 import Basic1StudentsList from "./pages/Basic1/Basic1StudentsList";
 import Basic1UpdateForm from "./pages/Basic1/Basic1UpdateForm";
 import Basic1ViewForm from "./pages/Basic1/Basic1ViewForm";
+
+//basic2
+import Basic2StudentsList from "./pages/Basic2/Basic2StudentsList";
+import Basic2UpdateForm from "./pages/Basic2/Basic2UpdateForm";
+import Basic2ViewForm from "./pages/Basic2/Basic2ViewForm";
 
 function App() {
   return (
@@ -86,9 +91,32 @@ function App() {
               <Route path="/kg2/edit/:customID" element={<Kg2UpdateForm />} />
 
               {/* basic1 routes */}
-              <Route path="/basic1StudentsList" element={<Basic1StudentsList />} />
-              <Route path="/basic1/view/:customID" element={<Basic1ViewForm />} />
-              <Route path="/basic1/edit/:customID" element={<Basic1UpdateForm />} />
+              <Route
+                path="/basic1StudentsList"
+                element={<Basic1StudentsList />}
+              />
+              <Route
+                path="/basic1/view/:customID"
+                element={<Basic1ViewForm />}
+              />
+              <Route
+                path="/basic1/edit/:customID"
+                element={<Basic1UpdateForm />}
+              />
+
+              {/* basic2 routes */}
+              <Route
+                path="/basic2StudentsList"
+                element={<Basic2StudentsList />}
+              />
+              <Route
+                path="/basic2/view/:customID"
+                element={<Basic2ViewForm />}
+              />
+              <Route
+                path="/basic2/edit/:customID"
+                element={<Basic2UpdateForm />}
+              />
             </Routes>
           </div>
         </div>
