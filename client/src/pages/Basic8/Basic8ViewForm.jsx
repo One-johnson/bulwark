@@ -1,102 +1,62 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify";
-import StatusOptions from "../../Components/StatusOption";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
-const Basic4UpdateForm = () => {
+const Basic8ViewForm = () => {
   const { customID } = useParams();
 
-  const navigate = useNavigate();
+  const [student, setStudent] = useState([]);
+
   useEffect(() => {
     axios
-      .get("http://localhost:3002/basic4/view/" + customID)
+      .get("http://localhost:3002/basic8/view/" + customID)
       .then((res) => {
         console.log(res);
-        setValues({
-          ...values,
-          registrationDate: res.data[0].registrationDate,
-          firstName: res.data[0].firstName,
-          middleName: res.data[0].middleName,
-          lastName: res.data[0].lastName,
-          dateOfBirth: res.data[0].dateOfBirth,
-          age: res.data[0].age,
-          sex: res.data[0].sex,
-          nationality: res.data[0].nationality,
-          hometown: res.data[0].hometown,
-          parentGuardian: res.data[0].parentGuardian,
-          address: res.data[0].address,
-          occupation: res.data[0].occupation,
-          religiousDenomination: res.data[0].religiousDenomination,
-          houseNumber: res.data[0].houseNumber,
-          phoneNumber: res.data[0].phoneNumber,
-          status: res.data[0].status,
-        });
+        setStudent(res.data[0]);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [customID]);
 
-  const [values, setValues] = useState({
-    registrationDate: "",
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    dateOfBirth: "",
-    age: "",
-    sex: "",
-    nationality: "",
-    hometown: "",
-    parentGuardian: "",
-    address: "",
-    occupation: "",
-    religiousDenomination: "",
-    houseNumber: "",
-    phoneNumber: "",
-    status: "",
-  });
-
-  const handleUpdate = (event) => {
-    event.preventDefault();
-    axios
-      .put("http://localhost:3002/basic4/update/" + customID, values)
-      .then((res) => {
-        console.log(res);
-        toast.success("Student updated successfully!");
-        navigate("/Basic4StudentsList");
-      })
-      .catch((err) => console.log(err));
-  };
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
-  };
+  if (student.length === 0) {
+    return <div>Loading...</div>;
+  }
 
   const inputStyle =
-    "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border-2";
+    "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none bg-gray-200";
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-300 bg-opacity-75">
       <div className="flex items-center justify-center min-h-screen px-4">
         <div className="relative w-full max-w-3xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
-            <h2 className="text-lg font-semibold mb-4 text-center">
-              Update Student
+            <h2 className="text-2xl font-bold mb-4 text-center">
+              Student Details
             </h2>
-            <form onSubmit={handleUpdate} className="mx-auto">
+            <form className="mx-auto">
               <div className="grid grid-cols-2 gap-4">
-                {/* Inputs for all fields */}
-
+                <div>
+                  <label htmlFor="customID" className="block mb-2">
+                    Student ID
+                  </label>
+                  <input
+                    type="text"
+                    id="customID"
+                    name="customID"
+                    value={student.customID}
+                    readOnly
+                    className={inputStyle}
+                  />
+                </div>
                 <div>
                   <label htmlFor="registrationDate" className="block mb-2">
                     Registration Date
                   </label>
                   <input
-                    type="date"
+                    type="text"
                     id="registrationDate"
                     name="registrationDate"
-                    value={values.registrationDate}
-                    onChange={handleChange}
-                    className={inputStyle}
+                    value={student.registrationDate}
                     readOnly
+                    className={inputStyle}
                   />
                 </div>
                 <div>
@@ -107,9 +67,9 @@ const Basic4UpdateForm = () => {
                     type="text"
                     id="firstName"
                     name="firstName"
-                    value={values.firstName}
-                    onChange={handleChange}
+                    value={student.firstName}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -120,9 +80,9 @@ const Basic4UpdateForm = () => {
                     type="text"
                     id="middleName"
                     name="middleName"
-                    value={values.middleName}
-                    onChange={handleChange}
+                    value={student.middleName}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -133,9 +93,9 @@ const Basic4UpdateForm = () => {
                     type="text"
                     id="lastName"
                     name="lastName"
-                    value={values.lastName}
-                    onChange={handleChange}
+                    value={student.lastName}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -146,9 +106,9 @@ const Basic4UpdateForm = () => {
                     type="date"
                     id="dateOfBirth"
                     name="dateOfBirth"
-                    value={values.dateOfBirth}
-                    onChange={handleChange}
+                    value={student.dateOfBirth}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -159,29 +119,25 @@ const Basic4UpdateForm = () => {
                     type="text"
                     id="age"
                     name="age"
-                    value={values.age}
-                    onChange={handleChange}
+                    value={student.age}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
-                  <label htmlFor=" sex" className="block mb-2">
-                    Sex
+                  <label htmlFor="sex" className="block mb-2">
+                    Age
                   </label>
-                  <select
-                    id="status"
-                    name="status"
-                    value={values.status}
-                    onChange={handleChange}
+                  <input
+                    type="text"
+                    id="sex"
+                    name="sex"
+                    value={student.sex}
                     className={inputStyle}
-                  >
-                    <option value="" className="text-gray-500">
-                      Select
-                    </option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                  </select>
+                    readOnly
+                  />
                 </div>
+
                 <div>
                   <label htmlFor=" nationality" className="block mb-2">
                     Nationality
@@ -190,9 +146,9 @@ const Basic4UpdateForm = () => {
                     type="text"
                     id="nationality"
                     name="nationality"
-                    value={values.nationality}
-                    onChange={handleChange}
+                    value={student.nationality}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -203,9 +159,9 @@ const Basic4UpdateForm = () => {
                     type="text"
                     id="hometown"
                     name="hometown"
-                    value={values.hometown}
-                    onChange={handleChange}
+                    value={student.hometown}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -216,9 +172,9 @@ const Basic4UpdateForm = () => {
                     type="text"
                     id="parentGuardian"
                     name="parentGuardian"
-                    value={values.parentGuardian}
-                    onChange={handleChange}
+                    value={student.parentGuardian}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -229,12 +185,11 @@ const Basic4UpdateForm = () => {
                     type="text"
                     id="address"
                     name="address"
-                    value={values.address}
-                    onChange={handleChange}
+                    value={student.address}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
-
                 <div>
                   <label htmlFor="  occupation" className="block mb-2">
                     Occupation
@@ -243,9 +198,9 @@ const Basic4UpdateForm = () => {
                     type="text"
                     id="occupation"
                     name="occupation"
-                    value={values.occupation}
-                    onChange={handleChange}
+                    value={student.occupation}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -259,9 +214,9 @@ const Basic4UpdateForm = () => {
                     type="text"
                     id="religiousDenomination"
                     name="religiousDenomination"
-                    value={values.religiousDenomination}
-                    onChange={handleChange}
+                    value={student.religiousDenomination}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -272,9 +227,9 @@ const Basic4UpdateForm = () => {
                     type="text"
                     id="houseNumber"
                     name="houseNumber"
-                    value={values.houseNumber}
-                    onChange={handleChange}
+                    value={student.houseNumber}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
                 <div>
@@ -285,41 +240,28 @@ const Basic4UpdateForm = () => {
                     type="text"
                     id="phoneNumber"
                     name="phoneNumber"
-                    value={values.phoneNumber}
-                    onChange={handleChange}
+                    value={student.phoneNumber}
                     className={inputStyle}
+                    readOnly
                   />
                 </div>
-                <div>
-                  <label htmlFor="status" className="block mb-2">
-                    Status
-                  </label>
-                  <select
-                    id="status"
-                    name="status"
-                    value={values.status}
-                    onChange={handleChange}
-                    className={inputStyle}
-                  >
-                    <StatusOptions />
-                  </select>
-                </div>
-              </div>
-              <div className="col-span-full mt-6 flex justify-center font-bold">
-                <Link
-                  to="/Basic4StudentsList"
-                  className="mr-4 text-white bg-red-600  py-2 px-4 rounded font-bold hover:bg-red-700 transition-colors duration-300"
-                >
-                  CLOSE
-                </Link>
-                <button
-                  type="submit"
-                  className="mr-4 bg-green-600 text-white px-8 py-1 rounded-md hover:bg-green-700 transition-colors duration-300 text-center"
-                >
-                  UPDATE
-                </button>
               </div>
             </form>
+
+            <div className="mt-8 text-center">
+              <Link
+                to="/Basic8StudentsList"
+                className="mr-4 text-white bg-blue-500  py-2 px-4 rounded-md font-bold hover:bg-blue-800 transition duration-300"
+              >
+                BACK
+              </Link>
+              <Link
+                to={`/basic8/edit/${student.customID}`}
+                className="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-md transition duration-300"
+              >
+                EDIT
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -327,4 +269,4 @@ const Basic4UpdateForm = () => {
   );
 };
 
-export default Basic4UpdateForm;
+export default Basic8ViewForm;

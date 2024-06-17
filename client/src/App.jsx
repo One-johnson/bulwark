@@ -48,11 +48,30 @@ import Basic4StudentsList from "./pages/Basic4/Basic4StudentsList";
 import Basic4UpdateForm from "./pages/Basic4/Basic4UpdateForm";
 import Basic4ViewForm from "./pages/Basic4/Basic4ViewForm";
 
-//basic4
+//basic5
 import Basic5StudentsList from "./pages/Basic5/Basic5StudentsList";
 import Basic5UpdateForm from "./pages/Basic5/Basic5UpdateForm";
 import Basic5ViewForm from "./pages/Basic5/Basic5ViewForm";
 
+//basic6
+import Basic6StudentsList from "./pages/Basic6/Basic6StudentsList";
+import Basic6UpdateForm from "./pages/Basic6/Basic6UpdateForm";
+import Basic6ViewForm from "./pages/Basic6/Basic6ViewForm";
+
+//basic7
+import Basic7StudentsList from "./pages/Basic7/Basic7StudentsList";
+import Basic7UpdateForm from "./pages/Basic7/Basic7UpdateForm";
+import Basic7ViewForm from "./pages/Basic7/Basic7ViewForm";
+
+//basic8
+import Basic8StudentsList from "./pages/Basic8/Basic8StudentsList";
+import Basic8UpdateForm from "./pages/Basic8/Basic8UpdateForm";
+import Basic8ViewForm from "./pages/Basic8/Basic8ViewForm";
+
+//basic9
+import Basic9StudentsList from "./pages/Basic9/Basic9StudentsList";
+import Basic9UpdateForm from "./pages/Basic9/Basic9UpdateForm";
+import Basic9ViewForm from "./pages/Basic9/Basic9ViewForm";
 
 function App() {
   return (
@@ -173,6 +192,60 @@ function App() {
               <Route
                 path="/basic5/edit/:customID"
                 element={<Basic5UpdateForm />}
+              />
+              {/* basic6 routes */}
+              <Route
+                path="/basic6StudentsList"
+                element={<Basic6StudentsList />}
+              />
+              <Route
+                path="/basic6/view/:customID"
+                element={<Basic6ViewForm />}
+              />
+              <Route
+                path="/basic6/edit/:customID"
+                element={<Basic6UpdateForm />}
+              />
+              {/* basic7 routes */}
+              <Route
+                path="/basic7StudentsList"
+                element={<Basic7StudentsList />}
+              />
+              <Route
+                path="/basic7/view/:customID"
+                element={<Basic7ViewForm />}
+              />
+              <Route
+                path="/basic7/edit/:customID"
+                element={<Basic7UpdateForm />}
+              />
+
+              {/* basic8 routes */}
+              <Route
+                path="/basic8StudentsList"
+                element={<Basic8StudentsList />}
+              />
+              <Route
+                path="/basic8/view/:customID"
+                element={<Basic8ViewForm />}
+              />
+              <Route
+                path="/basic8/edit/:customID"
+                element={<Basic8UpdateForm />}
+              />
+
+              {/* basic9 routes */}
+              <Route
+                path="/basic9StudentsList"
+                element={<Basic9StudentsList />}
+              />
+              <Route
+                path="/basic9/view/:customID"
+                element={<Basic9ViewForm />}
+              />
+              <Route
+                path="/basic9/edit/:customID"
+                element={<Basic9UpdateForm />}
               />
             </Routes>
           </div>

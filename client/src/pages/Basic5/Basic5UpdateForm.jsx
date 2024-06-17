@@ -62,7 +62,7 @@ const Basic4UpdateForm = () => {
       .then((res) => {
         console.log(res);
         toast.success("Student updated successfully!");
-        navigate("/Basic3StudentsList");
+        navigate("/Basic5StudentsList");
       })
       .catch((err) => console.log(err));
   };
