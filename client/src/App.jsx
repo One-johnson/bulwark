@@ -7,6 +7,11 @@ import Jhs from "./pages/Class-Jhs/Jhs";
 import Dashboard from "./Components/Dashboard";
 import Register from "./pages/LoginRegister/Register";
 import Login from "./pages/LoginRegister/Login";
+import ClassList from "./pages/MainPages/ClassList";
+import Calendar from "./pages/MainPages/Calendar";
+import Events from "./pages/MainPages/Events";
+import Teachers from "./pages/MainPages/Teachers";
+import TimeTable from "./pages/MainPages/TimeTable";
 
 //Nursery1
 import Nursery1StudentsList from "./pages/Nursery1/Nursery1StudentsList";
@@ -87,6 +92,11 @@ function App() {
               <Route path="/Creche" element={<Creche />} />
               <Route path="/Primary" element={<Primary />} />
               <Route path="/Jhs" element={<Jhs />} />
+              <Route path="/ClassList" element={<ClassList />} />
+              <Route path="/Calendar" element={<Calendar />} />
+              <Route path="/Events" element={<Events />} />
+              <Route path="/TimeTable" element={<TimeTable />} />
+              <Route path="/Teachers" element={<Teachers />} />
 
               {/* Nursery1 routes */}
               <Route

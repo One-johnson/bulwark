@@ -5,7 +5,7 @@ import diploma from "../../images/diploma.png";
 import study from "../../images/study.png";
 import knowledge from "../../images/knowledge.png";
 import Space from "../../Components/Space";
-import Sidebar from "../../Components/Dashboard/SidebarSection/Sidebar";
+import Sidebar from "../../Components/Sidebar";
 
 const Primary = () => {
   return (

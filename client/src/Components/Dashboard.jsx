@@ -1,5 +1,5 @@
-import Body from "./Dashboard/BodySection/Body";
-import Sidebar from "./Dashboard/SidebarSection/Sidebar";
+import Body from "./Body";
+import Sidebar from "./Sidebar";
 const Dashboard = () => {
   return (
     <div>

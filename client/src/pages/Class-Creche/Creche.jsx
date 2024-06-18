@@ -3,7 +3,7 @@ import brick from "../../images/brick.png";
 import bookshelf from "../../images/bookshelf.png";
 import students from "../../images/students.png";
 import Space from "../../Components/Space";
-import Sidebar from "../../Components/Dashboard/SidebarSection/Sidebar";
+import Sidebar from "../../Components/Sidebar";
 
 const Creche = () => {
   return (

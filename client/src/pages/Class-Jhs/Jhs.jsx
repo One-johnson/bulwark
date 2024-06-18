@@ -1,5 +1,5 @@
 import Space from "../../Components/Space";
-import Sidebar from "../../Components/Dashboard/SidebarSection/Sidebar";
+import Sidebar from "../../Components/Sidebar";
 import books from "../../images/books.png";
 import grade from "../../images/grade.png";
 import calculator from "../../images/calculator.png";
