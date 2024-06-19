@@ -16,7 +16,7 @@ import Space from "./Space";
 function Body() {
   return (
     <div className="flex flex-col flex-1 px-28 ml-64">
-      <h1 className="text-4xl font-bold mb-6 mt-16">Dashboard</h1>
+      <h1 className="text-4xl font-bold mb-6 mt-16">Class List</h1>
       <p className="mb-6 text-gray-500">
         Welcome to our School Management System! This platform empowers
         administrators to efficiently manage student enrollment and

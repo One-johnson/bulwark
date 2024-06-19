@@ -1,6 +1,6 @@
 import Sidebar from "../../Components/Sidebar";
 
-const TimeTable = () => {
+const ExamResults = () => {
   return (
     <div>
       <Sidebar />
@@ -8,4 +8,4 @@ const TimeTable = () => {
   );
 };
 
-export default TimeTable;
+export default ExamResults;

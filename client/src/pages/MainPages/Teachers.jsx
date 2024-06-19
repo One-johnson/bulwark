@@ -1,8 +1,11 @@
+import Sidebar from "../../Components/Sidebar";
 
 const Teachers = () => {
   return (
-    <div>Teachers</div>
-  )
-}
+    <div>
+      <Sidebar />
+    </div>
+  );
+};
 
-export default Teachers
+export default Teachers;

@@ -1,7 +1,8 @@
+import Sidebar from "../../Components/Sidebar"
 
 const Events = () => {
   return (
-    <div>Events</div>
+    <div><Sidebar/></div>
   )
 }
 

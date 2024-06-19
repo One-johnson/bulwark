@@ -1,9 +1,9 @@
-
+import Sidebar from "../../Components/Sidebar";
 
 const Calendar = () => {
-  return (
-    <div>Calendar</div>
-  )
-}
+  return <div>
+    <Sidebar/>
+  </div>;
+};
 
-export default Calendar
+export default Calendar;

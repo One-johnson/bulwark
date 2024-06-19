@@ -15,14 +15,13 @@ function Sidebar() {
 
   const menuItems = [
     { path: "/dashboard", icon: <FiHome />, label: "Dashboard" },
-
     { path: "/ClassList", icon: <BsList />, label: "Class List" },
     { path: "/events", icon: <BsCalendar />, label: "Events" },
     { path: "/timetable", icon: <BsClock />, label: "Timetable" },
     { path: "/calendar", icon: <BsCalendar />, label: "Calendar" },
     { path: "/teachers", icon: <BsPeople />, label: "Teachers" },
-    { path: "/exam-result", icon: <BsClipboard />, label: "Exam Result" },
-    { path: "/attendance", icon: <BsCheckCircle />, label: "Attendance" },
+    { path: "/ExamResults", icon: <BsClipboard />, label: "Exam Result" },
+    { path: "/Attendance", icon: <BsCheckCircle />, label: "Attendance" },
   ];
 
   return (
