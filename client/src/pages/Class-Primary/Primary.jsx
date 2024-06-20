@@ -6,19 +6,22 @@ import study from "../../images/study.png";
 import knowledge from "../../images/knowledge.png";
 import Space from "../../Components/Space";
 import Sidebar from "../../Components/Sidebar";
+import ClassLinks from "../../Components/ClassLinks";
 
 const Primary = () => {
   return (
-    <div className="flex flex-col flex-1 px-28 ml-64">
+    <div className="px-28 ml-64">
       <Sidebar />
-      <h1 className="text-4xl font-bold mb-6 mt-16">Primary School</h1>
-      <p className="mb-6 text-gray-500 font-normal">
-        Welcome to our Primary School, where students embark on a journey of
-        discovery and academic excellence. Our Primary program is designed to
-        foster a love for learning while building essential skills in literacy,
-        numeracy, and critical thinking.
-      </p>
-
+      <div>
+        <h1 className="text-4xl font-bold mb-6 mt-16">Primary School</h1>
+        <p className="mb-6 text-gray-500">
+          Welcome to our Primary School, where students embark on a journey of
+          discovery and academic excellence. Our Primary program is designed to
+          foster a love for learning while building essential skills in
+          literacy, numeracy, and critical thinking...
+        </p>
+      </div>
+      <ClassLinks/>
       <hr className="mb-8 border-gray-200" />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
         <Space

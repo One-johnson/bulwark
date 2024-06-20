@@ -1,27 +1,60 @@
 import { Link, useLocation } from "react-router-dom";
-import { FiHome } from "react-icons/fi";
+import { FaHome } from "react-icons/fa";
 import {
-  BsList,
-  BsCalendar,
   BsClock,
   BsPeople,
   BsClipboard,
   BsCheckCircle,
+  BsNewspaper,
 } from "react-icons/bs";
+import { FaList } from "react-icons/fa6";
+import { FaRegCalendarAlt } from "react-icons/fa";
 import Logo from "../images/school.png"; // Import your logo image or SVG
 
 function Sidebar() {
   const location = useLocation();
 
   const menuItems = [
-    { path: "/dashboard", icon: <FiHome />, label: "Dashboard" },
-    { path: "/ClassList", icon: <BsList />, label: "Class List" },
-    { path: "/events", icon: <BsCalendar />, label: "Events" },
-    { path: "/timetable", icon: <BsClock />, label: "Timetable" },
-    { path: "/calendar", icon: <BsCalendar />, label: "Calendar" },
-    { path: "/teachers", icon: <BsPeople />, label: "Teachers" },
-    { path: "/ExamResults", icon: <BsClipboard />, label: "Exam Result" },
-    { path: "/Attendance", icon: <BsCheckCircle />, label: "Attendance" },
+    {
+      path: "/dashboard",
+      icon: <FaHome className="text-gray-400" />,
+      label: "Dashboard",
+    },
+    {
+      path: "/ClassList",
+      icon: <FaList className="text-red-700" />,
+      label: "Class List",
+    },
+    {
+      path: "/events",
+      icon: <BsNewspaper className="text-green-700" />,
+      label: "Events",
+    },
+    {
+      path: "/timetable",
+      icon: <BsClock className="text-pink-700" />,
+      label: "Timetable",
+    },
+    {
+      path: "/calendar",
+      icon: <FaRegCalendarAlt className="text-orange-700" />,
+      label: "Calendar",
+    },
+    {
+      path: "/teachers",
+      icon: <BsPeople className="text-purple-500" />,
+      label: "Teachers",
+    },
+    {
+      path: "/ExamResults",
+      icon: <BsClipboard className="text-fuchsia-600" />,
+      label: "Exam Result",
+    },
+    {
+      path: "/Attendance",
+      icon: <BsCheckCircle className="text-blue-600" />,
+      label: "Attendance",
+    },
   ];
 
   return (
@@ -46,7 +79,7 @@ function Sidebar() {
                   location.pathname === item.path
                     ? "text-white bg-violet-800"
                     : "text-gray-400"
-                } hover:bg-white hover:text-violet-800 px-4 py-2 rounded flex items-center mb-1`}
+                } hover:bg-gray-200 hover:text-violet-800 px-4 py-2 rounded flex items-center mb-1`}
                 aria-current={
                   location.pathname === item.path ? "page" : undefined
                 }

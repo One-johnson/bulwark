@@ -12,20 +12,23 @@ import knowledge from "../images/knowledge.png";
 import study from "../images/study.png";
 import grade from "../images/grade.png";
 import Space from "./Space";
+import ClassLinks from "./ClassLinks";
 
 function Body() {
   return (
-    <div className="flex flex-col flex-1 px-28 ml-64">
-      <h1 className="text-4xl font-bold mb-6 mt-16">Class List</h1>
-      <p className="mb-6 text-gray-500">
-        Welcome to our School Management System! This platform empowers
-        administrators to efficiently manage student enrollment and
-        record-keeping. <br /> From here, you can access various sections to
-        oversee the educational journey of our students, ensuring a smooth and
-        productive learning experience for all.
-      </p>
-      <hr className="mb-8 border-gray-200" />
+    <div className="px-28 ml-64">
+      <div>
+        <h1 className="text-4xl font-bold mb-6 mt-16">Class List</h1>
+        <p className="mb-6 text-gray-500">
+          Welcome to our Creche section, where the youngest learners embark on
+          their educational journey in a nurturing and stimulating environment.
+          Our Creche program focuses on providing a safe and caring space for
+          infants and toddlers to explore, play, and grow...
+        </p>
+      </div>
 
+      <ClassLinks />
+      <hr className="mb-8 border-gray-200" />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
         <Space
           image={schoolbuilding}

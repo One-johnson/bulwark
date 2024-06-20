@@ -3,21 +3,21 @@ import Sidebar from "../../Components/Sidebar";
 import books from "../../images/books.png";
 import grade from "../../images/grade.png";
 import calculator from "../../images/calculator.png";
+import ClassLinks from "../../Components/ClassLinks";
 // import FilterLinks from "../../Components/FilterLinks";
 
 const Jhs = () => {
   return (
-    <div className="flex flex-col flex-1 px-28 ml-64">
+    <div className="px-28 ml-64">
       <Sidebar />
-      <h1 className="text-4xl font-bold mb-8 mt-16">Junior High School</h1>
+      <h1 className="text-4xl font-bold mb-6 mt-16">Junior High School</h1>
       <p className="mb-6 text-gray-500">
         Welcome to our Junior High School, where students continue their
         educational journey with a focus on growth, independence, and
         preparation for the future. Our Junior High program offers a rigorous
-        curriculum that challenges students academically while nurturing their
-        personal and social development.
+        curriculum that challenges students academically...
       </p>
-      {/* <FilterLinks /> */}
+     <ClassLinks/>
       <hr className="mb-8 border-gray-200" />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">

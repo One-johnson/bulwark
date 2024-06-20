@@ -4,18 +4,22 @@ import bookshelf from "../../images/bookshelf.png";
 import students from "../../images/students.png";
 import Space from "../../Components/Space";
 import Sidebar from "../../Components/Sidebar";
+import ClassLinks from "../../Components/ClassLinks";
 
 const Creche = () => {
   return (
-    <div className="flex flex-col flex-1 px-28 ml-64">
+    <div className="px-28 ml-64">
       <Sidebar />
-      <h1 className="text-4xl font-bold mb-6 mt-16">Creche</h1>
-      <p className="mb-6 text-gray-500">
-        Welcome to our Creche section, where the youngest learners embark on
-        their educational journey in a nurturing and stimulating environment.
-        Our Creche program focuses on providing a safe and caring space for
-        infants and toddlers to explore, play, and grow...
-      </p>
+      <div>
+        <h1 className="text-4xl font-bold mb-6 mt-16">Creche</h1>
+        <p className="mb-6 text-gray-500">
+          Welcome to our Creche section, where the youngest learners embark on
+          their educational journey in a nurturing and stimulating environment.
+          Our Creche program focuses on providing a safe and caring space for
+          infants and toddlers to explore, play, and grow...
+        </p>
+      </div>
+      <ClassLinks />
       <hr className="mb-8 border-gray-200" />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
