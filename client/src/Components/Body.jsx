@@ -1,20 +1,137 @@
-import books from "../images/books.png";
-import brick from "../images/brick.png";
-import bookshelf from "../images/bookshelf.png";
-import students from "../images/students.png";
-import classroom from "../images/classroom.png";
-import educate from "../images/educate.png";
-import education from "../images/education.png";
-import diploma from "../images/diploma.png";
-import calculator from "../images/calculator.png";
-import schoolbuilding from "../images/schoolbuilding.png";
-import knowledge from "../images/knowledge.png";
-import study from "../images/study.png";
-import grade from "../images/grade.png";
-import Space from "./Space";
+import { useState } from "react";
+import { FaList } from "react-icons/fa6";
+import { FiSearch } from "react-icons/fi";
+import Card from "./Card";
 import ClassLinks from "./ClassLinks";
 
 function Body() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const ClassListItems = [
+    {
+      path: "/Nursery1StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Nursery 1",
+      description:
+        "Introductory class designed to foster early childhood development through play...",
+    },
+
+    {
+      path: "/Nursery2StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Nursery 2",
+      description:
+        "Focuses on building foundational skills in language, math, and social interaction...",
+    },
+    {
+      path: "/Kg1StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Kindergarten (KG) 1",
+      description:
+        "Continued exploration of foundational skills in preparation for primary education...",
+    },
+    {
+      path: "/Kg2StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Kindergarten (KG) 2",
+      description:
+        "Continued exploration of foundational skills in preparation for primary education...",
+    },
+    {
+      path: "/Basic1StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Basic 1",
+      description:
+        "Introduction to fundamental concepts and skills in various subjects...",
+    },
+    {
+      path: "/Basic2StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Basic 2",
+      description:
+        "Building on foundational knowledge with more advanced topics and activities...",
+    },
+    {
+      path: "/Basic3StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Basic 3",
+      description:
+        "Exploring deeper levels of understanding in core subjects...",
+    },
+    {
+      path: "/Basic4StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Basic 4",
+      description:
+        "Consolidating knowledge and skills for academic advancement...",
+    },
+    {
+      path: "/Basic5StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Basic 5",
+      description:
+        "Preparing students for more complex learning experiences...",
+    },
+    {
+      path: "/Basic6StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Basic 6",
+      description:
+        "Final year of primary education, focusing on readiness for transition...",
+    },
+    {
+      path: "/Basic7StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Basic 7",
+      description:
+        "Introduction to more specialized subjects and deeper exploration of core concepts...",
+    },
+    {
+      path: "/Basic8StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Basic 8",
+      description:
+        "Building on previous knowledge with advanced topics and critical thinking skills...",
+    },
+    {
+      path: "/Basic9StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Basic 9",
+      description:
+        "Preparation for higher education with a focus on independent learning....",
+    },
+  ];
+
+  const filteredItems = ClassListItems.filter((item) =>
+    item.label.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="px-28 ml-64">
       <div>
@@ -27,94 +144,35 @@ function Body() {
         </p>
       </div>
 
-      <ClassLinks />
+      <div className="flex flex-col md:flex-row justify-between mt-10 mb-8 items-center">
+        <div className="mb-4 md:mb-0">
+          <ClassLinks />
+        </div>
+        <div className="relative w-full max-w-xs">
+          <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+            <FiSearch className="text-gray-400" />
+          </span>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="p-2 pl-10 border-2 border-gray-300 rounded-xl w-full shadow-md focus:border-violet-800 focus:outline-none transition duration-300 hover:border-gray-500"
+          />
+        </div>
+      </div>
+
       <hr className="mb-8 border-gray-200" />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
-        <Space
-          image={schoolbuilding}
-          title="Nursery 1"
-          description="Introductory class designed to foster early childhood development through play..."
-          link="/Nursery1StudentsList"
-        />
-        <Space
-          image={brick}
-          title="Nursery 2"
-          description="Focuses on building foundational skills in language, math, and social interaction.."
-          link="/Nursery2StudentsList"
-        />
-        <Space
-          image={bookshelf}
-          title="Kindergarten (KG) 1"
-          description="Continued exploration of foundational skills in preparation for primary education..."
-          link="/Kg1StudentsList"
-        />
-        <Space
-          image={students}
-          title="Kindergarten (KG) 2"
-          description="Continued exploration of foundational skills in preparation for primary education..."
-          link="/Kg2StudentsList"
-        />
-        <Space
-          image={classroom}
-          title="Basic 1"
-          description="Introduction to fundamental concepts and skills in various
-              subjects..."
-          link="/Basic1StudentsList"
-        />
-        <Space
-          image={educate}
-          title="Basic 2"
-          description="Building on foundational knowledge with more advanced topics and
-              activities..."
-          link="/Basic2StudentsList"
-        />
-        <Space
-          image={education}
-          title="Basic 3"
-          description="Exploring deeper levels of understanding in core subjects....."
-          link="/Basic3StudentsList"
-        />
-
-        <Space
-          image={study}
-          title="Basic 4"
-          description=" Consolidating knowledge and skills for academic advancement..."
-          link="/Basic4StudentsList"
-        />
-        <Space
-          image={knowledge}
-          title="Basic 5"
-          description=" Preparing students for more complex learning experiences..."
-          link="/Basic5StudentsList"
-        />
-        <Space
-          image={diploma}
-          title="Basic 6"
-          description="  Final year of primary education, focusing on readiness for
-              transition..."
-          link="/Basic6StudentsList"
-        />
-        <Space
-          image={books}
-          title="Basic 7"
-          description="Introduction to more specialized subjects and deeper exploration
-              of core concepts..."
-          link="/Basic7StudentsList"
-        />
-        <Space
-          image={calculator}
-          title="Basic 8"
-          description="Building on previous knowledge with advanced topics and critical
-              thinking skills..."
-          link="/Basic8StudentsList"
-        />
-        <Space
-          image={grade}
-          title="Basic 9"
-          description=" Preparation for higher education with a focus on independent
-              learning...."
-          link="/Basic9StudentsList"
-        />
+        {filteredItems.map((item) => (
+          <Card
+            key={item.path}
+            path={item.path}
+            icon={item.icon}
+            label={item.label}
+            description={item.description}
+          />
+        ))}
       </div>
     </div>
   );

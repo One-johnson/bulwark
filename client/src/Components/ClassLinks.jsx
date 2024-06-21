@@ -21,7 +21,7 @@ const ClassLinks = () => {
   ];
   return (
     <div>
-      <div className="flex items-center space-x-2 mb-5 mt-10">
+      <div className="flex items-center space-x-2">
         {ClassLinkItems.map((item) => (
           <Link
             key={item.path}

@@ -4,12 +4,12 @@ const Card = ({ path, icon, label, description }) => {
   return (
     <Link
       to={path}
-      className="bg-white border-2 shadow-xl rounded-2xl p-10 flex flex-col items-center text-center hover:border-violet-800 
+      className="bg-white border-2 shadow-xl rounded-2xl p-8 flex flex-col items-center text-center hover:border-violet-800 
       hover:bg-gray-200 overflow-hidden transition duration-300"
     >
       <div className="text-7xl mb-4">{icon}</div>
       <div className="text-lg font-bold text-gray-700">{label}</div>
-      <p className="text-sm text-gray-500 mt-2">{description}</p>
+      <p className="text-md text-gray-500 mt-2">{description}</p>
     </Link>
   );
 };

@@ -1,50 +1,92 @@
-import Space from "../../Components/Space";
-import Sidebar from "../../Components/Sidebar";
-import books from "../../images/books.png";
-import grade from "../../images/grade.png";
-import calculator from "../../images/calculator.png";
+import { useState } from "react";
+import { FaList } from "react-icons/fa6";
+import { FiSearch } from "react-icons/fi";
+import Card from "../../Components/Card";
 import ClassLinks from "../../Components/ClassLinks";
-// import FilterLinks from "../../Components/FilterLinks";
+import Sidebar from "../../Components/Sidebar";
 
-const Jhs = () => {
+function Body() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const ClassListItems = [
+    {
+      path: "/Basic7StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Basic 7",
+      description:
+        "Introduction to more specialized subjects and deeper exploration of core concepts...",
+    },
+    {
+      path: "/Basic8StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Basic 8",
+      description:
+        "Building on previous knowledge with advanced topics and critical thinking skills...",
+    },
+    {
+      path: "/Basic9StudentsList",
+      icon: (
+        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+      ),
+      label: "Basic 9",
+      description:
+        "Preparation for higher education with a focus on independent learning....",
+    },
+  ];
+
+  const filteredItems = ClassListItems.filter((item) =>
+    item.label.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="px-28 ml-64">
       <Sidebar />
-      <h1 className="text-4xl font-bold mb-6 mt-16">Junior High School</h1>
-      <p className="mb-6 text-gray-500">
-        Welcome to our Junior High School, where students continue their
-        educational journey with a focus on growth, independence, and
-        preparation for the future. Our Junior High program offers a rigorous
-        curriculum that challenges students academically...
-      </p>
-     <ClassLinks/>
-      <hr className="mb-8 border-gray-200" />
+      <div>
+        <h1 className="text-4xl font-bold mb-6 mt-16">Junior High School</h1>
+        <p className="mb-6 text-gray-500">
+          Welcome to our Creche section, where the youngest learners embark on
+          their educational journey in a nurturing and stimulating environment.
+          Our Creche program focuses on providing a safe and caring space for
+          infants and toddlers to explore, play, and grow...
+        </p>
+      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
-        <Space
-          image={books}
-          title="Basic 7"
-          description="Introduction to more specialized subjects and deeper exploration
-              of core concepts..."
-          link="/Basic7StudentsList"
-        />
-        <Space
-          image={calculator}
-          title="Basic 8"
-          description="Building on previous knowledge with advanced topics and critical
-              thinking skills..."
-          link="/Basic8StudentsList"
-        />
-        <Space
-          image={grade}
-          title="Basic 9"
-          description=" Preparation for higher education with a focus on independent
-              learning...."
-          link="/Basic9StudentsList"
-        />
+      <div className="flex flex-col md:flex-row justify-between mt-10 mb-8 items-center">
+        <div className="mb-4 md:mb-0">
+          <ClassLinks />
+        </div>
+        <div className="relative w-full max-w-xs">
+          <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+            <FiSearch className="text-gray-400" />
+          </span>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="p-2 pl-10 border-2 border-gray-300 rounded-xl w-full shadow-md focus:border-violet-800 focus:outline-none transition duration-300 hover:border-gray-500"
+          />
+        </div>
+      </div>
+
+      <hr className="mb-8 border-gray-200" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+        {filteredItems.map((item) => (
+          <Card
+            key={item.path}
+            path={item.path}
+            icon={item.icon}
+            label={item.label}
+            description={item.description}
+          />
+        ))}
       </div>
     </div>
   );
-};
+}
 
-export default Jhs;
+export default Body;
