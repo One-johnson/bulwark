@@ -5,19 +5,19 @@ const StatusTag = ({ status }) => {
 
   switch (status) {
     case "fresher":
-      bgColor = "bg-red-100";
+      bgColor = "bg-red-200";
       textColor = "text-red-600";
       border = "border-red-600";
 
       break;
     case "continuing":
-      bgColor = "bg-orange-100";
+      bgColor = "bg-orange-200";
       textColor = "text-orange-600";
        border = "border-orange-600";
 
       break;
     case "completed":
-      bgColor = "bg-green-100";
+      bgColor = "bg-green-200";
       textColor = "text-green-600";
       border = "border-green-600";
 

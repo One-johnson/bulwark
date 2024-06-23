@@ -3,11 +3,13 @@ import Logo from "../../images/school.png";
 import { useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAdmin } from "../../context/AdminContext";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const { setAdmin } = useAdmin(); // Use the context
   const navigateTo = useNavigate();
 
   const createUser = (e) => {
@@ -17,6 +19,8 @@ const Register = () => {
       UserName: userName,
       Password: password,
     }).then(() => {
+      // Set the admin's state
+      setAdmin({ userName });
       navigateTo("/");
 
       //clear the form
