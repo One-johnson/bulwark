@@ -132,7 +132,7 @@ const StudentTable = ({ filters, searchText }) => {
       center: true,
     },
     {
-      name: "Parent/Guardian",
+      name: "Parent",
       selector: (row) => row.parentGuardian,
       style: { borderRight: "1px solid #eee" },
       center: true,
@@ -150,18 +150,18 @@ const StudentTable = ({ filters, searchText }) => {
       center: true,
     },
     {
-      name: "Religious Denomination",
+      name: "Religion",
       selector: (row) => row.religiousDenomination,
       center: true,
     },
     {
-      name: "House Number",
+      name: "House No.",
       selector: (row) => row.houseNumber,
       style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
-      name: "Phone Number",
+      name: "Phone No.",
       selector: (row) => row.phoneNumber,
       style: { borderRight: "1px solid #eee" },
       center: true,

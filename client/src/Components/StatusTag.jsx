@@ -26,7 +26,7 @@ const StatusTag = ({ status }) => {
 
   return (
     <span
-      className={`${bgColor} ${textColor} font-medium py-1 px-3 rounded-xl inline-block text-sm`}
+      className={`${bgColor} ${textColor} font-sm py-1 px-2 rounded-lg inline-block text-sm`}
     >
       {status}
     </span>

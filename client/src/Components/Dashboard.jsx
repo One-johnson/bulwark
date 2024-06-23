@@ -86,7 +86,7 @@ const Dashboard = () => {
             Welcome to our School Management System! This platform empowers
             administrators to efficiently manage student enrollment and
             record-keeping. <br /> From here, you can access various sections to
-            oversee the educational journey...
+            oversee the educational journey of your learners...
           </p>
         </div>
         <div className="relative mt-10 mb-10">

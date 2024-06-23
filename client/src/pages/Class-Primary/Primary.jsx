@@ -4,6 +4,8 @@ import { FiSearch } from "react-icons/fi";
 import Card from "../../Components/Card";
 import ClassLinks from "../../Components/ClassLinks";
 import Sidebar from "../../Components/Sidebar";
+import { FaSchool, FaChalkboardTeacher } from "react-icons/fa";
+import { BsBook, BsPen } from "react-icons/bs";
 
 function Primary() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -12,7 +14,7 @@ function Primary() {
     {
       path: "/Basic1StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <FaSchool className="text-white rounded-xl shadow-lg p-4 bg-blue-700" />
       ),
       label: "Basic 1",
       description:
@@ -21,7 +23,7 @@ function Primary() {
     {
       path: "/Basic2StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <FaSchool className="text-white rounded-xl shadow-lg p-4 bg-indigo-700" />
       ),
       label: "Basic 2",
       description:
@@ -30,7 +32,7 @@ function Primary() {
     {
       path: "/Basic3StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <FaChalkboardTeacher className="text-white rounded-xl shadow-lg p-4 bg-purple-700" />
       ),
       label: "Basic 3",
       description:
@@ -39,7 +41,7 @@ function Primary() {
     {
       path: "/Basic4StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <FaChalkboardTeacher className="text-white rounded-xl shadow-lg p-4 bg-pink-700" />
       ),
       label: "Basic 4",
       description:
@@ -48,7 +50,7 @@ function Primary() {
     {
       path: "/Basic5StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <BsBook className="text-white rounded-xl shadow-lg p-4 bg-teal-700" />
       ),
       label: "Basic 5",
       description:
@@ -57,7 +59,7 @@ function Primary() {
     {
       path: "/Basic6StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <BsBook className="text-white rounded-xl shadow-lg p-4 bg-cyan-700" />
       ),
       label: "Basic 6",
       description:
@@ -75,10 +77,11 @@ function Primary() {
       <div>
         <h1 className="text-4xl font-bold mb-6 mt-16">Primary School</h1>
         <p className="mb-6 text-gray-500">
-          Welcome to our Creche section, where the youngest learners embark on
-          their educational journey in a nurturing and stimulating environment.
-          Our Creche program focuses on providing a safe and caring space for
-          infants and toddlers to explore, play, and grow...
+          Welcome to our Primary School section, where young learners build a
+          strong foundation in various subjects. Our Primary School program
+          focuses on fostering a love for learning, developing essential skills,
+          and providing a supportive environment for children to grow
+          academically and socially...
         </p>
       </div>
 

@@ -4,6 +4,8 @@ import { FiSearch } from "react-icons/fi";
 import Card from "../../Components/Card";
 import ClassLinks from "../../Components/ClassLinks";
 import Sidebar from "../../Components/Sidebar";
+import { BsPen } from "react-icons/bs";
+import { MdOutlineEmojiPeople } from "react-icons/md";
 
 function Body() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -12,7 +14,7 @@ function Body() {
     {
       path: "/Basic7StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <BsPen className="text-white rounded-xl shadow-lg p-4 bg-lime-700" />
       ),
       label: "Basic 7",
       description:
@@ -21,7 +23,7 @@ function Body() {
     {
       path: "/Basic8StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <BsPen className="text-white rounded-xl shadow-lg p-4 bg-amber-700" />
       ),
       label: "Basic 8",
       description:
@@ -30,7 +32,7 @@ function Body() {
     {
       path: "/Basic9StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <MdOutlineEmojiPeople className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
       ),
       label: "Basic 9",
       description:
@@ -48,10 +50,10 @@ function Body() {
       <div>
         <h1 className="text-4xl font-bold mb-6 mt-16">Junior High School</h1>
         <p className="mb-6 text-gray-500">
-          Welcome to our Creche section, where the youngest learners embark on
-          their educational journey in a nurturing and stimulating environment.
-          Our Creche program focuses on providing a safe and caring space for
-          infants and toddlers to explore, play, and grow...
+          Welcome to our Junior High School section, where students transition
+          from foundational learning to more specialized subjects. Our program
+          focuses on fostering critical thinking, independent learning, and
+          preparing students for higher education and beyond...
         </p>
       </div>
 

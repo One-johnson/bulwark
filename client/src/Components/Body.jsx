@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { FaList } from "react-icons/fa6";
 import { FiSearch } from "react-icons/fi";
+import { FaChild, FaSchool, FaChalkboardTeacher } from "react-icons/fa";
+import { MdOutlineEmojiPeople, MdOutlineChildFriendly } from "react-icons/md";
+import { BsBook, BsPen } from "react-icons/bs";
 import Card from "./Card";
 import ClassLinks from "./ClassLinks";
 
@@ -11,17 +13,16 @@ function Body() {
     {
       path: "/Nursery1StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <MdOutlineChildFriendly className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
       ),
       label: "Nursery 1",
       description:
         "Introductory class designed to foster early childhood development through play...",
     },
-
     {
       path: "/Nursery2StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <MdOutlineChildFriendly className="text-white rounded-xl shadow-lg p-4 bg-orange-700" />
       ),
       label: "Nursery 2",
       description:
@@ -30,7 +31,7 @@ function Body() {
     {
       path: "/Kg1StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <FaChild className="text-white rounded-xl shadow-lg p-4 bg-yellow-700" />
       ),
       label: "Kindergarten (KG) 1",
       description:
@@ -39,7 +40,7 @@ function Body() {
     {
       path: "/Kg2StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <FaChild className="text-white rounded-xl shadow-lg p-4 bg-green-700" />
       ),
       label: "Kindergarten (KG) 2",
       description:
@@ -48,7 +49,7 @@ function Body() {
     {
       path: "/Basic1StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <FaSchool className="text-white rounded-xl shadow-lg p-4 bg-blue-700" />
       ),
       label: "Basic 1",
       description:
@@ -57,7 +58,7 @@ function Body() {
     {
       path: "/Basic2StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <FaSchool className="text-white rounded-xl shadow-lg p-4 bg-indigo-700" />
       ),
       label: "Basic 2",
       description:
@@ -66,7 +67,7 @@ function Body() {
     {
       path: "/Basic3StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <FaChalkboardTeacher className="text-white rounded-xl shadow-lg p-4 bg-purple-700" />
       ),
       label: "Basic 3",
       description:
@@ -75,7 +76,7 @@ function Body() {
     {
       path: "/Basic4StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <FaChalkboardTeacher className="text-white rounded-xl shadow-lg p-4 bg-pink-700" />
       ),
       label: "Basic 4",
       description:
@@ -84,7 +85,7 @@ function Body() {
     {
       path: "/Basic5StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <BsBook className="text-white rounded-xl shadow-lg p-4 bg-teal-700" />
       ),
       label: "Basic 5",
       description:
@@ -93,7 +94,7 @@ function Body() {
     {
       path: "/Basic6StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <BsBook className="text-white rounded-xl shadow-lg p-4 bg-cyan-700" />
       ),
       label: "Basic 6",
       description:
@@ -102,7 +103,7 @@ function Body() {
     {
       path: "/Basic7StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <BsPen className="text-white rounded-xl shadow-lg p-4 bg-lime-700" />
       ),
       label: "Basic 7",
       description:
@@ -111,7 +112,7 @@ function Body() {
     {
       path: "/Basic8StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <BsPen className="text-white rounded-xl shadow-lg p-4 bg-amber-700" />
       ),
       label: "Basic 8",
       description:
@@ -120,7 +121,7 @@ function Body() {
     {
       path: "/Basic9StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <MdOutlineEmojiPeople className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
       ),
       label: "Basic 9",
       description:
@@ -137,10 +138,10 @@ function Body() {
       <div>
         <h1 className="text-4xl font-bold mb-6 mt-16">Class List</h1>
         <p className="mb-6 text-gray-500">
-          Welcome to our Creche section, where the youngest learners embark on
-          their educational journey in a nurturing and stimulating environment.
-          Our Creche program focuses on providing a safe and caring space for
-          infants and toddlers to explore, play, and grow...
+          Explore our comprehensive class list for each educational level. From
+          Nursery to Basic 9, each class is designed to foster academic growth
+          and personal development. Click on any class to view detailed
+          information and access student lists...
         </p>
       </div>
 

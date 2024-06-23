@@ -4,6 +4,8 @@ import { FiSearch } from "react-icons/fi";
 import Card from "../../Components/Card";
 import ClassLinks from "../../Components/ClassLinks";
 import Sidebar from "../../Components/Sidebar";
+import { FaChild } from "react-icons/fa";
+import { MdOutlineChildFriendly } from "react-icons/md";
 
 function Creche() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -12,7 +14,7 @@ function Creche() {
     {
       path: "/Nursery1StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <MdOutlineChildFriendly className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
       ),
       label: "Nursery 1",
       description:
@@ -22,7 +24,7 @@ function Creche() {
     {
       path: "/Nursery2StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <MdOutlineChildFriendly className="text-white rounded-xl shadow-lg p-4 bg-orange-700" />
       ),
       label: "Nursery 2",
       description:
@@ -31,7 +33,7 @@ function Creche() {
     {
       path: "/Kg1StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <FaChild className="text-white rounded-xl shadow-lg p-4 bg-yellow-700" />
       ),
       label: "Kindergarten (KG) 1",
       description:
@@ -40,7 +42,7 @@ function Creche() {
     {
       path: "/Kg2StudentsList",
       icon: (
-        <FaList className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
+        <FaChild className="text-white rounded-xl shadow-lg p-4 bg-green-700" />
       ),
       label: "Kindergarten (KG) 2",
       description:
