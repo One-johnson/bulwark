@@ -80,6 +80,8 @@ import Basic9StudentsList from "./pages/Basic9/Basic9StudentsList";
 import Basic9UpdateForm from "./pages/Basic9/Basic9UpdateForm";
 import Basic9ViewForm from "./pages/Basic9/Basic9ViewForm";
 import { AdminProvider } from "./context/AdminContext";
+import Navbar from "./Components/Navbar";
+import Sidebar from "./Components/Sidebar";
 
 function App() {
   return (
@@ -88,6 +90,8 @@ function App() {
         <div className="flex h-screen">
           <div className="flex flex-col flex-1">
             <div className="overflow-y-auto h-full">
+             <Sidebar/>
+              <Navbar />
               <ToastContainer />
               <Routes>
                 <Route path="/" element={<Login />} />

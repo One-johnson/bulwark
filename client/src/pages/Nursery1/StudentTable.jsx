@@ -194,9 +194,9 @@ const StudentTable = ({ filters, searchText }) => {
         backgroundColor: "#f3f4f6",
         color: "#000",
         fontWeight: "bold",
-        fontSize: "16px",
+        fontSize: "14px",
         borderRight: "2px solid #eee",
-        width: "180px",
+        width: "160px",
       },
     },
     cells: {

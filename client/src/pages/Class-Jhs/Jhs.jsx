@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { FaList } from "react-icons/fa6";
 import { FiSearch } from "react-icons/fi";
 import Card from "../../Components/Card";
 import ClassLinks from "../../Components/ClassLinks";
@@ -45,10 +44,10 @@ function Body() {
   );
 
   return (
-    <div className="px-28 ml-64">
+    <div className="px-24 ml-60">
       <Sidebar />
       <div>
-        <h1 className="text-4xl font-bold mb-6 mt-16">Junior High School</h1>
+        <h1 className="text-4xl font-bold mb-6 mt-32">Junior High School</h1>
         <p className="mb-6 text-gray-500">
           Welcome to our Junior High School section, where students transition
           from foundational learning to more specialized subjects. Our program

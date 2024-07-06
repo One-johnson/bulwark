@@ -10,7 +10,6 @@ import {
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { FaList } from "react-icons/fa6";
 import { FiSearch } from "react-icons/fi";
-import Sidebar from "./Sidebar";
 
 const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -78,10 +77,9 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Sidebar />
-      <div className="ml-64 px-28">
+      <div className="ml-60 px-24">
         <div>
-          <h1 className="text-4xl font-bold mb-6 mt-16">Admin Dashboard</h1>
+          <h1 className="text-4xl font-bold mb-6 mt-32">Admin Dashboard</h1>
           <p className=" text-gray-500 mb-6">
             Welcome to our School Management System! This platform empowers
             administrators to efficiently manage student enrollment and

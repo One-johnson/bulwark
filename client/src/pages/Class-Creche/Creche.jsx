@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { FaList } from "react-icons/fa6";
 import { FiSearch } from "react-icons/fi";
 import Card from "../../Components/Card";
 import ClassLinks from "../../Components/ClassLinks";
@@ -55,10 +54,10 @@ function Creche() {
   );
 
   return (
-    <div className="px-28 ml-64">
+    <div className="px-24 ml-60">
       <Sidebar />
       <div>
-        <h1 className="text-4xl font-bold mb-6 mt-16">Creche</h1>
+        <h1 className="text-4xl font-bold mb-6 mt-32">Creche</h1>
         <p className="mb-6 text-gray-500">
           Welcome to our Creche section, where the youngest learners embark on
           their educational journey in a nurturing and stimulating environment.

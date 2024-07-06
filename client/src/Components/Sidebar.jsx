@@ -58,12 +58,12 @@ function Sidebar() {
   ];
 
   return (
-    <div className="bg-violet-900 h-full left-0 top-0 z-50 w-64 fixed flex flex-col">
+    <div className="bg-violet-900 h-full left-0 top-0 z-50 w-60 fixed flex flex-col">
       {/* Header */}
       <div className="p-4">
-        <div className="mb-8 bg-violet-300 shadow-2xl px-2 py- h-40 rounded-lg flex items-center">
+        <div className=" mb-8 bg-violet-300 shadow-2xl px-2 py- h-40 rounded-lg flex items-center">
           <img src={Logo} alt="Logo" className="w-16 h-16 mr-2" />
-          <span className="text-lg font-extrabold">
+          <span className="font-bold">
             E. P. Church School, Abeka
           </span>
         </div>
