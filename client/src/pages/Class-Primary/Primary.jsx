@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import Card from "../../Components/Card";
 import ClassLinks from "../../Components/ClassLinks";
-import Sidebar from "../../Components/Sidebar";
+
 import { FaSchool, FaChalkboardTeacher } from "react-icons/fa";
 import { BsBook } from "react-icons/bs";
 
@@ -72,7 +72,6 @@ function Primary() {
 
   return (
     <div className="px-24 ml-60">
-      <Sidebar />
       <div>
         <h1 className="text-4xl font-bold mb-6 mt-32">Primary School</h1>
         <p className="mb-6 text-gray-500">
