@@ -74,107 +74,92 @@ const StudentTable = ({ filters, searchText }) => {
     {
       name: "Student ID",
       selector: (row) => row.customID,
-      style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
       name: "Registration Date",
       selector: (row) => row.registrationDate,
-      style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
       name: "First Name",
       selector: (row) => row.firstName,
-      style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
       name: "Middle Name",
       selector: (row) => row.middleName,
-      style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
       name: "Last Name",
       selector: (row) => row.lastName,
-      style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
       name: "Date of Birth",
       selector: (row) => row.dateOfBirth,
-      style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
       name: "Age",
       selector: (row) => row.age,
-      style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
       name: "Sex",
       selector: (row) => row.sex,
-      style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
       name: "Nationality",
       selector: (row) => row.nationality,
-      style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
       name: "Hometown",
       selector: (row) => row.hometown,
-      style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
-      name: "Parent/Guardian",
+      name: "Parent",
       selector: (row) => row.parentGuardian,
-      style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
       name: "Address",
       selector: (row) => row.address,
-      style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
       name: "Occupation",
       selector: (row) => row.occupation,
-      style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
-      name: "Religious Denomination",
+      name: "Religion",
       selector: (row) => row.religiousDenomination,
       center: true,
     },
     {
-      name: "House Number",
+      name: "House No.",
       selector: (row) => row.houseNumber,
-      style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
-      name: "Phone Number",
+      name: "Phone No.",
       selector: (row) => row.phoneNumber,
-      style: { borderRight: "1px solid #eee" },
       center: true,
     },
     {
       name: "Status",
       selector: (row) => <StatusTag status={row.status} />,
-      style: { borderRight: "1px solid #eee" },
+
       center: true,
     },
     {
       name: "Action",
-      style: { borderRight: "1px solid #eee" },
+
       center: true,
       cell: (row) => (
         <div className="flex space-x-3 items-center text-lg">
@@ -204,13 +189,16 @@ const StudentTable = ({ filters, searchText }) => {
         backgroundColor: "#f3f4f6",
         color: "#000",
         fontWeight: "bold",
-        fontSize: "16px",
+        fontSize: "14px",
+        borderRight: "2px solid #eee",
+        width: "160px",
       },
     },
     cells: {
       style: {
         textAlign: "center",
-        fontSize: "15px",
+        fontSize: "14px",
+        borderRight: "1px solid #eee",
       },
     },
     pagination: {
@@ -219,7 +207,6 @@ const StudentTable = ({ filters, searchText }) => {
         justifyContent: "center",
         marginTop: "20px",
       },
-    
     },
   };
 

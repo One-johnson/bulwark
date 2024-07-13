@@ -129,31 +129,26 @@ const StudentTable = ({ filters, searchText }) => {
     {
       name: "Address",
       selector: (row) => row.address,
-
       center: true,
     },
     {
       name: "Occupation",
       selector: (row) => row.occupation,
-
       center: true,
     },
     {
       name: "Religion",
       selector: (row) => row.religiousDenomination,
-
       center: true,
     },
     {
       name: "House No.",
       selector: (row) => row.houseNumber,
-
       center: true,
     },
     {
       name: "Phone No.",
       selector: (row) => row.phoneNumber,
-
       center: true,
     },
     {
