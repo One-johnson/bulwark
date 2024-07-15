@@ -2,70 +2,66 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import StatusOptions from "../../Components/StatusOption";
+import StatusOptions from "../../../Components/StatusOption";
 
-const Basic9UpdateForm = () => {
+const TeacherUpdateForm = () => {
   const { customID } = useParams();
-
   const navigate = useNavigate();
+
+  const [values, setValues] = useState({
+    fullName: "",
+    dateOfBirth: "",
+    gender: "",
+    nationality: "",
+    phone: "",
+    email: "",
+    address: "",
+    qualifications: "",
+    experience: "",
+    position: "",
+    startDate: "",
+    salary: "",
+    emergencyContact: "",
+    status: "",
+  });
+
   useEffect(() => {
     axios
-      .get("http://localhost:3002/basic9/view/" + customID)
+      .get("http://localhost:3002/teachers/view/" + customID)
       .then((res) => {
         console.log(res);
         setValues({
-          ...values,
-          registrationDate: res.data[0].registrationDate,
-          firstName: res.data[0].firstName,
-          middleName: res.data[0].middleName,
-          lastName: res.data[0].lastName,
+          fullName: res.data[0].fullName,
           dateOfBirth: res.data[0].dateOfBirth,
-          age: res.data[0].age,
-          sex: res.data[0].sex,
+          gender: res.data[0].gender,
           nationality: res.data[0].nationality,
-          hometown: res.data[0].hometown,
-          parentGuardian: res.data[0].parentGuardian,
+          phone: res.data[0].phone,
+          email: res.data[0].email,
           address: res.data[0].address,
-          occupation: res.data[0].occupation,
-          religiousDenomination: res.data[0].religiousDenomination,
-          houseNumber: res.data[0].houseNumber,
-          phoneNumber: res.data[0].phoneNumber,
+          qualifications: res.data[0].qualifications,
+          experience: res.data[0].experience,
+          position: res.data[0].position,
+          startDate: res.data[0].startDate,
+          salary: res.data[0].salary,
+          emergencyContact: res.data[0].emergencyContact,
           status: res.data[0].status,
         });
       })
       .catch((err) => console.log(err));
-  }, []);
-
-  const [values, setValues] = useState({
-    registrationDate: "",
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    dateOfBirth: "",
-    age: "",
-    sex: "",
-    nationality: "",
-    hometown: "",
-    parentGuardian: "",
-    address: "",
-    occupation: "",
-    religiousDenomination: "",
-    houseNumber: "",
-    phoneNumber: "",
-    status: "",
-  });
+  }, [customID]);
 
   const handleUpdate = (event) => {
     event.preventDefault();
     axios
-      .put("http://localhost:3002/basic9/update/" + customID, values)
+      .put("http://localhost:3002/teachers/update/" + customID, values)
       .then((res) => {
         console.log(res);
-        toast.success("Student updated successfully!");
-        navigate("/Basic9StudentsList");
+        toast.success("Teacher updated successfully!");
+        navigate("/TeachersList");
       })
       .catch((err) => console.log(err));
   };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
@@ -73,67 +69,27 @@ const Basic9UpdateForm = () => {
 
   const inputStyle =
     "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border-2";
+
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-300 bg-opacity-75">
       <div className="flex items-center justify-center min-h-screen px-4">
         <div className="relative w-full max-w-3xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
             <h2 className="text-lg font-semibold mb-4 text-center">
-              Update Student
+              Update Teacher
             </h2>
             <form onSubmit={handleUpdate} className="mx-auto">
               <div className="grid grid-cols-2 gap-4">
                 {/* Inputs for all fields */}
-
                 <div>
-                  <label htmlFor="registrationDate" className="block mb-2">
-                    Registration Date
-                  </label>
-                  <input
-                    type="date"
-                    id="registrationDate"
-                    name="registrationDate"
-                    value={values.registrationDate}
-                    onChange={handleChange}
-                    className={inputStyle}
-                    readOnly
-                  />
-                </div>
-                <div>
-                  <label htmlFor="firstName" className="block mb-2">
-                    First Name
+                  <label htmlFor="fullName" className="block mb-2">
+                    Full Name
                   </label>
                   <input
                     type="text"
-                    id="firstName"
-                    name="firstName"
-                    value={values.firstName}
-                    onChange={handleChange}
-                    className={inputStyle}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="middleName" className="block mb-2">
-                    Middle Name
-                  </label>
-                  <input
-                    type="text"
-                    id="middleName"
-                    name="middleName"
-                    value={values.middleName}
-                    onChange={handleChange}
-                    className={inputStyle}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block mb-2">
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    value={values.lastName}
+                    id="fullName"
+                    name="fullName"
+                    value={values.fullName}
                     onChange={handleChange}
                     className={inputStyle}
                   />
@@ -152,26 +108,13 @@ const Basic9UpdateForm = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" age" className="block mb-2">
-                    Age
-                  </label>
-                  <input
-                    type="text"
-                    id="age"
-                    name="age"
-                    value={values.age}
-                    onChange={handleChange}
-                    className={inputStyle}
-                  />
-                </div>
-                <div>
-                  <label htmlFor=" sex" className="block mb-2">
-                    Sex
+                  <label htmlFor="gender" className="block mb-2">
+                    Gender
                   </label>
                   <select
-                    id="status"
-                    name="status"
-                    value={values.status}
+                    id="gender"
+                    name="gender"
+                    value={values.gender}
                     onChange={handleChange}
                     className={inputStyle}
                   >
@@ -183,7 +126,7 @@ const Basic9UpdateForm = () => {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor=" nationality" className="block mb-2">
+                  <label htmlFor="nationality" className="block mb-2">
                     Nationality
                   </label>
                   <input
@@ -196,33 +139,33 @@ const Basic9UpdateForm = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" hometown" className="block mb-2">
-                    Hometown
+                  <label htmlFor="phone" className="block mb-2">
+                    Phone
                   </label>
                   <input
                     type="text"
-                    id="hometown"
-                    name="hometown"
-                    value={values.hometown}
+                    id="phone"
+                    name="phone"
+                    value={values.phone}
                     onChange={handleChange}
                     className={inputStyle}
                   />
                 </div>
                 <div>
-                  <label htmlFor=" parentGuardian" className="block mb-2">
-                    Parent/Guardian
+                  <label htmlFor="email" className="block mb-2">
+                    Email
                   </label>
                   <input
-                    type="text"
-                    id="parentGuardian"
-                    name="parentGuardian"
-                    value={values.parentGuardian}
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={values.email}
                     onChange={handleChange}
                     className={inputStyle}
                   />
                 </div>
                 <div>
-                  <label htmlFor=" address" className="block mb-2">
+                  <label htmlFor="address" className="block mb-2">
                     Address
                   </label>
                   <input
@@ -234,62 +177,85 @@ const Basic9UpdateForm = () => {
                     className={inputStyle}
                   />
                 </div>
+                <div>
+                  <label htmlFor="qualifications" className="block mb-2">
+                    Qualifications
+                  </label>
+                  <input
+                    type="text"
+                    id="qualifications"
+                    name="qualifications"
+                    value={values.qualifications}
+                    onChange={handleChange}
+                    className={inputStyle}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="experience" className="block mb-2">
+                    Experience
+                  </label>
+                  <input
+                    type="text"
+                    id="experience"
+                    name="experience"
+                    value={values.experience}
+                    onChange={handleChange}
+                    className={inputStyle}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="position" className="block mb-2">
+                    Position
+                  </label>
+                  <input
+                    type="text"
+                    id="position"
+                    name="position"
+                    value={values.position}
+                    onChange={handleChange}
+                    className={inputStyle}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="startDate" className="block mb-2">
+                    Start Date
+                  </label>
+                  <input
+                    type="date"
+                    id="startDate"
+                    name="startDate"
+                    value={values.startDate}
+                    onChange={handleChange}
+                    className={inputStyle}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="salary" className="block mb-2">
+                    Salary
+                  </label>
+                  <input
+                    type="text"
+                    id="salary"
+                    name="salary"
+                    value={values.salary}
+                    onChange={handleChange}
+                    className={inputStyle}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="emergencyContact" className="block mb-2">
+                    Emergency Contact
+                  </label>
+                  <input
+                    type="text"
+                    id="emergencyContact"
+                    name="emergencyContact"
+                    value={values.emergencyContact}
+                    onChange={handleChange}
+                    className={inputStyle}
+                  />
+                </div>
 
-                <div>
-                  <label htmlFor="  occupation" className="block mb-2">
-                    Occupation
-                  </label>
-                  <input
-                    type="text"
-                    id="occupation"
-                    name="occupation"
-                    value={values.occupation}
-                    onChange={handleChange}
-                    className={inputStyle}
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="  religiousDenomination"
-                    className="block mb-2"
-                  >
-                    Religious Denomiation
-                  </label>
-                  <input
-                    type="text"
-                    id="religiousDenomination"
-                    name="religiousDenomination"
-                    value={values.religiousDenomination}
-                    onChange={handleChange}
-                    className={inputStyle}
-                  />
-                </div>
-                <div>
-                  <label htmlFor=" houseNumber" className="block mb-2">
-                    House Number
-                  </label>
-                  <input
-                    type="text"
-                    id="houseNumber"
-                    name="houseNumber"
-                    value={values.houseNumber}
-                    onChange={handleChange}
-                    className={inputStyle}
-                  />
-                </div>
-                <div>
-                  <label htmlFor=" phoneNumber" className="block mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="text"
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    value={values.phoneNumber}
-                    onChange={handleChange}
-                    className={inputStyle}
-                  />
-                </div>
                 <div>
                   <label htmlFor="status" className="block mb-2">
                     Status
@@ -307,8 +273,8 @@ const Basic9UpdateForm = () => {
               </div>
               <div className="col-span-full mt-6 flex justify-center font-bold">
                 <Link
-                  to="/Basic9StudentsList"
-                  className="mr-4 text-white bg-red-600  py-2 px-4 rounded font-bold hover:bg-red-700 transition-colors duration-300"
+                  to="/TeachersList"
+                  className="mr-4 text-white bg-red-600 py-2 px-4 rounded font-bold hover:bg-red-700 transition-colors duration-300"
                 >
                   CLOSE
                 </Link>
@@ -327,4 +293,4 @@ const Basic9UpdateForm = () => {
   );
 };
 
-export default Basic9UpdateForm;
+export default TeacherUpdateForm;

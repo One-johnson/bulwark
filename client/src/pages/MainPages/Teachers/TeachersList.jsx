@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { RiAddLine } from "react-icons/ri";
-import StudentTable from "./StudentTable";
-import AddStudentForm from "./AddTeacherForm";
-import CustomSelect from "../../assets/CustomSelect";
+import StudentTable from "./TeacherTable";
+import CustomSelect from "../../../assets/CustomSelect";
 import { FiSearch } from "react-icons/fi";
+import AddTeacherForm from "./AddTeacherForm";
 
-const Basic9StudentsList = () => {
+const TeachersList = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [filters, setFilters] = useState({
@@ -40,7 +40,7 @@ const Basic9StudentsList = () => {
             className="font-bold text-xl sm:text-xl bg-violet-800 
           rounded-lg px-4 py-2 text-gray-200"
           >
-            <h2>BASIC NINE (9) LEARNERS' LIST</h2>
+            <h2>TEACHERS LIST</h2>
           </div>
           <button
             onClick={toggleFormVisibility}
@@ -50,7 +50,7 @@ const Basic9StudentsList = () => {
             <p className="font-semibold">Add</p>
             <RiAddLine className="text-xl" />
           </button>
-          {isFormVisible && <AddStudentForm onClose={handleCloseForm} />}
+          {isFormVisible && <AddTeacherForm onClose={handleCloseForm} />}
         </div>
         <div className="flex items-center justify-between mt-[60px] flex-col md:flex-row">
           <div className="flex items-center space-x-4 p-2 ">
@@ -114,4 +114,4 @@ const Basic9StudentsList = () => {
   );
 };
 
-export default Basic9StudentsList;
+export default TeachersList;

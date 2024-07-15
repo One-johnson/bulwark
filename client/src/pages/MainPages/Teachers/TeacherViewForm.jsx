@@ -1,95 +1,51 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
 import axios from "axios";
-import { toast } from "react-toastify";
-import StatusOptions from "../../../Components/StatusOption";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
-const AddTeacherForm = ({ onClose }) => {
-  const [values, setValues] = useState({
-    fullName: "",
-    dateOfBirth: "",
-    gender: "",
-    nationality: "",
-    phone: "",
-    email: "",
-    address: "",
-    qualifications: "",
-    experience: "",
-    position: "",
-    startDate: "",
-    salary: "",
-    emergencyContact: "",
-    status: "",
-  });
+const TeacherViewForm = () => {
+  const { customID } = useParams();
 
-  const inputStyle =
-    "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border-2";
+  const [teacher, setTeacher] = useState({});
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  useEffect(() => {
     axios
-      .post("http://localhost:3002/teachers", values)
+      .get("http://localhost:3002/teachers/view/" + customID)
       .then((res) => {
         console.log(res);
-        // Show success toast
-        toast.success("Teacher added successfully!");
-        // Reset form fields
-        setValues({
-          fullName: "",
-          dateOfBirth: "",
-          gender: "",
-          nationality: "",
-          phone: "",
-          email: "",
-          address: "",
-          qualifications: "",
-          experience: "",
-          position: "",
-          startDate: "",
-          salary: "",
-          emergencyContact: "",
-          status: "",
-        });
+        setTeacher(res.data[0]);
       })
       .catch((err) => console.log(err));
-  };
+  }, [customID]);
 
-  const handleCancel = () => {
-    onClose();
-    setValues({
-      fullName: "",
-      dateOfBirth: "",
-      gender: "",
-      nationality: "",
-      phone: "",
-      email: "",
-      address: "",
-      qualifications: "",
-      experience: "",
-      position: "",
-      startDate: "",
-      salary: "",
-      emergencyContact: "",
-      status: "",
-    });
-  };
+  if (!teacher.customID) {
+    return <div>Loading...</div>;
+  }
 
+  const inputStyle =
+    "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none bg-gray-200";
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-800 bg-opacity-80">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-300 bg-opacity-75">
       <div className="flex items-center justify-center min-h-screen px-4">
-        <div className="relative w-full max-w-5xl mx-auto">
+        <div className="relative w-full max-w-3xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
-            <h2 className="text-lg font-semibold mb-4 text-center">
-              Add New Teacher
+            <h2 className="text-2xl font-bold mb-4 text-center">
+              Teacher Details
             </h2>
-            <form onSubmit={handleSubmit} className="mx-auto">
+            <form className="mx-auto">
               <div className="grid grid-cols-2 gap-4">
-                {/* Inputs for all fields */}
+                <div>
+                  <label htmlFor="customID" className="block mb-2">
+                    Teacher ID
+                  </label>
+                  <input
+                    type="text"
+                    id="customID"
+                    name="customID"
+                    value={teacher.customID}
+                    readOnly
+                    className={inputStyle}
+                  />
+                </div>
                 <div>
                   <label htmlFor="fullName" className="block mb-2">
                     Full Name
@@ -98,10 +54,9 @@ const AddTeacherForm = ({ onClose }) => {
                     type="text"
                     id="fullName"
                     name="fullName"
-                    value={values.fullName}
-                    onChange={handleChange}
+                    value={teacher.fullName}
+                    readOnly
                     className={inputStyle}
-                    required
                   />
                 </div>
                 <div>
@@ -112,30 +67,23 @@ const AddTeacherForm = ({ onClose }) => {
                     type="date"
                     id="dateOfBirth"
                     name="dateOfBirth"
-                    value={values.dateOfBirth}
-                    onChange={handleChange}
+                    value={teacher.dateOfBirth}
+                    readOnly
                     className={inputStyle}
-                    required
                   />
                 </div>
                 <div>
                   <label htmlFor="gender" className="block mb-2">
                     Gender
                   </label>
-                  <select
+                  <input
+                    type="text"
                     id="gender"
                     name="gender"
-                    value={values.gender}
-                    onChange={handleChange}
+                    value={teacher.gender}
+                    readOnly
                     className={inputStyle}
-                    required
-                  >
-                    <option value="" className="text-gray-500">
-                      Select
-                    </option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                  </select>
+                  />
                 </div>
                 <div>
                   <label htmlFor="nationality" className="block mb-2">
@@ -145,10 +93,9 @@ const AddTeacherForm = ({ onClose }) => {
                     type="text"
                     id="nationality"
                     name="nationality"
-                    value={values.nationality}
-                    onChange={handleChange}
+                    value={teacher.nationality}
+                    readOnly
                     className={inputStyle}
-                    required
                   />
                 </div>
                 <div>
@@ -159,10 +106,9 @@ const AddTeacherForm = ({ onClose }) => {
                     type="text"
                     id="phone"
                     name="phone"
-                    value={values.phone}
-                    onChange={handleChange}
+                    value={teacher.phone}
+                    readOnly
                     className={inputStyle}
-                    required
                   />
                 </div>
                 <div>
@@ -173,10 +119,9 @@ const AddTeacherForm = ({ onClose }) => {
                     type="email"
                     id="email"
                     name="email"
-                    value={values.email}
-                    onChange={handleChange}
+                    value={teacher.email}
+                    readOnly
                     className={inputStyle}
-                    required
                   />
                 </div>
                 <div>
@@ -187,10 +132,9 @@ const AddTeacherForm = ({ onClose }) => {
                     type="text"
                     id="address"
                     name="address"
-                    value={values.address}
-                    onChange={handleChange}
+                    value={teacher.address}
+                    readOnly
                     className={inputStyle}
-                    required
                   />
                 </div>
                 <div>
@@ -201,10 +145,9 @@ const AddTeacherForm = ({ onClose }) => {
                     type="text"
                     id="qualifications"
                     name="qualifications"
-                    value={values.qualifications}
-                    onChange={handleChange}
+                    value={teacher.qualifications}
+                    readOnly
                     className={inputStyle}
-                    required
                   />
                 </div>
                 <div>
@@ -215,10 +158,9 @@ const AddTeacherForm = ({ onClose }) => {
                     type="text"
                     id="experience"
                     name="experience"
-                    value={values.experience}
-                    onChange={handleChange}
+                    value={teacher.experience}
+                    readOnly
                     className={inputStyle}
-                    required
                   />
                 </div>
                 <div>
@@ -229,10 +171,9 @@ const AddTeacherForm = ({ onClose }) => {
                     type="text"
                     id="position"
                     name="position"
-                    value={values.position}
-                    onChange={handleChange}
+                    value={teacher.position}
+                    readOnly
                     className={inputStyle}
-                    required
                   />
                 </div>
                 <div>
@@ -243,10 +184,9 @@ const AddTeacherForm = ({ onClose }) => {
                     type="date"
                     id="startDate"
                     name="startDate"
-                    value={values.startDate}
-                    onChange={handleChange}
+                    value={teacher.startDate}
+                    readOnly
                     className={inputStyle}
-                    required
                   />
                 </div>
                 <div>
@@ -257,10 +197,9 @@ const AddTeacherForm = ({ onClose }) => {
                     type="text"
                     id="salary"
                     name="salary"
-                    value={values.salary}
-                    onChange={handleChange}
+                    value={teacher.salary}
+                    readOnly
                     className={inputStyle}
-                    required
                   />
                 </div>
                 <div>
@@ -271,44 +210,54 @@ const AddTeacherForm = ({ onClose }) => {
                     type="text"
                     id="emergencyContact"
                     name="emergencyContact"
-                    value={values.emergencyContact}
-                    onChange={handleChange}
+                    value={teacher.emergencyContact}
+                    readOnly
                     className={inputStyle}
-                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="specialSkills" className="block mb-2">
+                    Special Skills
+                  </label>
+                  <input
+                    type="text"
+                    id="specialSkills"
+                    name="specialSkills"
+                    value={teacher.specialSkills}
+                    readOnly
+                    className={inputStyle}
                   />
                 </div>
                 <div>
                   <label htmlFor="status" className="block mb-2">
                     Status
                   </label>
-                  <select
+                  <input
+                    type="text"
                     id="status"
                     name="status"
-                    value={values.status}
-                    onChange={handleChange}
+                    value={teacher.status}
+                    readOnly
                     className={inputStyle}
-                    required
-                  >
-                    <StatusOptions />
-                  </select>
+                  />
                 </div>
               </div>
-              <div className="col-span-full mt-6 flex justify-center font-bold">
-                <button
-                  type="submit"
-                  className="mr-4 bg-green-600 text-white px-8 py-1 rounded-md hover:bg-green-700 transition-colors duration-300 text-center"
-                >
-                  Save
-                </button>
-                <button
-                  type="button"
-                  onClick={handleCancel}
-                  className="ml-4 bg-red-500 text-white px-8 py-1 rounded-md hover:bg-red-600 transition-colors duration-300 text-center"
-                >
-                  Close
-                </button>
-              </div>
             </form>
+
+            <div className="mt-8 text-center">
+              <Link
+                to="/TeachersList"
+                className="mr-4 text-white bg-blue-500 py-2 px-4 rounded-md font-bold hover:bg-blue-800 transition duration-300"
+              >
+                BACK
+              </Link>
+              <Link
+                to={`/teachers/edit/${teacher.customID}`}
+                className="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-md transition duration-300"
+              >
+                EDIT
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -316,8 +265,5 @@ const AddTeacherForm = ({ onClose }) => {
   );
 };
 
-AddTeacherForm.propTypes = {
-  onClose: PropTypes.func.isRequired,
-};
-
-export default AddTeacherForm;
+export default TeacherViewForm;
+ 

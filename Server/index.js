@@ -63,6 +63,50 @@ function generateRandomID() {
   const paddedSuffix = String(randomSuffix).padStart(4, "0"); // Ensure the suffix has at least 4 digits
   return `EPCS${paddedSuffix}`;
 }
+//teachers
+app.get("/teachers", (req, res) => {
+  const sql = "SELECT * FROM teachers";
+  db.query(sql, (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+// Add a new student to nursery1
+app.post("/teachers", (req, res) => {
+  const insertSql = "INSERT INTO teachers SET ?";
+  const customID = generateRandomID();
+  const values = { ...req.body, customID };
+
+  db.query(insertSql, values, (err, results) => {
+    if (err) return res.json(err);
+    return res.json(results);
+  });
+});
+app.get("/teachers/view/:customID", (req, res) => {
+  const sql = "SELECT * FROM teachers WHERE customID = ?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.put("/teachers/update/:customID", (req, res) => {
+  const sql = "UPDATE teachers SET ? WHERE customID =?";
+  const customID = req.params.customID;
+  const values = req.body;
+  db.query(sql, [values, customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.delete("/teachers/delete/:customID", (req, res) => {
+  const sql = "DELETE FROM teachers WHERE customID =?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
 
 //nursery 1 route
 app.get("/nursery1", (req, res) => {

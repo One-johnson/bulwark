@@ -6,19 +6,19 @@ import { FaRegTrashCan } from "react-icons/fa6";
 import PropTypes from "prop-types";
 import DataTable from "react-data-table-component";
 import { toast } from "react-toastify";
-import StatusTag from "../../Components/StatusTag";
-import PopConfirm from "../../Components/PopConfirm";
-import ExportCSV from "../../assets/ExportCSV";
-import ExportPDF from "../../assets/ExportPDF";
+import StatusTag from "../../../Components/StatusTag";
+import PopConfirm from "../../../Components/PopConfirm";
+import ExportCSV from "../../../assets/ExportCSV";
+import ExportPDF from "../../../assets/ExportPDF";
 
-const StudentTable = ({ filters, searchText }) => {
+const TeacherTable = ({ filters, searchText }) => {
   const [data, setData] = useState([]);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/basic9/")
+      .get("http://localhost:3002/teachers/")
       .then((res) => setData(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -29,11 +29,11 @@ const StudentTable = ({ filters, searchText }) => {
 
   const confirmDelete = () => {
     axios
-      .delete("http://localhost:3002/basic9/delete/" + confirmDeleteId)
+      .delete("http://localhost:3002/teachers/delete/" + confirmDeleteId)
       .then(() => {
-        setData(data.filter((student) => student.customID !== confirmDeleteId));
+        setData(data.filter((teacher) => teacher.customID !== confirmDeleteId));
         setConfirmDeleteId(null);
-        toast.success("Student deleted successfully!");
+        toast.success("Teacher deleted successfully!");
       })
       .catch((err) => console.error(err));
   };
@@ -50,50 +50,35 @@ const StudentTable = ({ filters, searchText }) => {
 
   const ageRange = parseAgeRange(filters.age);
 
-  const filteredData = data.filter((student) => {
+  const filteredData = data.filter((teacher) => {
     const ageMatch = ageRange
-      ? student.age >= ageRange.min && student.age <= ageRange.max
+      ? teacher.age >= ageRange.min && teacher.age <= ageRange.max
       : true;
 
     return (
       ageMatch &&
-      (filters.status ? student.status === filters.status : true) &&
-      (filters.gender ? student.sex === filters.gender : true) &&
-      Object.values(student).some((value) =>
+      (filters.status ? teacher.status === filters.status : true) &&
+      (filters.gender ? teacher.gender === filters.gender : true) &&
+      Object.values(teacher).some((value) =>
         String(value).toLowerCase().includes(searchText.toLowerCase())
       )
     );
   });
 
   const handleRowClick = (row) => {
-    navigate(`/basic9/view/${row.customID}`);
+    navigate(`/teachers/view/${row.customID}`);
     console.log("Row clicked:", row);
   };
 
   const columns = [
     {
-      name: "Student ID",
+      name: "Teacher ID",
       selector: (row) => row.customID,
       center: true,
     },
     {
-      name: "Registration Date",
-      selector: (row) => row.registrationDate,
-      center: true,
-    },
-    {
-      name: "First Name",
-      selector: (row) => row.firstName,
-      center: true,
-    },
-    {
-      name: "Middle Name",
-      selector: (row) => row.middleName,
-      center: true,
-    },
-    {
-      name: "Last Name",
-      selector: (row) => row.lastName,
+      name: "Full Name",
+      selector: (row) => row.fullName,
       center: true,
     },
     {
@@ -102,13 +87,8 @@ const StudentTable = ({ filters, searchText }) => {
       center: true,
     },
     {
-      name: "Age",
-      selector: (row) => row.age,
-      center: true,
-    },
-    {
-      name: "Sex",
-      selector: (row) => row.sex,
+      name: "Gender",
+      selector: (row) => row.gender,
       center: true,
     },
     {
@@ -117,13 +97,13 @@ const StudentTable = ({ filters, searchText }) => {
       center: true,
     },
     {
-      name: "Hometown",
-      selector: (row) => row.hometown,
+      name: "Phone",
+      selector: (row) => row.phone,
       center: true,
     },
     {
-      name: "Parent",
-      selector: (row) => row.parentGuardian,
+      name: "Email",
+      selector: (row) => row.email,
       center: true,
     },
     {
@@ -132,41 +112,53 @@ const StudentTable = ({ filters, searchText }) => {
       center: true,
     },
     {
-      name: "Occupation",
-      selector: (row) => row.occupation,
+      name: "Qualifications",
+      selector: (row) => row.qualifications,
       center: true,
     },
     {
-      name: "Religion",
-      selector: (row) => row.religiousDenomination,
+      name: "Experience",
+      selector: (row) => row.experience,
       center: true,
     },
     {
-      name: "House No.",
-      selector: (row) => row.houseNumber,
+      name: "Position",
+      selector: (row) => row.position,
       center: true,
     },
     {
-      name: "Phone No.",
-      selector: (row) => row.phoneNumber,
+      name: "Start Date",
+      selector: (row) => row.startDate,
       center: true,
     },
+    {
+      name: "Salary",
+      selector: (row) => row.salary,
+      center: true,
+    },
+    {
+      name: "Emergency Contact",
+      selector: (row) => row.emergencyContact,
+      center: true,
+    },
+
     {
       name: "Status",
       selector: (row) => <StatusTag status={row.status} />,
-
       center: true,
     },
     {
       name: "Action",
-
       center: true,
       cell: (row) => (
         <div className="flex space-x-3 items-center text-lg">
-          <Link to={`/basic9/view/${row.customID}`} className="text-blue-600">
+          <Link to={`/teachers/view/${row.customID}`} className="text-blue-600">
             <FaRegEye />
           </Link>
-          <Link to={`/basic9/edit/${row.customID}`} className="text-green-600">
+          <Link
+            to={`/teachers/edit/${row.customID}`}
+            className="text-green-600"
+          >
             <FaRegEdit />
           </Link>
           <button
@@ -211,7 +203,7 @@ const StudentTable = ({ filters, searchText }) => {
     <div>
       {confirmDeleteId && (
         <PopConfirm
-          message="Are you sure you want to delete this student?"
+          message="Are you sure you want to delete this teacher?"
           onCancel={cancelDelete}
           onConfirm={confirmDelete}
         />
@@ -236,7 +228,7 @@ const StudentTable = ({ filters, searchText }) => {
   );
 };
 
-StudentTable.propTypes = {
+TeacherTable.propTypes = {
   searchText: PropTypes.string,
   filters: PropTypes.shape({
     age: PropTypes.string,
@@ -245,4 +237,4 @@ StudentTable.propTypes = {
   }).isRequired,
 };
 
-export default StudentTable;
+export default TeacherTable;

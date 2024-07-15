@@ -15,7 +15,6 @@ import Login from "./pages/LoginRegister/Login";
 import ClassList from "./pages/MainPages/ClassList";
 import Calendar from "./pages/MainPages/Calendar";
 import Events from "./pages/MainPages/Events";
-import Teachers from "./pages/MainPages/Teachers";
 import TimeTable from "./pages/MainPages/TimeTable";
 import ExamResults from "./pages/MainPages/ExamResults";
 import Attendance from "./pages/MainPages/Attendance";
@@ -84,6 +83,12 @@ import Basic8ViewForm from "./pages/Basic8/Basic8ViewForm";
 import Basic9StudentsList from "./pages/Basic9/Basic9StudentsList";
 import Basic9UpdateForm from "./pages/Basic9/Basic9UpdateForm";
 import Basic9ViewForm from "./pages/Basic9/Basic9ViewForm";
+
+//teachers
+import TeacherList from "./pages/MainPages/Teachers/TeachersList";
+import TeacherUpdateForm from "./pages/MainPages/Teachers/TeacherUpdateForm";
+import TeacherViewForm from "./pages/MainPages/Teachers/TeacherViewForm";
+
 import { AdminProvider } from "./context/AdminContext";
 import Navbar from "./Components/Navbar";
 import Sidebar from "./Components/Sidebar";
@@ -122,7 +127,6 @@ function App() {
             <Route path="/Calendar" element={<Calendar />} />
             <Route path="/Events" element={<Events />} />
             <Route path="/TimeTable" element={<TimeTable />} />
-            <Route path="/Teachers" element={<Teachers />} />
             <Route path="/ExamResults" element={<ExamResults />} />
             <Route path="/Attendance" element={<Attendance />} />
 
@@ -261,6 +265,17 @@ function App() {
             <Route
               path="/basic9/edit/:customID"
               element={<Basic9UpdateForm />}
+            />
+
+            {/* teacher routes */}
+            <Route path="/teachers" element={<TeacherList />} />
+            <Route
+              path="/teachers/view/:customID"
+              element={<TeacherViewForm />}
+            />
+            <Route
+              path="/teahcers/edit/:customID"
+              element={<TeacherUpdateForm />}
             />
           </Routes>
         </Layout>
