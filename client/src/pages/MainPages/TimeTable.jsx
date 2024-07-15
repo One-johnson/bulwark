@@ -1,11 +1,5 @@
-import Sidebar from "../../Components/Sidebar";
-
 const TimeTable = () => {
-  return (
-    <div>
-      <Sidebar />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default TimeTable;

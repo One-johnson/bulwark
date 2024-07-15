@@ -1,9 +1,5 @@
-import Sidebar from "../../Components/Sidebar";
-
 const Attendance = () => {
-    return <div>
-      <Sidebar/>
-  </div>;
+  return <div></div>;
 };
 
 export default Attendance;

@@ -1,11 +1,5 @@
-import Sidebar from "../../Components/Sidebar";
-
 const ExamResults = () => {
-  return (
-    <div>
-      <Sidebar />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default ExamResults;
