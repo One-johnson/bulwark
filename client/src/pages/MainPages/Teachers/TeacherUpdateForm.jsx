@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import StatusOptions from "../../../Components/StatusOption";
 
 const TeacherUpdateForm = () => {
   const { customID } = useParams();
@@ -267,7 +266,12 @@ const TeacherUpdateForm = () => {
                     onChange={handleChange}
                     className={inputStyle}
                   >
-                    <StatusOptions />
+                    <option value="" className="text-gray-500">
+                      Select
+                    </option>
+                    <option value="full-time">Full-time</option>
+                    <option value="part-time">Part-time</option>
+                    <option value="contract">Contract</option>
                   </select>
                 </div>
               </div>

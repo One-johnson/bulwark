@@ -61,8 +61,15 @@ app.post("/login", (req, res) => {
 function generateRandomID() {
   const randomSuffix = Math.floor(Math.random() * 10000); // Generate a random number between 0 and 9999
   const paddedSuffix = String(randomSuffix).padStart(4, "0"); // Ensure the suffix has at least 4 digits
-  return `EPCS${paddedSuffix}`;
+  return `EPS${paddedSuffix}`;
 }
+
+function generateTeacherID() {
+  const randomSuffix = Math.floor(Math.random() * 10000); // Generate a random number between 0 and 9999
+  const paddedSuffix = String(randomSuffix).padStart(4, "0"); // Ensure the suffix has at least 4 digits
+  return `EPT${paddedSuffix}`;
+}
+
 //teachers
 app.get("/teachers", (req, res) => {
   const sql = "SELECT * FROM teachers";
@@ -74,7 +81,7 @@ app.get("/teachers", (req, res) => {
 // Add a new student to nursery1
 app.post("/teachers", (req, res) => {
   const insertSql = "INSERT INTO teachers SET ?";
-  const customID = generateRandomID();
+  const customID = generateTeacherID();
   const values = { ...req.body, customID };
 
   db.query(insertSql, values, (err, results) => {

@@ -2,7 +2,6 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { toast } from "react-toastify";
-import StatusOptions from "../../../Components/StatusOption";
 
 const AddTeacherForm = ({ onClose }) => {
   const [values, setValues] = useState({
@@ -82,7 +81,7 @@ const AddTeacherForm = ({ onClose }) => {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-800 bg-opacity-80">
       <div className="flex items-center justify-center min-h-screen px-4">
-        <div className="relative w-full max-w-5xl mx-auto">
+        <div className="relative w-full max-w-4xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
             <h2 className="text-lg font-semibold mb-4 text-center">
               Add New Teacher
@@ -289,7 +288,12 @@ const AddTeacherForm = ({ onClose }) => {
                     className={inputStyle}
                     required
                   >
-                    <StatusOptions />
+                    <option value="" className="text-gray-500">
+                      Select
+                    </option>
+                    <option value="full-time">Full-time</option>
+                    <option value="part-time">Part-time</option>
+                    <option value="contract">Contract</option>
                   </select>
                 </div>
               </div>

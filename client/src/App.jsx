@@ -85,7 +85,7 @@ import Basic9UpdateForm from "./pages/Basic9/Basic9UpdateForm";
 import Basic9ViewForm from "./pages/Basic9/Basic9ViewForm";
 
 //teachers
-import TeacherList from "./pages/MainPages/Teachers/TeachersList";
+import TeachersList from "./pages/MainPages/Teachers/TeachersList";
 import TeacherUpdateForm from "./pages/MainPages/Teachers/TeacherUpdateForm";
 import TeacherViewForm from "./pages/MainPages/Teachers/TeacherViewForm";
 
@@ -268,13 +268,13 @@ function App() {
             />
 
             {/* teacher routes */}
-            <Route path="/teachers" element={<TeacherList />} />
+            <Route path="/TeachersList" element={<TeachersList />} />
             <Route
               path="/teachers/view/:customID"
               element={<TeacherViewForm />}
             />
             <Route
-              path="/teahcers/edit/:customID"
+              path="/teachers/edit/:customID"
               element={<TeacherUpdateForm />}
             />
           </Routes>

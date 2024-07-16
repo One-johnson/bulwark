@@ -47,7 +47,7 @@ const Dashboard = () => {
       description: "View the school calendar and important dates.",
     },
     {
-      path: "/teachers",
+      path: "/TeachersList",
       icon: (
         <BsPeople className="text-white rounded-xl shadow-lg p-4  bg-purple-700" />
       ),

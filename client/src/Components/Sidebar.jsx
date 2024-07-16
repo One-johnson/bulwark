@@ -41,7 +41,7 @@ function Sidebar() {
       label: "Calendar",
     },
     {
-      path: "/teachers",
+      path: "/TeachersList",
       icon: <BsPeople className="text-purple-500" />,
       label: "Teachers",
     },
@@ -61,10 +61,10 @@ function Sidebar() {
     <div className="bg-violet-900 h-full left-0 top-0 z-50 w-60 fixed flex flex-col">
       {/* Header */}
       <div className="p-4">
-        <div className=" mb-8 bg-violet-300 shadow-2xl px-2 py- h-40 rounded-lg flex items-center">
-          <img src={Logo} alt="Logo" className="w-16 h-16 mr-2" />
-          <span className="font-bold">
-            E. P. Church School, Abeka
+        <div className=" mb-8 bg-white shadow-4xl px-2 py- h-40 rounded-lg flex items-center">
+          <img src={Logo} alt="Logo" className="w-20 h-20 mr-2" />
+          <span className="font-bold text-center text-lg">
+           E. P. SCHOOLS, ABEKA
           </span>
         </div>
       </div>

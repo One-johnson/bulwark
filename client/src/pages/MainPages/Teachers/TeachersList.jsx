@@ -9,7 +9,6 @@ const TeachersList = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [filters, setFilters] = useState({
-    age: "",
     status: "",
     gender: "",
   });
@@ -55,28 +54,14 @@ const TeachersList = () => {
         <div className="flex items-center justify-between mt-[60px] flex-col md:flex-row">
           <div className="flex items-center space-x-4 p-2 ">
             <CustomSelect
-              name="age"
-              value={filters.age}
-              onChange={handleFilterChange}
-              options={[
-                { value: "", label: "All Ages" },
-                { value: "1-4" },
-                { value: "5-8" },
-                { value: "9-12" },
-                { value: "13-17" },
-
-                // Add more options as needed
-              ]}
-            />
-            <CustomSelect
               name="status"
               value={filters.status}
               onChange={handleFilterChange}
               options={[
                 { value: "", label: "All Statuses" },
-                { value: "fresher" },
-                { value: "continuing" },
-                { value: "completed" },
+                { value: "full-time" },
+                { value: "part-time" },
+                { value: "contract" },
               ]}
             />
             <CustomSelect

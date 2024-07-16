@@ -19,6 +19,21 @@ const StatusTag = ({ status }) => {
       textColor = "text-white";
 
       break;
+    case "full-time":
+      bgColor = "bg-blue-600";
+      textColor = "text-white";
+
+        break;
+    case "part-time":
+      bgColor = "bg-pink-600";
+      textColor = "text-white";
+
+            break;
+    case "contract":
+      bgColor = "bg-fuchsia-600";
+      textColor = "text-white";
+
+      break;
     default:
       bgColor = "bg-gray-200";
       textColor = "text-gray-500";
