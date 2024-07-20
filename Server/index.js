@@ -70,6 +70,57 @@ function generateTeacherID() {
   return `EPT${paddedSuffix}`;
 }
 
+function generateEventID() {
+  const randomSuffix = Math.floor(Math.random() * 10000); // Generate a random number between 0 and 9999
+  const paddedSuffix = String(randomSuffix).padStart(4, "0"); // Ensure the suffix has at least 4 digits
+  return `EV${paddedSuffix}`;
+}
+
+//events
+app.get("/events", (req, res) => {
+  const sql = "SELECT * FROM events";
+  db.query(sql, (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+// Add a new event
+app.post("/events", (req, res) => {
+  const insertSql = "INSERT INTO events SET ?";
+  const customID = generateEventID();
+  const values = { ...req.body, customID };
+
+  db.query(insertSql, values, (err, results) => {
+    if (err) return res.json(err);
+    return res.json(results);
+  });
+});
+app.get("/events/view/:customID", (req, res) => {
+  const sql = "SELECT * FROM events WHERE customID = ?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.put("/events/update/:customID", (req, res) => {
+  const sql = "UPDATE events SET ? WHERE customID =?";
+  const customID = req.params.customID;
+  const values = req.body;
+  db.query(sql, [values, customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.delete("/events/delete/:customID", (req, res) => {
+  const sql = "DELETE FROM events WHERE customID =?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+
 //teachers
 app.get("/teachers", (req, res) => {
   const sql = "SELECT * FROM teachers";
@@ -78,7 +129,7 @@ app.get("/teachers", (req, res) => {
     return res.json(results);
   });
 });
-// Add a new student to nursery1
+// Add a new teacher
 app.post("/teachers", (req, res) => {
   const insertSql = "INSERT INTO teachers SET ?";
   const customID = generateTeacherID();

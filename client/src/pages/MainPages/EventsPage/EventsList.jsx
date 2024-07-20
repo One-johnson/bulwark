@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { RiAddLine } from "react-icons/ri";
-import TeacherTable from "./TeacherTable";
+import EventTable from "./EventTable";
 import CustomSelect from "../../../assets/CustomSelect";
 import { FiSearch } from "react-icons/fi";
-import AddTeacherForm from "./AddTeacherForm";
+import AddEventForm from "./AddEventForm";
 
-const TeachersList = () => {
+const EventsList = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [filters, setFilters] = useState({
     status: "",
-    gender: "",
+    startDate: "",
+    endDate: "",
   });
 
   const toggleFormVisibility = () => {
@@ -39,7 +40,7 @@ const TeachersList = () => {
             className="font-bold text-xl sm:text-xl bg-violet-800 
           rounded-lg px-4 py-2 text-gray-200"
           >
-            <h2>TEACHERS LIST</h2>
+            <h2>EVENTS LIST</h2>
           </div>
           <button
             onClick={toggleFormVisibility}
@@ -49,7 +50,7 @@ const TeachersList = () => {
             <p className="font-semibold">Add</p>
             <RiAddLine className="text-xl" />
           </button>
-          {isFormVisible && <AddTeacherForm onClose={handleCloseForm} />}
+          {isFormVisible && <AddEventForm onClose={handleCloseForm} />}
         </div>
         <div className="flex items-center justify-between mt-[60px] flex-col md:flex-row">
           <div className="flex items-center space-x-4 p-2 ">
@@ -59,20 +60,24 @@ const TeachersList = () => {
               onChange={handleFilterChange}
               options={[
                 { value: "", label: "All Statuses" },
-                { value: "full-time" },
-                { value: "part-time" },
-                { value: "contract" },
+                { value: "completed" },
+                { value: "pending" },
+                { value: "cancelled" },
               ]}
             />
             <CustomSelect
-              name="gender"
-              value={filters.gender}
+              type="date"
+              name="startDate"
+              value={filters.startDate}
               onChange={handleFilterChange}
-              options={[
-                { value: "", label: "All Genders" },
-                { value: "male" },
-                { value: "female" },
-              ]}
+              options={[]}
+            />
+            <CustomSelect
+              type="date"
+              name="endDate"
+              value={filters.endDate}
+              onChange={handleFilterChange}
+              options={[]}
             />
           </div>
           <div className="relative flex items-center w-full max-w-xs">
@@ -91,7 +96,7 @@ const TeachersList = () => {
 
         <div className="mt-[20px] ">
           <div className="w-full border border-gray-100 rounded-lg px-3 py-3">
-            <TeacherTable filters={filters} searchText={searchText} />
+            <EventTable filters={filters} searchText={searchText} />
           </div>
         </div>
       </div>
@@ -99,4 +104,4 @@ const TeachersList = () => {
   );
 };
 
-export default TeachersList;
+export default EventsList;

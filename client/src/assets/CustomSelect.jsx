@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { FiChevronDown } from "react-icons/fi";
-import StatusTag from "../Components/StatusTag"; 
+import StatusTag from "../Components/StatusTag";
 
-const CustomSelect = ({ name, value, onChange, options }) => {
+const CustomSelect = ({ type, name, value, onChange, options }) => {
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef(null);
 
@@ -27,6 +27,18 @@ const CustomSelect = ({ name, value, onChange, options }) => {
   }, []);
 
   const selectedOption = options.find((option) => option.value === value);
+
+  if (type === "date") {
+    return (
+      <input
+        type="date"
+        name={name}
+        value={value}
+        onChange={onChange}
+        className="border-2 border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border-2"
+      />
+    );
+  }
 
   return (
     <div ref={selectRef} className="relative w-[160px] text-gray-900 ">
@@ -65,13 +77,13 @@ const CustomSelect = ({ name, value, onChange, options }) => {
 };
 
 CustomSelect.propTypes = {
+  type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
-      // label: PropTypes.string.isRequired,
     })
   ).isRequired,
 };

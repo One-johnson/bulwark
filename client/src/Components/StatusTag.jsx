@@ -23,14 +23,24 @@ const StatusTag = ({ status }) => {
       bgColor = "bg-blue-600";
       textColor = "text-white";
 
-        break;
+      break;
     case "part-time":
       bgColor = "bg-pink-600";
       textColor = "text-white";
 
-            break;
+      break;
     case "contract":
       bgColor = "bg-fuchsia-600";
+      textColor = "text-white";
+
+      break;
+    case "pending":
+      bgColor = "bg-yellow-500";
+      textColor = "text-white";
+
+      break;
+    case "cancelled":
+      bgColor = "bg-red-600";
       textColor = "text-white";
 
       break;

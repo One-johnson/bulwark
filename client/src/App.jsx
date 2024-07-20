@@ -13,8 +13,7 @@ import Dashboard from "./Components/Dashboard";
 import Register from "./pages/LoginRegister/Register";
 import Login from "./pages/LoginRegister/Login";
 import ClassList from "./pages/MainPages/ClassList";
-import Calendar from "./pages/MainPages/Calendar";
-import Events from "./pages/MainPages/Events";
+import CalendarPage from "./pages/MainPages/CalendarPage";
 import TimeTable from "./pages/MainPages/TimeTable";
 import ExamResults from "./pages/MainPages/ExamResults";
 import Attendance from "./pages/MainPages/Attendance";
@@ -93,6 +92,9 @@ import { AdminProvider } from "./context/AdminContext";
 import Navbar from "./Components/Navbar";
 import Sidebar from "./Components/Sidebar";
 import PropTypes from "prop-types";
+import EventsList from "./pages/MainPages/EventsPage/EventsList";
+import EventUpdateForm from "./pages/MainPages/EventsPage/EventUpdateForm";
+import EventViewForm from "./pages/MainPages/EventsPage/EventViewForm";
 
 function Layout({ children }) {
   const location = useLocation();
@@ -124,8 +126,8 @@ function App() {
             <Route path="/Primary" element={<Primary />} />
             <Route path="/Jhs" element={<Jhs />} />
             <Route path="/ClassList" element={<ClassList />} />
-            <Route path="/Calendar" element={<Calendar />} />
-            <Route path="/Events" element={<Events />} />
+            <Route path="/calendar" element={<CalendarPage />} />
+            <Route path="/events" element={<EventsList />} />
             <Route path="/TimeTable" element={<TimeTable />} />
             <Route path="/ExamResults" element={<ExamResults />} />
             <Route path="/Attendance" element={<Attendance />} />
@@ -276,6 +278,13 @@ function App() {
             <Route
               path="/teachers/edit/:customID"
               element={<TeacherUpdateForm />}
+            />
+            {/* events routes */}
+            <Route path="/EventsList" element={<EventsList />} />
+            <Route path="/events/view/:customID" element={<EventViewForm />} />
+            <Route
+              path="/events/edit/:customID"
+              element={<EventUpdateForm />}
             />
           </Routes>
         </Layout>
