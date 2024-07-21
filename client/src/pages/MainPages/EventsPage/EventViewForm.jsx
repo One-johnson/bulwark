@@ -73,27 +73,27 @@ const EventViewForm = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="startDate" className="block mb-2">
+                  <label htmlFor="start" className="block mb-2">
                     Start Date
                   </label>
                   <input
                     type="text"
-                    id="startDate"
-                    name="startDate"
-                    value={events.startDate}
+                    id="start"
+                    name="start"
+                    value={events.start}
                     readOnly
                     className={inputStyle}
                   />
                 </div>
                 <div>
-                  <label htmlFor="endDate" className="block mb-2">
+                  <label htmlFor="end" className="block mb-2">
                     End Date
                   </label>
                   <input
                     type="text"
-                    id="endDate"
-                    name="endDate"
-                    value={events.endDate}
+                    id="end"
+                    name="end"
+                    value={events.end}
                     readOnly
                     className={inputStyle}
                   />

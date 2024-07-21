@@ -75,15 +75,14 @@ const EventTable = ({ filters, searchText }) => {
     },
     {
       name: "Start Date",
-      selector: (row) => row.startDate,
+      selector: (row) => new Date(row.start).toLocaleString(),
       center: true,
     },
     {
       name: "End Date",
-      selector: (row) => row.endDate,
+      selector: (row) => new Date(row.end).toLocaleString(),
       center: true,
     },
-
     {
       name: "Status",
       selector: (row) => <StatusTag status={row.status} />,
@@ -142,7 +141,7 @@ const EventTable = ({ filters, searchText }) => {
     <div>
       {confirmDeleteId && (
         <PopConfirm
-          message="Are you sure you want to delete this teacher?"
+          message="Are you sure you want to delete this event?"
           onCancel={cancelDelete}
           onConfirm={confirmDelete}
         />
@@ -170,7 +169,6 @@ const EventTable = ({ filters, searchText }) => {
 EventTable.propTypes = {
   searchText: PropTypes.string,
   filters: PropTypes.shape({
-    age: PropTypes.string,
     status: PropTypes.string,
     gender: PropTypes.string,
   }).isRequired,

@@ -7,8 +7,8 @@ const AddEventForm = ({ onClose }) => {
   const [values, setValues] = useState({
     title: "",
     description: "",
-    startDate: "",
-    endDate: "",
+    start: "",
+    end: "",
     status: "",
   });
 
@@ -32,8 +32,8 @@ const AddEventForm = ({ onClose }) => {
         setValues({
           title: "",
           description: "",
-          startDate: "",
-          endDate: "",
+          start: "",
+          end: "",
           status: "",
         });
       })
@@ -45,8 +45,8 @@ const AddEventForm = ({ onClose }) => {
     setValues({
       title: "",
       description: "",
-      startDate: "",
-      endDate: "",
+      start: "",
+      end: "",
       status: "",
     });
   };
@@ -54,9 +54,9 @@ const AddEventForm = ({ onClose }) => {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-800 bg-opacity-80">
       <div className="flex items-center justify-center min-h-screen px-4">
-        <div className="relative w-full max-w-4xl mx-auto">
+        <div className="relative w-full max-w-3xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
-            <h2 className="text-lg font-semibold mb-4 text-center">
+            <h2 className="text-lg font-cdbold mb-4 text-center">
               Add New Event
             </h2>
             <form onSubmit={handleSubmit} className="mx-auto">
@@ -81,7 +81,7 @@ const AddEventForm = ({ onClose }) => {
                     Description
                   </label>
                   <input
-                    type="text"
+                    type="textarea"
                     id="description"
                     name="description"
                     value={values.description}
@@ -91,28 +91,28 @@ const AddEventForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="startDate" className="block mb-2">
+                  <label htmlFor="start" className="block mb-2">
                     Start Date
                   </label>
                   <input
                     type="date"
-                    id="startDate"
-                    name="startDate"
-                    value={values.startDate}
+                    id="start"
+                    name="start"
+                    value={values.start}
                     onChange={handleChange}
                     className={inputStyle}
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="endDate" className="block mb-2">
+                  <label htmlFor="end" className="block mb-2">
                     End Date
                   </label>
                   <input
                     type="date"
-                    id="endDate"
-                    name="endDate"
-                    value={values.endDate}
+                    id="end"
+                    name="end"
+                    value={values.end}
                     onChange={handleChange}
                     className={inputStyle}
                     required

@@ -23,8 +23,8 @@ const EventUpdateForm = () => {
         setValues({
           title: res.data[0].title,
           description: res.data[0].description,
-          startDate: res.data[0].startDate,
-          endDate: res.data[0].endDate,
+          start: res.data[0].start,
+          end: res.data[0].end,
           status: res.data[0].status,
         });
       })
@@ -89,27 +89,27 @@ const EventUpdateForm = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="startDate" className="block mb-2">
+                  <label htmlFor="start" className="block mb-2">
                     Start Date
                   </label>
                   <input
                     type="date"
-                    id="startDate"
-                    name="startDate"
-                    value={values.startDate}
+                    id="start"
+                    name="start"
+                    value={values.start}
                     onChange={handleChange}
                     className={inputStyle}
                   />
                 </div>
                 <div>
-                  <label htmlFor="endDate" className="block mb-2">
+                  <label htmlFor="end" className="block mb-2">
                     End Date
                   </label>
                   <input
                     type="date"
-                    id="endDate"
-                    name="endDate"
-                    value={values.endDate}
+                    id="end"
+                    name="end"
+                    value={values.end}
                     onChange={handleChange}
                     className={inputStyle}
                   />

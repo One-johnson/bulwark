@@ -26,7 +26,7 @@ function Sidebar() {
       label: "Class List",
     },
     {
-      path: "/events",
+      path: "/eventsbyterm",
       icon: <BsNewspaper className="text-green-700" />,
       label: "Events",
     },
