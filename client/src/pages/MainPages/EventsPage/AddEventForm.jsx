@@ -9,6 +9,7 @@ const AddEventForm = ({ onClose }) => {
     description: "",
     start: "",
     end: "",
+    term: "",
     status: "",
   });
 
@@ -34,6 +35,7 @@ const AddEventForm = ({ onClose }) => {
           description: "",
           start: "",
           end: "",
+          term:"",
           status: "",
         });
       })
@@ -47,6 +49,7 @@ const AddEventForm = ({ onClose }) => {
       description: "",
       start: "",
       end: "",
+      term: "",
       status: "",
     });
   };
@@ -118,7 +121,26 @@ const AddEventForm = ({ onClose }) => {
                     required
                   />
                 </div>
-
+                <div>
+                  <label htmlFor=" term" className="block mb-2">
+                    Term
+                  </label>
+                  <select
+                    id="term"
+                    name="term"
+                    value={values.term}
+                    onChange={handleChange}
+                    className={inputStyle}
+                    required="required"
+                  >
+                    <option value="" className="text-gray-500">
+                      Select
+                    </option>
+                    <option value="Term 1">Term 1</option>
+                    <option value="Term 2">Term 2</option>
+                    <option value="Term 3">Term 3</option>
+                  </select>
+                </div>
                 <div>
                   <label htmlFor="status" className="block mb-2">
                     Status
@@ -135,7 +157,7 @@ const AddEventForm = ({ onClose }) => {
                       Select
                     </option>
                     <option value="completed">Completed</option>
-                    <option value="pending">Pending</option>
+                    <option value="upcoming">Upcoming</option>
                     <option value="cancelled">Cancelled</option>
                   </select>
                 </div>

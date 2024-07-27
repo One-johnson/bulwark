@@ -29,9 +29,9 @@ const EventTable = ({ filters, searchText }) => {
 
   const confirmDelete = () => {
     axios
-      .delete("http://localhost:3002/events/delete/" + confirmDeleteId)
+      .delete(`http://localhost:3002/events/delete/${confirmDeleteId}`)
       .then(() => {
-        setData(data.filter((events) => events.customID !== confirmDeleteId));
+        setData(data.filter((event) => event.customID !== confirmDeleteId));
         setConfirmDeleteId(null);
         toast.success("Event deleted successfully!");
       })
@@ -42,14 +42,15 @@ const EventTable = ({ filters, searchText }) => {
     setConfirmDeleteId(null);
   };
 
-  const filteredData = data.filter((events) => {
-    return (
-      (filters.status ? events.status === filters.status : true) &&
-      (filters.gender ? events.gender === filters.gender : true) &&
-      Object.values(events).some((value) =>
-        String(value).toLowerCase().includes(searchText.toLowerCase())
-      )
+  const filteredData = data.filter((event) => {
+    const matchesStatus = filters.status
+      ? event.status === filters.status
+      : true;
+    const matchesTerm = filters.term ? event.term === filters.term : true;
+    const matchesSearchText = Object.values(event).some((value) =>
+      String(value).toLowerCase().includes(searchText.toLowerCase())
     );
+    return matchesStatus && matchesTerm && matchesSearchText;
   });
 
   const handleRowClick = (row) => {
@@ -81,6 +82,11 @@ const EventTable = ({ filters, searchText }) => {
     {
       name: "End Date",
       selector: (row) => new Date(row.end).toLocaleString(),
+      center: true,
+    },
+    {
+      name: "Term",
+      selector: (row) => row.term,
       center: true,
     },
     {
@@ -170,7 +176,7 @@ EventTable.propTypes = {
   searchText: PropTypes.string,
   filters: PropTypes.shape({
     status: PropTypes.string,
-    gender: PropTypes.string,
+    term: PropTypes.string,
   }).isRequired,
 };
 

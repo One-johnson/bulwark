@@ -4,6 +4,7 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import axios from "axios";
 import Modal from "react-modal";
+import StatusTag from "../../Components/StatusTag";
 
 // Set the root element for the modal
 Modal.setAppElement("#root");
@@ -34,22 +35,22 @@ const CalendarPage = () => {
     setSelectedEvent(null);
   };
 
-  const handleSelectSlot = ({ start, end }) => {
-    const title = prompt("New Event name");
-    if (title) {
-      const newEvent = { start, end, title };
-      setEvents([...events, newEvent]);
-      // Save event to server
-      axios
-        .post("http://localhost:3002/events/", newEvent)
-        .then((res) => {
-          setEvents([...events, res.data]); // Add the event returned by the server
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
-  };
+  // const handleSelectSlot = ({ start, end }) => {
+  //   const title = prompt("New Event name");
+  //   if (title) {
+  //     const newEvent = { start, end, title };
+  //     setEvents([...events, newEvent]);
+  //     // Save event to server
+  //     axios
+  //       .post("http://localhost:3002/events/", newEvent)
+  //       .then((res) => {
+  //         setEvents([...events, res.data]); // Add the event returned by the server
+  //       })
+  //       .catch((err) => {
+  //         console.error(err);
+  //       });
+  //   }
+  // };
 
   return (
     <div className="p-4 mt-20 px-10 ml-60">
@@ -64,7 +65,7 @@ const CalendarPage = () => {
         style={{ height: 500 }}
         selectable
         onSelectEvent={handleSelectEvent}
-        onSelectSlot={handleSelectSlot}
+        // onSelectSlot={handleSelectSlot}
       />
 
       <Modal
@@ -102,12 +103,12 @@ const CalendarPage = () => {
             </p>
             <p className="mb-4 text-center">
               <strong className="font-medium">Status:</strong>{" "}
-              {selectedEvent.status}
+              <StatusTag status={selectedEvent.status} />
             </p>
             <div className="flex justify-center w-full pt-4">
               <button
                 onClick={handleCloseModal}
-                className="px-4 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-opacity-50"
+                className="px-8 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-opacity-50"
               >
                 Close
               </button>

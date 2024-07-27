@@ -10,8 +10,9 @@ const EventUpdateForm = () => {
   const [values, setValues] = useState({
     title: "",
     description: "",
-    startDate: "",
-    endDate: "",
+    start: "",
+    end: "",
+    term: "",
     status: "",
   });
 
@@ -25,6 +26,7 @@ const EventUpdateForm = () => {
           description: res.data[0].description,
           start: res.data[0].start,
           end: res.data[0].end,
+          term: res.data[0].term,
           status: res.data[0].status,
         });
       })
@@ -52,12 +54,12 @@ const EventUpdateForm = () => {
     "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border-2";
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-300 bg-opacity-75">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-800 bg-opacity-80">
       <div className="flex items-center justify-center min-h-screen px-4">
         <div className="relative w-full max-w-3xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
             <h2 className="text-lg font-semibold mb-4 text-center">
-              Update Teacher
+              Update Events
             </h2>
             <form onSubmit={handleUpdate} className="mx-auto">
               <div className="grid grid-cols-2 gap-4">
@@ -114,7 +116,26 @@ const EventUpdateForm = () => {
                     className={inputStyle}
                   />
                 </div>
-
+                <div>
+                  <label htmlFor=" term" className="block mb-2">
+                    Term
+                  </label>
+                  <select
+                    id="term"
+                    name="term"
+                    value={values.term}
+                    onChange={handleChange}
+                    className={inputStyle}
+                    required="required"
+                  >
+                    <option value="" className="text-gray-500">
+                      Select
+                    </option>
+                    <option value="Term1">Term 1</option>
+                    <option value="Term2">Term 2</option>
+                    <option value="Term3">Term 3</option>
+                  </select>
+                </div>
                 <div>
                   <label htmlFor="status" className="block mb-2">
                     Status
@@ -130,7 +151,7 @@ const EventUpdateForm = () => {
                       Select
                     </option>
                     <option value="completed">Completed</option>
-                    <option value="pending">Pending</option>
+                    <option value="upcoming">Upcoming</option>
                     <option value="cancelled">Cancelled</option>
                   </select>
                 </div>

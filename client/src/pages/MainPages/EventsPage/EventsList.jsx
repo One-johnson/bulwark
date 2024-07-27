@@ -10,8 +10,7 @@ const EventsList = () => {
   const [searchText, setSearchText] = useState("");
   const [filters, setFilters] = useState({
     status: "",
-    startDate: "",
-    endDate: "",
+    term: "",
   });
 
   const toggleFormVisibility = () => {
@@ -61,23 +60,20 @@ const EventsList = () => {
               options={[
                 { value: "", label: "All Statuses" },
                 { value: "completed" },
-                { value: "pending" },
+                { value: "upcoming" },
                 { value: "cancelled" },
               ]}
             />
             <CustomSelect
-              type="date"
-              name="startDate"
-              value={filters.startDate}
+              name="term"
+              value={filters.term}
               onChange={handleFilterChange}
-              options={[]}
-            />
-            <CustomSelect
-              type="date"
-              name="endDate"
-              value={filters.endDate}
-              onChange={handleFilterChange}
-              options={[]}
+              options={[
+                { value: "", label: "All Terms" },
+                { value: "Term 1" },
+                { value: "Term 2" },
+                { value: "Term 3" },
+              ]}
             />
           </div>
           <div className="relative flex items-center w-full max-w-xs">

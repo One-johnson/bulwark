@@ -23,7 +23,7 @@ const Dashboard = () => {
       description: "View and manage the list of classes.",
     },
     {
-      path: "/eventsbyterm",
+      path: "/events",
       icon: (
         <BsNewspaper className="bg-green-700 text-white p-4 rounded-xl shadow-lg" />
       ),

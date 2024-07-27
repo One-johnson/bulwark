@@ -34,8 +34,8 @@ const StatusTag = ({ status }) => {
       textColor = "text-white";
 
       break;
-    case "pending":
-      bgColor = "bg-yellow-500";
+    case "upcoming":
+      bgColor = "bg-blue-700";
       textColor = "text-white";
 
       break;
@@ -51,7 +51,7 @@ const StatusTag = ({ status }) => {
 
   return (
     <span
-      className={`${bgColor} ${textColor} font-semibold py-1 px-5 rounded-xl inline-block text-sm`}
+      className={`${bgColor} ${textColor} font-semibold py-1 px-3 rounded-xl inline-block text-sm`}
     >
       {status}
     </span>

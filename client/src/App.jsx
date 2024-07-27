@@ -95,7 +95,6 @@ import PropTypes from "prop-types";
 import EventsList from "./pages/MainPages/EventsPage/EventsList";
 import EventUpdateForm from "./pages/MainPages/EventsPage/EventUpdateForm";
 import EventViewForm from "./pages/MainPages/EventsPage/EventViewForm";
-import EventsByTerm from "./pages/MainPages/EventsPage/EventsByTerms";
 
 function Layout({ children }) {
   const location = useLocation();
@@ -281,13 +280,12 @@ function App() {
               element={<TeacherUpdateForm />}
             />
             {/* events routes */}
-            <Route path="/EventsList" element={<EventsList />} />
+            <Route path="/eventslist" element={<EventsList />} />
             <Route path="/events/view/:customID" element={<EventViewForm />} />
             <Route
               path="/events/edit/:customID"
               element={<EventUpdateForm />}
             />
-            <Route path="/eventsbyterm" element={<EventsByTerm/>}/>
           </Routes>
         </Layout>
       </Router>
