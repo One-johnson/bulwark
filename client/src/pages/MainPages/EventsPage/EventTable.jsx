@@ -43,15 +43,15 @@ const EventTable = ({ filters, searchText }) => {
   };
 
   const filteredData = data.filter((event) => {
-    const matchesStatus = filters.status
-      ? event.status === filters.status
-      : true;
-    const matchesTerm = filters.term ? event.term === filters.term : true;
-    const matchesSearchText = Object.values(event).some((value) =>
-      String(value).toLowerCase().includes(searchText.toLowerCase())
+    return (
+      (filters.status ? event.status === filters.status : true) &&
+      (filters.term ? event.term === filters.term : true) &&
+      Object.values(event).some((value) =>
+        String(value).toLowerCase().includes(searchText.toLowerCase())
+      )
     );
-    return matchesStatus && matchesTerm && matchesSearchText;
   });
+
 
   const handleRowClick = (row) => {
     navigate(`/events/view/${row.customID}`);

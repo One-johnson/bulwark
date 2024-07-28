@@ -216,19 +216,6 @@ const TeacherViewForm = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="specialSkills" className="block mb-2">
-                    Special Skills
-                  </label>
-                  <input
-                    type="text"
-                    id="specialSkills"
-                    name="specialSkills"
-                    value={teacher.specialSkills}
-                    readOnly
-                    className={inputStyle}
-                  />
-                </div>
-                <div>
                   <label htmlFor="status" className="block mb-2">
                     Status
                   </label>
@@ -266,4 +253,3 @@ const TeacherViewForm = () => {
 };
 
 export default TeacherViewForm;
- 

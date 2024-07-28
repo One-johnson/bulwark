@@ -131,9 +131,9 @@ const EventUpdateForm = () => {
                     <option value="" className="text-gray-500">
                       Select
                     </option>
-                    <option value="Term1">Term 1</option>
-                    <option value="Term2">Term 2</option>
-                    <option value="Term3">Term 3</option>
+                    <option value="Term 1">Term 1</option>
+                    <option value="Term 2">Term 2</option>
+                    <option value="Term 3">Term 3</option>
                   </select>
                 </div>
                 <div>
@@ -153,6 +153,7 @@ const EventUpdateForm = () => {
                     <option value="completed">Completed</option>
                     <option value="upcoming">Upcoming</option>
                     <option value="cancelled">Cancelled</option>
+                    <option value="postponed">Postponed</option>
                   </select>
                 </div>
               </div>

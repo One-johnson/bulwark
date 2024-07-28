@@ -41,22 +41,8 @@ const TeacherTable = ({ filters, searchText }) => {
   const cancelDelete = () => {
     setConfirmDeleteId(null);
   };
-
-  const parseAgeRange = (range) => {
-    if (!range) return null;
-    const [min, max] = range.split("-").map(Number);
-    return { min, max };
-  };
-
-  const ageRange = parseAgeRange(filters.age);
-
   const filteredData = data.filter((teacher) => {
-    const ageMatch = ageRange
-      ? teacher.age >= ageRange.min && teacher.age <= ageRange.max
-      : true;
-
     return (
-      ageMatch &&
       (filters.status ? teacher.status === filters.status : true) &&
       (filters.gender ? teacher.gender === filters.gender : true) &&
       Object.values(teacher).some((value) =>

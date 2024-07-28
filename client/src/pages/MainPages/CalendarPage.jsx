@@ -35,22 +35,47 @@ const CalendarPage = () => {
     setSelectedEvent(null);
   };
 
-  // const handleSelectSlot = ({ start, end }) => {
-  //   const title = prompt("New Event name");
-  //   if (title) {
-  //     const newEvent = { start, end, title };
-  //     setEvents([...events, newEvent]);
-  //     // Save event to server
-  //     axios
-  //       .post("http://localhost:3002/events/", newEvent)
-  //       .then((res) => {
-  //         setEvents([...events, res.data]); // Add the event returned by the server
-  //       })
-  //       .catch((err) => {
-  //         console.error(err);
-  //       });
-  //   }
-  // };
+  const eventStyleGetter = (event) => {
+    let bgColor;
+
+    switch (event.status) {
+      case "completed":
+        bgColor = "green"; // Green-800
+        break;
+      case "upcoming":
+        bgColor = "blue"; // Blue-800
+        break;
+      case "cancelled":
+        bgColor = "red"; // Red-800
+        break;
+      case "postponed":
+        bgColor = "indigo"; // Indigo-800
+        break;
+      default:
+        bgColor = "gray"; // Gray-700
+    }
+
+    const style = {
+      backgroundColor: bgColor,
+      borderRadius: "10px",
+      opacity: 0.8,
+      color: "white",
+      border: "0px",
+      display: "block",
+      textAlign: "center",
+      fontWeight: "bold",
+      padding: "5px",
+    };
+    return { style };
+  };
+
+  const statusColors = [
+    { status: "Completed", color: "green" },
+    { status: "Upcoming", color: "blue" },
+    { status: "Cancelled", color: "red" },
+    { status: "Postponed", color: "indigo" },
+    { status: "Other", color: "gray" },
+  ];
 
   return (
     <div className="p-4 mt-20 px-10 ml-60">
@@ -65,57 +90,81 @@ const CalendarPage = () => {
         style={{ height: 500 }}
         selectable
         onSelectEvent={handleSelectEvent}
-        // onSelectSlot={handleSelectSlot}
+        eventPropGetter={eventStyleGetter}
       />
 
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
         contentLabel="Event Details"
-        className="fixed inset-0 flex items-center justify-center p-4 "
+        className="fixed inset-0 flex items-center justify-center p-4"
         overlayClassName="fixed inset-0 bg-gray-800 bg-opacity-80 z-50"
       >
         {selectedEvent && (
-          <div className="bg-white p-6 rounded-lg shadow-xl w-full max-w-md mx-auto flex flex-col items-center">
-            <h2 className="text-2xl font-bold mb-4 text-violet-800 text-center">
+          <div className="bg-white p-6 rounded-lg shadow-xl w-full max-w-lg mx-auto flex flex-col items-center px-14">
+            <h2 className="text-2xl font-bold mb-6 text-violet-800 text-center">
               Event Details
             </h2>
-            <p className="mb-2 text-center">
-              <strong className="font-medium">Event ID:</strong>{" "}
-              {selectedEvent.customID}
-            </p>
-            <p className="mb-2 text-center">
-              <strong className="font-medium">Title:</strong>{" "}
-              {selectedEvent.title}
-            </p>
 
-            <p className="mb-2 text-center">
-              <strong className="font-medium">Description:</strong>{" "}
-              {selectedEvent.description}
-            </p>
-            <p className="mb-2 text-center">
-              <strong className="font-medium">Start:</strong>{" "}
-              {new Date(selectedEvent.start).toLocaleString()}
-            </p>
-            <p className="mb-2 text-center">
-              <strong className="font-medium">End:</strong>{" "}
-              {new Date(selectedEvent.end).toLocaleString()}
-            </p>
-            <p className="mb-4 text-center">
-              <strong className="font-medium">Status:</strong>{" "}
-              <StatusTag status={selectedEvent.status} />
-            </p>
+            <div className="space-y-4">
+              <hr />
+              <p>
+                <strong className="font-medium">Event ID:</strong>{" "}
+                {selectedEvent.customID}
+              </p>
+              <hr />
+              <p>
+                <strong className="font-medium">Title:</strong>{" "}
+                {selectedEvent.title}
+              </p>
+              <hr />
+              <p>
+                <strong className="font-medium">Description:</strong>{" "}
+                {selectedEvent.description}
+              </p>
+              <hr />
+              <p>
+                <strong className="font-medium">Start:</strong>{" "}
+                {new Date(selectedEvent.start).toLocaleString()}
+              </p>
+              <hr />
+              <p>
+                <strong className="font-medium">End:</strong>{" "}
+                {new Date(selectedEvent.end).toLocaleString()}
+              </p>
+              <hr />
+              <p>
+                <strong className="font-medium">Status:</strong>{" "}
+                <StatusTag status={selectedEvent.status} />
+              </p>
+              <hr />
+            </div>
+
             <div className="flex justify-center w-full pt-4">
               <button
                 onClick={handleCloseModal}
-                className="px-8 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-opacity-50"
+                className="py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 w-40"
               >
-                Close
+                CLOSE
               </button>
             </div>
           </div>
         )}
       </Modal>
+
+      <div className="p-4 border bg-white pb-10 mt-1">
+        <div className="flex justify-center space-x-10">
+          {statusColors.map((item) => (
+            <div key={item.status} className="flex items-center space-x-2">
+              <span
+                className="inline-block w-3 h-3 rounded-full"
+                style={{ backgroundColor: item.color }}
+              ></span>
+              <span>{item.status}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

@@ -44,6 +44,12 @@ const StatusTag = ({ status }) => {
       textColor = "text-white";
 
       break;
+
+    case "postponed":
+      bgColor = "bg-indigo-700";
+      textColor = "text-white";
+
+      break;
     default:
       bgColor = "bg-gray-200";
       textColor = "text-gray-500";
@@ -51,7 +57,7 @@ const StatusTag = ({ status }) => {
 
   return (
     <span
-      className={`${bgColor} ${textColor} font-semibold py-1 px-3 rounded-xl inline-block text-sm`}
+      className={`${bgColor} ${textColor} font-semibold py-1 px-3 rounded-lg inline-block text-sm`}
     >
       {status}
     </span>

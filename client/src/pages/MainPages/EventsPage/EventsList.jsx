@@ -62,6 +62,7 @@ const EventsList = () => {
                 { value: "completed" },
                 { value: "upcoming" },
                 { value: "cancelled" },
+                { value: "postponed" },
               ]}
             />
             <CustomSelect
