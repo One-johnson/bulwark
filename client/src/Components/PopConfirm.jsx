@@ -11,7 +11,7 @@ const PopConfirm = ({ message, onCancel, onConfirm, warning }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-700 bg-opacity-80">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-80">
       <div className="bg-white px-10 py-6 rounded-2xl shadow-lg relative">
         <p className="text-lg mb-6 font-bold">{message} </p>
         <p className="text-red-600 mb-6 text-md font-medium">{warning} </p>
