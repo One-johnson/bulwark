@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaRegEye, FaRegEdit } from "react-icons/fa";
@@ -14,13 +14,22 @@ import ExportPDF from "../../../assets/ExportPDF";
 const EventTable = ({ filters, searchText }) => {
   const [data, setData] = useState([]);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get("http://localhost:3002/events/")
-      .then((res) => setData(res.data))
-      .catch((err) => console.error(err));
+      .then((res) => {
+        setData(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setError("Failed to fetch events.");
+        setLoading(false);
+      });
   }, []);
 
   const handleDelete = (customID) => {
@@ -42,16 +51,17 @@ const EventTable = ({ filters, searchText }) => {
     setConfirmDeleteId(null);
   };
 
-  const filteredData = data.filter((event) => {
-    return (
-      (filters.status ? event.status === filters.status : true) &&
-      (filters.term ? event.term === filters.term : true) &&
-      Object.values(event).some((value) =>
-        String(value).toLowerCase().includes(searchText.toLowerCase())
-      )
-    );
-  });
-
+  const filteredData = useMemo(() => {
+    return data.filter((event) => {
+      return (
+        (filters.status ? event.status === filters.status : true) &&
+        (filters.term ? event.term === filters.term : true) &&
+        Object.values(event).some((value) =>
+          String(value).toLowerCase().includes(searchText.toLowerCase())
+        )
+      );
+    });
+  }, [data, filters, searchText]);
 
   const handleRowClick = (row) => {
     navigate(`/events/view/${row.customID}`);
@@ -152,22 +162,26 @@ const EventTable = ({ filters, searchText }) => {
           onConfirm={confirmDelete}
         />
       )}
+      {error && <p className="text-red-600">{error}</p>}
       <div className="m-3 cursor-pointer items-center justify-end flex space-x-2">
         <ExportCSV data={filteredData} />
         <ExportPDF data={filteredData} />
       </div>
-
-      <DataTable
-        columns={columns}
-        data={filteredData}
-        pagination
-        customStyles={customStyles}
-        highlightOnHover
-        pointerOnHover
-        selectableRows={false}
-        fixedHeader
-        onRowClicked={handleRowClick}
-      />
+      {loading ? (
+        <p>Loading events...</p>
+      ) : (
+        <DataTable
+          columns={columns}
+          data={filteredData}
+          pagination
+          customStyles={customStyles}
+          highlightOnHover
+          pointerOnHover
+          selectableRows={false}
+          fixedHeader
+          onRowClicked={handleRowClick}
+        />
+      )}
     </div>
   );
 };
