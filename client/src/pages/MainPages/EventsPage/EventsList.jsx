@@ -32,7 +32,7 @@ const EventsList = () => {
     <div>
       <div
         className="mx-4 sm:mx-8 md:mx-auto md:max-w-screen-md lg:max-w-screen-lg 
-      xl:max-w-screen-2xl pl-60 px-10"
+      xl:max-w-screen-2xl ml-60 px-24"
       >
         <div className="flex justify-between items-center relative mt-[110px]">
           <div
