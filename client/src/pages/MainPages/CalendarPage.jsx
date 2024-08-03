@@ -5,6 +5,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import axios from "axios";
 import Modal from "react-modal";
 import StatusTag from "../../Components/StatusTag";
+import Sidebar from "../../Components/Sidebar";
 
 // Set the root element for the modal
 Modal.setAppElement("#root");
@@ -78,7 +79,11 @@ const CalendarPage = () => {
   ];
 
   return (
-    <div className="p-4 mt-20 px-10 ml-60">
+    <div className="flex min-h-screen">
+        <div className="w-full md:w-1/4 lg:w-1/6">
+        <Sidebar />
+      </div>
+      <div className="w-full md:w-3/4 lg:w-4/5 mx-auto px-4 md:px-10 lg:px-16 xl:px-10 2xl:px-30 mt-32">
       <h2 className="text-3xl font-bold mb-4 text-violet-800">
         School Calendar
       </h2>
@@ -164,6 +169,7 @@ const CalendarPage = () => {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </div>
   );

@@ -36,12 +36,12 @@ const EventsList = () => {
       </div>
       <div className="w-full md:w-3/4 lg:w-4/5 mx-auto px-4 md:px-10 lg:px-16 xl:px-10 2xl:px-30 mt-32">
         <div className="flex justify-between items-center relative">
-          <div className="font-bold text-2xl bg-violet-800 rounded-lg px-4 py-2 text-gray-200">
-            <h2>EVENTS' LIST</h2>
+          <div className="font-bold text-2xl bg-violet-800 rounded-md px-4 py-2 text-gray-200">
+            <h2>EVENTS LIST</h2>
           </div>
           <button
             onClick={toggleFormVisibility}
-            className="bg-violet-800 hover:bg-gray-200 border hover:text-violet-800 text-white py-2 px-4 rounded-lg transition duration-300 flex items-center"
+            className="bg-violet-800 hover:bg-gray-200 border hover:text-violet-800 text-white py-2 px-4 rounded-md transition duration-300 flex items-center"
           >
             <p className="font-semibold">Add</p>
             <RiAddLine className="text-xl" />
@@ -88,7 +88,7 @@ const EventsList = () => {
           </div>
         </div>
         <div className="mt-[20px] flex justify-center">
-          <div className="w-full border border-gray-200 rounded-lg px-3 py-3 max-w-6xl shadow-md">
+          <div className="w-full border border-gray-200 rounded-lg px-3 py-3 shadow-md">
             <EventTable filters={filters} searchText={searchText} />
           </div>
         </div>

@@ -4,6 +4,7 @@ import TeacherTable from "./TeacherTable";
 import CustomSelect from "../../../assets/CustomSelect";
 import { FiSearch } from "react-icons/fi";
 import AddTeacherForm from "./AddTeacherForm";
+import Sidebar from "../../../Components/Sidebar";
 
 const TeachersList = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -29,22 +30,22 @@ const TeachersList = () => {
   };
 
   return (
-    <div>
-      <div
-        className="mx-4 sm:mx-8 md:mx-auto md:max-w-screen-md lg:max-w-screen-lg 
-      xl:max-w-screen-2xl pl-60"
-      >
-        <div className="flex justify-between items-center relative mt-[110px]">
+    <div className="flex min-h-screen">
+       <div className="w-full md:w-1/4 lg:w-1/6">
+        <Sidebar />
+      </div>
+      <div className="w-full md:w-3/4 lg:w-4/5 mx-auto px-4 md:px-10 lg:px-16 xl:px-10 2xl:px-30 mt-32">
+        <div className="flex justify-between items-center relative">
           <div
-            className="font-bold text-xl sm:text-xl bg-violet-800 
-          rounded-lg px-4 py-2 text-gray-200"
+            className="font-bold text-2xl bg-violet-800 
+          rounded-md px-4 py-2 text-gray-200"
           >
             <h2>TEACHERS LIST</h2>
           </div>
           <button
             onClick={toggleFormVisibility}
             className="bg-violet-800 hover:bg-gray-200 border hover:text-violet-800 text-white py-2 px-4 
-              rounded-lg transition duration-300 flex items-center"
+              rounded-md transition duration-300 flex items-center"
           >
             <p className="font-semibold">Add</p>
             <RiAddLine className="text-xl" />
@@ -89,8 +90,8 @@ const TeachersList = () => {
           </div>
         </div>
 
-        <div className="mt-[20px] ">
-          <div className="w-full border border-gray-100 rounded-lg px-3 py-3">
+        <div className="mt-[20px] flex justify-center">
+          <div className="w-full border border-gray-200 rounded-lg px-3 py-3 shadow-md">
             <TeacherTable filters={filters} searchText={searchText} />
           </div>
         </div>

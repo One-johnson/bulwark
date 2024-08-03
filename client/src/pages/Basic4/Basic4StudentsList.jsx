@@ -4,6 +4,7 @@ import StudentTable from "./StudentTable";
 import AddStudentForm from "./AddStudentForm";
 import CustomSelect from "../../assets/CustomSelect";
 import { FiSearch } from "react-icons/fi";
+import Sidebar from "../../Components/Sidebar";
 
 const Basic4StudentsList = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -30,14 +31,14 @@ const Basic4StudentsList = () => {
   };
 
   return (
-    <div>
-      <div
-        className="mx-4 sm:mx-8 md:mx-auto md:max-w-screen-md lg:max-w-screen-lg 
-      xl:max-w-screen-2xl pl-60"
-      >
-        <div className="flex justify-between items-center relative mt-[110px]">
+    <div className="flex min-h-screen">
+       <div className="w-full md:w-1/4 lg:w-1/6">
+        <Sidebar />
+      </div>
+      <div className="w-full md:w-3/4 lg:w-4/5 mx-auto px-4 md:px-10 lg:px-16 xl:px-10 2xl:px-30 mt-32">
+        <div className="flex justify-between items-center relative">
           <div
-            className="font-bold text-xl sm:text-xl bg-violet-800 
+            className="font-bold text-2xl bg-violet-800 
           rounded-lg px-4 py-2 text-gray-200"
           >
             <h2>BASIC FOUR (4) LEARNERS' LIST</h2>
@@ -104,8 +105,8 @@ const Basic4StudentsList = () => {
           </div>
         </div>
 
-        <div className="mt-[20px] ">
-          <div className="w-full border border-gray-100 rounded-lg px-3 py-3">
+        <div className="mt-[20px] flex justify-center">
+        <div className="w-full border border-gray-200 rounded-lg px-3 py-3 shadow-md">
             <StudentTable filters={filters} searchText={searchText} />
           </div>
         </div>

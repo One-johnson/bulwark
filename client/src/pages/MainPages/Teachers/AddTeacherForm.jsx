@@ -81,7 +81,7 @@ const AddTeacherForm = ({ onClose }) => {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-800 bg-opacity-80">
       <div className="flex items-center justify-center min-h-screen px-4">
-        <div className="relative w-full max-w-4xl mx-auto">
+        <div className="relative w-full max-w-3xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
             <h2 className="text-lg font-semibold mb-4 text-center">
               Add New Teacher
