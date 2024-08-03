@@ -4,6 +4,7 @@ import EventTable from "./EventTable";
 import CustomSelect from "../../../assets/CustomSelect";
 import { FiSearch } from "react-icons/fi";
 import AddEventForm from "./AddEventForm";
+import Sidebar from "../../../Components/Sidebar";
 
 const EventsList = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -29,11 +30,14 @@ const EventsList = () => {
   };
 
   return (
-    <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-24 ml-60">
-      <div className="mx-auto max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-2xl">
-        <div className="flex justify-between items-center relative mt-[110px]">
-          <div className="font-bold text-xl sm:text-xl bg-violet-800 rounded-lg px-4 py-2 text-gray-200">
-            <h2>EVENTS LIST</h2>
+    <div className="flex min-h-screen">
+      <div className="w-full md:w-1/4 lg:w-1/6">
+        <Sidebar />
+      </div>
+      <div className="w-full md:w-3/4 lg:w-4/5 mx-auto px-4 md:px-10 lg:px-16 xl:px-10 2xl:px-30 mt-32">
+        <div className="flex justify-between items-center relative">
+          <div className="font-bold text-2xl bg-violet-800 rounded-lg px-4 py-2 text-gray-200">
+            <h2>EVENTS' LIST</h2>
           </div>
           <button
             onClick={toggleFormVisibility}
@@ -64,9 +68,9 @@ const EventsList = () => {
               onChange={handleFilterChange}
               options={[
                 { value: "", label: "All Terms" },
-                { value: "Term 1", label: "Term 1" },
-                { value: "Term 2", label: "Term 2" },
-                { value: "Term 3", label: "Term 3" },
+                { value: "Term 1" },
+                { value: "Term 2" },
+                { value: "Term 3" },
               ]}
             />
           </div>
@@ -84,7 +88,7 @@ const EventsList = () => {
           </div>
         </div>
         <div className="mt-[20px] flex justify-center">
-          <div className="w-full border border-gray-100 rounded-lg px-3 py-3 max-w-6xl">
+          <div className="w-full border border-gray-200 rounded-lg px-3 py-3 max-w-6xl shadow-md">
             <EventTable filters={filters} searchText={searchText} />
           </div>
         </div>

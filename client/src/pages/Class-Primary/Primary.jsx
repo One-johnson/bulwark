@@ -76,7 +76,7 @@ function Primary() {
          <div className="w-full md:w-1/4 lg:w-1/6">
         <Sidebar />
       </div>
-      <div className="w-full md:w-3/4 lg:w-4/5 mx-auto px-4 md:px-10 lg:px-16 xl:px-14 2xl:px-30">
+      <div className="w-full md:w-3/4 lg:w-4/5 mx-auto px-4 md:px-10 lg:px-16 xl:px-10 2xl:px-30">
       <div>
         <h1 className="text-4xl font-bold mb-6 mt-32 text-violet-800">Primary School</h1>
         <p className="mb-6 text-gray-500">
