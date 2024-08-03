@@ -5,8 +5,9 @@ import { MdOutlineEmojiPeople, MdOutlineChildFriendly } from "react-icons/md";
 import { BsBook, BsPen } from "react-icons/bs";
 import Card from "./Card";
 import ClassLinks from "./ClassLinks";
+import Sidebar from "./Sidebar";
 
-function Body() {
+function ClassList() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const ClassListItems = [
@@ -134,49 +135,54 @@ function Body() {
   );
 
   return (
-    <div className="px-24 ml-60">
-      <div>
-        <h1 className="text-4xl font-bold mb-6 mt-32">Class List</h1>
-        <p className="mb-6 text-gray-500">
-          Explore our comprehensive class list for each educational level. From
-          Nursery to Basic 9, each class is designed to foster academic growth
-          and personal development. Click on any class to view detailed
-          information and access student lists...
-        </p>
+    <div className="flex bg-gray-100 min-h-screen">
+      <div className="w-full md:w-1/4 lg:w-1/6">
+        <Sidebar />
       </div>
-
-      <div className="flex flex-col md:flex-row justify-between mt-10 mb-8 items-center">
-        <div className="mb-4 md:mb-0">
-          <ClassLinks />
+      <div className="w-full md:w-3/4 lg:w-4/5 mx-auto px-4 md:px-10 lg:px-16 xl:px-14 2xl:px-30">
+        <div>
+          <h1 className="text-4xl font-bold mb-6 mt-32 text-violet-800">Class List</h1>
+          <p className="mb-6 text-gray-700">
+            Explore our comprehensive class list for each educational level. From
+            Nursery to Basic 9, each class is designed to foster academic growth
+            and personal development. Click on any class to view detailed
+            information and access student lists...
+          </p>
         </div>
-        <div className="relative w-full max-w-xs">
-          <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-            <FiSearch className="text-gray-400" />
-          </span>
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="p-2 pl-10 border-2 border-gray-300 rounded-xl w-full shadow-md focus:border-violet-800 focus:outline-none transition duration-300 hover:border-gray-500"
-          />
-        </div>
-      </div>
 
-      <hr className="mb-8 border-gray-200" />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
-        {filteredItems.map((item) => (
-          <Card
-            key={item.path}
-            path={item.path}
-            icon={item.icon}
-            label={item.label}
-            description={item.description}
-          />
-        ))}
+        <div className="flex flex-col md:flex-row justify-between mt-10 mb-8 items-center">
+          <div className="mb-4 md:mb-0">
+            <ClassLinks />
+          </div>
+          <div className="relative w-full max-w-xs">
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+              <FiSearch className="text-gray-400" />
+            </span>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="p-2 pl-10 border-2 border-gray-300 rounded-xl w-full shadow-md focus:border-violet-800 focus:outline-none transition duration-300 hover:border-gray-500"
+            />
+          </div>
+        </div>
+
+        <hr className="mb-8 border-gray-200" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+          {filteredItems.map((item) => (
+            <Card
+              key={item.path}
+              path={item.path}
+              icon={item.icon}
+              label={item.label}
+              description={item.description}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
-export default Body;
+export default ClassList;

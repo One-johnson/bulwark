@@ -12,7 +12,7 @@ import Jhs from "./pages/Class-Jhs/Jhs";
 import Dashboard from "./Components/Dashboard";
 import Register from "./pages/LoginRegister/Register";
 import Login from "./pages/LoginRegister/Login";
-import ClassList from "./pages/MainPages/ClassList";
+import ClassList from "./Components/ClassList";
 import CalendarPage from "./pages/MainPages/CalendarPage";
 import TimeTable from "./pages/MainPages/TimeTable";
 import ExamResults from "./pages/MainPages/ExamResults";
