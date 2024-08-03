@@ -2,7 +2,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useLocation,
+
 } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -89,35 +89,35 @@ import TeacherUpdateForm from "./pages/MainPages/Teachers/TeacherUpdateForm";
 import TeacherViewForm from "./pages/MainPages/Teachers/TeacherViewForm";
 
 import { AdminProvider } from "./context/AdminContext";
-import Navbar from "./Components/Navbar";
-import Sidebar from "./Components/Sidebar";
-import PropTypes from "prop-types";
+// import Navbar from "./Components/Navbar";
+// import Sidebar from "./Components/Sidebar";
+// import PropTypes from "prop-types";
 import EventsList from "./pages/MainPages/EventsPage/EventsList";
 import EventUpdateForm from "./pages/MainPages/EventsPage/EventUpdateForm";
 import EventViewForm from "./pages/MainPages/EventsPage/EventViewForm";
 
-function Layout({ children }) {
-  const location = useLocation();
-  const hideNavbarAndSidebar =
-    location.pathname === "/" || location.pathname === "/register";
+// function Layout({ children }) {
+//   const location = useLocation();
+//   const hideNavbarAndSidebar =
+//     location.pathname === "/" || location.pathname === "/register";
 
-  return (
-    <div className="flex h-screen">
-      {!hideNavbarAndSidebar && <Sidebar />}
-      <div className="flex flex-col flex-1">
-        {!hideNavbarAndSidebar && <Navbar />}
-        <div className="overflow-y-auto h-full">{children}</div>
-      </div>
-    </div>
-  );
-}
+//   return (
+//     <div className="flex h-screen">
+//       {!hideNavbarAndSidebar && <Sidebar />}
+//       <div className="flex flex-col flex-1">
+//         {!hideNavbarAndSidebar && <Navbar />}
+//         <div className="overflow-y-auto h-full">{children}</div>
+//       </div>
+//     </div>
+//   );
+// }
 
 function App() {
   return (
     <AdminProvider>
       <Router>
         <ToastContainer />
-        <Layout>
+        {/* <Layout> */}
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -287,13 +287,13 @@ function App() {
               element={<EventUpdateForm />}
             />
           </Routes>
-        </Layout>
+        {/* </Layout> */}
       </Router>
     </AdminProvider>
   );
 }
-Layout.propTypes = {
-  children: PropTypes.string.isRequired,
-};
+// Layout.propTypes = {
+//   children: PropTypes.string.isRequired,
+// };
 
 export default App;

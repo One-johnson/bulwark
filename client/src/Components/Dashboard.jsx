@@ -10,6 +10,7 @@ import {
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { FaList } from "react-icons/fa6";
 import { FiSearch } from "react-icons/fi";
+import Sidebar from "./Sidebar";
 
 const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -49,7 +50,7 @@ const Dashboard = () => {
     {
       path: "/TeachersList",
       icon: (
-        <BsPeople className="text-white rounded-xl shadow-lg p-4  bg-purple-700" />
+        <BsPeople className="text-white rounded-xl shadow-lg p-4 bg-purple-700" />
       ),
       label: "Teachers",
       description: "Manage teacher information and assignments.",
@@ -71,16 +72,20 @@ const Dashboard = () => {
       description: "Track and manage student attendance.",
     },
   ];
+
   const filteredItems = dashboardItems.filter((item) =>
     item.label.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
-    <div>
-      <div className="ml-60 px-24">
+    <div className="flex bg-gray-100 min-h-screen">
+      <div className="w-full md:w-1/4 lg:w-1/5">
+        <Sidebar />
+      </div>
+      <div className="w-full md:w-3/4 lg:w-4/5 mx-auto px-4 md:px-10 lg:px-16 xl:px-20 2xl:px-30">
         <div>
           <h1 className="text-4xl font-bold mb-6 mt-32">Admin Dashboard</h1>
-          <p className=" text-gray-500 mb-6">
+          <p className="text-gray-500 mb-6">
             Welcome to our School Management System! This platform empowers
             administrators to efficiently manage student enrollment and
             record-keeping. <br /> From here, you can access various sections to
@@ -96,8 +101,7 @@ const Dashboard = () => {
             placeholder="Search..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="p-2 pl-10 border-2 border-gray-300 rounded-xl w-full shadow-md focus:border-violet-800 focus:outline-none
-            transition duration-300 focus:border-2 hover:border-gray-500 hover:border-2"
+            className="p-2 pl-10 border-2 border-gray-300 rounded-xl w-full shadow-md focus:border-violet-800 focus:outline-none transition duration-300 focus:border-2 hover:border-gray-500 hover:border-2"
           />
         </div>
         <hr className="mb-8 border-gray-200" />

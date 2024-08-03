@@ -29,22 +29,15 @@ const EventsList = () => {
   };
 
   return (
-    <div>
-      <div
-        className="mx-4 sm:mx-8 md:mx-auto md:max-w-screen-md lg:max-w-screen-lg 
-      xl:max-w-screen-2xl ml-60 px-24"
-      >
+    <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-24 ml-60">
+      <div className="mx-auto max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-2xl">
         <div className="flex justify-between items-center relative mt-[110px]">
-          <div
-            className="font-bold text-xl sm:text-xl bg-violet-800 
-          rounded-lg px-4 py-2 text-gray-200"
-          >
+          <div className="font-bold text-xl sm:text-xl bg-violet-800 rounded-lg px-4 py-2 text-gray-200">
             <h2>EVENTS LIST</h2>
           </div>
           <button
             onClick={toggleFormVisibility}
-            className="bg-violet-800 hover:bg-gray-200 border hover:text-violet-800 text-white py-2 px-4 
-              rounded-lg transition duration-300 flex items-center"
+            className="bg-violet-800 hover:bg-gray-200 border hover:text-violet-800 text-white py-2 px-4 rounded-lg transition duration-300 flex items-center"
           >
             <p className="font-semibold">Add</p>
             <RiAddLine className="text-xl" />
@@ -52,17 +45,17 @@ const EventsList = () => {
           {isFormVisible && <AddEventForm onClose={handleCloseForm} />}
         </div>
         <div className="flex items-center justify-between mt-[60px] flex-col md:flex-row">
-          <div className="flex items-center space-x-4 p-2 ">
+          <div className="flex items-center space-x-4 p-2">
             <CustomSelect
               name="status"
               value={filters.status}
               onChange={handleFilterChange}
               options={[
                 { value: "", label: "All Statuses" },
-                { value: "completed" },
-                { value: "upcoming" },
-                { value: "cancelled" },
-                { value: "postponed" },
+                { value: "completed"  },
+                { value: "upcoming"},
+                { value: "cancelled"},
+                { value: "postponed"},
               ]}
             />
             <CustomSelect
@@ -71,9 +64,9 @@ const EventsList = () => {
               onChange={handleFilterChange}
               options={[
                 { value: "", label: "All Terms" },
-                { value: "Term 1" },
-                { value: "Term 2" },
-                { value: "Term 3" },
+                { value: "Term 1", label: "Term 1" },
+                { value: "Term 2", label: "Term 2" },
+                { value: "Term 3", label: "Term 3" },
               ]}
             />
           </div>
@@ -90,9 +83,8 @@ const EventsList = () => {
             />
           </div>
         </div>
-
-        <div className="mt-[20px] ">
-          <div className="w-full border border-gray-100 rounded-lg px-3 py-3">
+        <div className="mt-[20px] flex justify-center">
+          <div className="w-full border border-gray-100 rounded-lg px-3 py-3 max-w-6xl">
             <EventTable filters={filters} searchText={searchText} />
           </div>
         </div>
