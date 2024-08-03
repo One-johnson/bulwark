@@ -60,8 +60,8 @@ function Creche() {
       </div>
       <div className="w-full md:w-3/4 lg:w-4/5 mx-auto px-4 md:px-10 lg:px-16 xl:px-14 2xl:px-30">
       <div>
-        <h1 className="text-4xl font-bold mb-6 mt-32">Creche</h1>
-        <p className="mb-6 text-gray-500">
+        <h1 className="text-4xl font-bold mb-6 mt-32 text-violet-800">Creche</h1>
+        <p className="mb-6 text-gray-700 ">
           Welcome to our Creche section, where the youngest learners embark on
           their educational journey in a nurturing and stimulating environment.
           Our Creche program focuses on providing a safe and caring space for
