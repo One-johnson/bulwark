@@ -60,7 +60,7 @@ const Dashboard = () => {
       icon: (
         <BsClipboard className="text-white rounded-xl shadow-lg p-4 bg-fuchsia-700" />
       ),
-      label: "Exam Result",
+      label: "Student Report",
       description: "View and manage exam results.",
     },
     {

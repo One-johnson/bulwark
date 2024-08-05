@@ -15,7 +15,7 @@ import Login from "./pages/LoginRegister/Login";
 import ClassList from "./Components/ClassList";
 import CalendarPage from "./pages/MainPages/CalendarPage";
 import TimeTable from "./pages/MainPages/TimeTable";
-import ExamResults from "./pages/MainPages/ExamResults";
+import ExamResults from "./pages/MainPages/StudentReport/StudentReport";
 import Attendance from "./pages/MainPages/Attendance";
 
 //Nursery1

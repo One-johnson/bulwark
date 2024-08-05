@@ -48,7 +48,7 @@ function Sidebar() {
     {
       path: "/ExamResults",
       icon: <BsClipboard className="text-fuchsia-600" />,
-      label: "Exam Result",
+      label: "Student Report",
     },
     {
       path: "/Attendance",
