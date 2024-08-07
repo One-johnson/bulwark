@@ -100,7 +100,7 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="bg-violet-800 text-white py-2 px-4 rounded-lg w-full hover:bg-violet-900 transition duration-300 mt-5 font-bold text-lg mb-3"
+              className="bg-violet-900 text-white py-2 px-4 rounded-lg w-full hover:bg-violet-900 transition duration-300 mt-5 font-bold text-lg mb-3"
               onClick={loginUser}
             >
               SIGN IN

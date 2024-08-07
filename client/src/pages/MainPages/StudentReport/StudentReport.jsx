@@ -10,7 +10,7 @@ function StudentReport() {
 
   const ClassListItems = [
     {
-      path: "/Nursery1StudentsList",
+      path: "",
       icon: (
         <MdOutlineChildFriendly className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
       ),
