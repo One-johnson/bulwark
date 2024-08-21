@@ -118,7 +118,7 @@ function StudentReport() {
         "Progress evaluation with advanced topics and critical thinking skills development...",
     },
     {
-      path: "",
+      path: "/Basic9RecordList",
       icon: (
         <MdOutlineEmojiPeople className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
       ),

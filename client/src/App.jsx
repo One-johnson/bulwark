@@ -96,21 +96,10 @@ import EventsList from "./pages/MainPages/EventsPage/EventsList";
 import EventUpdateForm from "./pages/MainPages/EventsPage/EventUpdateForm";
 import EventViewForm from "./pages/MainPages/EventsPage/EventViewForm";
 
-// function Layout({ children }) {
-//   const location = useLocation();
-//   const hideNavbarAndSidebar =
-//     location.pathname === "/" || location.pathname === "/register";
+//basic9record
+import Basic9RecordList from "./pages/MainPages/StudentReport/Basic9Record/Basic9RecordList";
 
-//   return (
-//     <div className="flex h-screen">
-//       {!hideNavbarAndSidebar && <Sidebar />}
-//       <div className="flex flex-col flex-1">
-//         {!hideNavbarAndSidebar && <Navbar />}
-//         <div className="overflow-y-auto h-full">{children}</div>
-//       </div>
-//     </div>
-//   );
-// }
+
 
 function App() {
   return (
@@ -286,6 +275,7 @@ function App() {
               path="/events/edit/:customID"
               element={<EventUpdateForm />}
             />
+            <Route path="/Basic9RecordList" element={<Basic9RecordList/>}/>
           </Routes>
         {/* </Layout> */}
       </Router>
