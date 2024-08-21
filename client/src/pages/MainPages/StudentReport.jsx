@@ -3,8 +3,8 @@ import { FiSearch } from "react-icons/fi";
 import { FaChild, FaSchool, FaChalkboardTeacher } from "react-icons/fa";
 import { MdOutlineEmojiPeople, MdOutlineChildFriendly } from "react-icons/md";
 import { BsBook, BsPen } from "react-icons/bs";
-import Card from "../../../Components/Card";
-import Sidebar from "../../../Components/Sidebar";
+import Card from "../../Components/Card";
+import Sidebar from "../../Components/Sidebar";
 function StudentReport() {
   const [searchQuery, setSearchQuery] = useState("");
 
