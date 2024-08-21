@@ -56,7 +56,7 @@ const Dashboard = () => {
       description: "Manage teacher information and assignments.",
     },
     {
-      path: "/exam-result",
+      path: "/StudentReport",
       icon: (
         <BsClipboard className="text-white rounded-xl shadow-lg p-4 bg-fuchsia-700" />
       ),

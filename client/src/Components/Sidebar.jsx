@@ -9,7 +9,7 @@ import {
 } from "react-icons/bs";
 import { FaList } from "react-icons/fa6";
 import { FaRegCalendarAlt } from "react-icons/fa";
-import Logo from "../images/school.png"; // Import your logo image or SVG
+import Logo from "../images/school.png";
 
 function Sidebar() {
   const location = useLocation();
@@ -46,7 +46,7 @@ function Sidebar() {
       label: "Teachers",
     },
     {
-      path: "/ExamResults",
+      path: "/StudentReport",
       icon: <BsClipboard className="text-fuchsia-600" />,
       label: "Student Report",
     },

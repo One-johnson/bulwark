@@ -15,7 +15,7 @@ import Login from "./pages/LoginRegister/Login";
 import ClassList from "./Components/ClassList";
 import CalendarPage from "./pages/MainPages/CalendarPage";
 import TimeTable from "./pages/MainPages/TimeTable";
-import ExamResults from "./pages/MainPages/StudentReport/StudentReport";
+import StudentReport from "./pages/MainPages/StudentReport/StudentReport";
 import Attendance from "./pages/MainPages/Attendance";
 
 //Nursery1
@@ -129,7 +129,7 @@ function App() {
             <Route path="/calendar" element={<CalendarPage />} />
             <Route path="/events" element={<EventsList />} />
             <Route path="/TimeTable" element={<TimeTable />} />
-            <Route path="/ExamResults" element={<ExamResults />} />
+            <Route path="/StudentReport" element={<StudentReport />} />
             <Route path="/Attendance" element={<Attendance />} />
 
             {/* Nursery1 routes */}

@@ -16,117 +16,118 @@ function StudentReport() {
       ),
       label: "Nursery 1",
       description:
-        "Introductory class designed to foster early childhood development through play...",
+        "An overview of early childhood progress, highlighting key milestones in social and cognitive development...",
     },
     {
-      path: "/Nursery2StudentsList",
+      path: "",
       icon: (
         <MdOutlineChildFriendly className="text-white rounded-xl shadow-lg p-4 bg-orange-700" />
       ),
       label: "Nursery 2",
       description:
-        "Focuses on building foundational skills in language, math, and social interaction...",
+        "Evaluation of foundational skills in language, early numeracy, and social interaction...",
     },
     {
-      path: "/Kg1StudentsList",
+      path: "",
       icon: (
         <FaChild className="text-white rounded-xl shadow-lg p-4 bg-yellow-700" />
       ),
       label: "Kindergarten (KG) 1",
       description:
-        "Continued exploration of foundational skills in preparation for primary education...",
+        "Tracking early academic and social progress, laying the groundwork for primary education...",
     },
     {
-      path: "/Kg2StudentsList",
+      path: "",
       icon: (
         <FaChild className="text-white rounded-xl shadow-lg p-4 bg-green-700" />
       ),
       label: "Kindergarten (KG) 2",
       description:
-        "Continued exploration of foundational skills in preparation for primary education...",
+        "Assessment of readiness for primary education through continued development of core skills...",
     },
     {
-      path: "/Basic1StudentsList",
+      path: "",
       icon: (
         <FaSchool className="text-white rounded-xl shadow-lg p-4 bg-blue-700" />
       ),
       label: "Basic 1",
       description:
-        "Introduction to fundamental concepts and skills in various subjects...",
+        "Introduction to basic academic skills, focusing on literacy, numeracy, and social adjustment...",
     },
     {
-      path: "/Basic2StudentsList",
+      path: "",
       icon: (
         <FaSchool className="text-white rounded-xl shadow-lg p-4 bg-indigo-700" />
       ),
       label: "Basic 2",
       description:
-        "Building on foundational knowledge with more advanced topics and activities...",
+        "Progress in fundamental subjects, emphasizing literacy and numeracy development...",
     },
     {
-      path: "/Basic3StudentsList",
+      path: "",
       icon: (
         <FaChalkboardTeacher className="text-white rounded-xl shadow-lg p-4 bg-purple-700" />
       ),
       label: "Basic 3",
       description:
-        "Exploring deeper levels of understanding in core subjects...",
+        "Evaluation of academic progress with an introduction to more complex concepts...",
     },
     {
-      path: "/Basic4StudentsList",
+      path: "",
       icon: (
         <FaChalkboardTeacher className="text-white rounded-xl shadow-lg p-4 bg-pink-700" />
       ),
       label: "Basic 4",
       description:
-        "Consolidating knowledge and skills for academic advancement...",
+        "Assessment of core academic skills, focusing on preparation for upper primary education...",
     },
     {
-      path: "/Basic5StudentsList",
+      path: "",
       icon: (
         <BsBook className="text-white rounded-xl shadow-lg p-4 bg-teal-700" />
       ),
       label: "Basic 5",
       description:
-        "Preparing students for more complex learning experiences...",
+        "Evaluation of readiness for more advanced topics, emphasizing critical thinking and problem-solving...",
     },
     {
-      path: "/Basic6StudentsList",
+      path: "",
       icon: (
         <BsBook className="text-white rounded-xl shadow-lg p-4 bg-cyan-700" />
       ),
       label: "Basic 6",
       description:
-        "Final year of primary education, focusing on readiness for transition...",
+        "Final assessment of primary education, focusing on transition readiness for junior high school...",
     },
     {
-      path: "/Basic7StudentsList",
+      path: "",
       icon: (
         <BsPen className="text-white rounded-xl shadow-lg p-4 bg-lime-700" />
       ),
       label: "Basic 7",
       description:
-        "Introduction to more specialized subjects and deeper exploration of core concepts...",
+        "Introduction to junior high school with an emphasis on specialized subjects and skill-building...",
     },
     {
-      path: "/Basic8StudentsList",
+      path: "",
       icon: (
         <BsPen className="text-white rounded-xl shadow-lg p-4 bg-amber-700" />
       ),
       label: "Basic 8",
       description:
-        "Building on previous knowledge with advanced topics and critical thinking skills...",
+        "Progress evaluation with advanced topics and critical thinking skills development...",
     },
     {
-      path: "/Basic9StudentsList",
+      path: "",
       icon: (
         <MdOutlineEmojiPeople className="text-white rounded-xl shadow-lg p-4 bg-red-700" />
       ),
       label: "Basic 9",
       description:
-        "Preparation for higher education with a focus on independent learning....",
+        "Comprehensive assessment preparing students for transition to higher education, focusing on independent learning...",
     },
   ];
+  
 
   const filteredItems = ClassListItems.filter((item) =>
     item.label.toLowerCase().includes(searchQuery.toLowerCase())
