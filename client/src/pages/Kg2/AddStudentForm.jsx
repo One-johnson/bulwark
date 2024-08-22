@@ -1,9 +1,9 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
-
 import { toast } from "react-toastify";
 import StatusOptions from "../../Components/StatusOption";
+import { FaTimes } from "react-icons/fa";
 
 const AddStudentForm = ({ onClose }) => {
   const [values, setValues] = useState({
@@ -88,17 +88,25 @@ const AddStudentForm = ({ onClose }) => {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-800 bg-opacity-80">
       <div className="flex items-center justify-center min-h-screen px-4">
-        <div className="relative w-full max-w-5xl mx-auto">
+        <div className="relative w-full max-w-4xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
-            <h2 className="text-lg font-semibold mb-4 text-center">
+          <button
+              type="button"
+              onClick={onClose}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 focus:outline-none"
+            >
+              <FaTimes size={20} title="close"/>
+            </button>
+            <h2 className="text-2xl mb-10 text-center font-bold text-violet-900">
               Add New Student
+              <p className="text-sm">(KG 2)</p>
             </h2>
             <form onSubmit={handleSubmit} className="mx-auto">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-3 gap-5">
                 {/* Inputs for all fields */}
 
                 <div>
-                  <label htmlFor="registrationDate" className="block mb-2">
+                  <label htmlFor="registrationDate" className="block mb-2 font-bold text-gray-900">
                     Registration Date
                   </label>
                   <input
@@ -112,7 +120,7 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="firstName" className="block mb-2">
+                  <label htmlFor="firstName" className="block mb-2 font-bold text-gray-800">
                     First Name
                   </label>
                   <input
@@ -126,7 +134,7 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="middleName" className="block mb-2">
+                  <label htmlFor="middleName" className="block mb-2 font-bold text-gray-800">
                     Middle Name
                   </label>
                   <input
@@ -140,7 +148,7 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block mb-2">
+                  <label htmlFor="lastName" className="block mb-2 font-bold text-gray-800 ">
                     Last Name
                   </label>
                   <input
@@ -154,7 +162,7 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="dateOfBirth" className="block mb-2">
+                  <label htmlFor="dateOfBirth" className="block mb-2 font-bold text-gray-800">
                     Date of Birth
                   </label>
                   <input
@@ -168,7 +176,7 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" age" className="block mb-2">
+                  <label htmlFor=" age" className="block mb-2 font-bold text-gray-800">
                     Age
                   </label>
                   <input
@@ -182,7 +190,7 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" sex" className="block mb-2">
+                  <label htmlFor=" sex" className="block mb-2 font-bold text-gray-800">
                     Sex
                   </label>
                   <select
@@ -201,7 +209,7 @@ const AddStudentForm = ({ onClose }) => {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor=" nationality" className="block mb-2">
+                  <label htmlFor=" nationality" className="block mb-2 font-bold text-gray-800">
                     Nationality
                   </label>
                   <input
@@ -215,7 +223,7 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" hometown" className="block mb-2">
+                  <label htmlFor=" hometown" className="block mb-2 font-bold text-gray-800">
                     Hometown
                   </label>
                   <input
@@ -229,7 +237,7 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" parentGuardian" className="block mb-2">
+                  <label htmlFor=" parentGuardian" className="block mb-2 font-bold text-gray-800">
                     Parent/Guardian
                   </label>
                   <input
@@ -243,7 +251,7 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" address" className="block mb-2">
+                  <label htmlFor=" address" className="block mb-2 font-bold text-gray-800">
                     Address
                   </label>
                   <input
@@ -258,7 +266,7 @@ const AddStudentForm = ({ onClose }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="  occupation" className="block mb-2">
+                  <label htmlFor="  occupation" className="block mb-2 font-bold text-gray-800">
                     Occupation
                   </label>
                   <input
@@ -274,7 +282,7 @@ const AddStudentForm = ({ onClose }) => {
                 <div>
                   <label
                     htmlFor="  religiousDenomination"
-                    className="block mb-2"
+                    className="block mb-2 font-bold text-gray-800"
                   >
                     Religious Denomiation
                   </label>
@@ -289,7 +297,7 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" houseNumber" className="block mb-2">
+                  <label htmlFor=" houseNumber" className="block mb-2 font-bold text-gray-800">
                     House Number
                   </label>
                   <input
@@ -303,7 +311,7 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" phoneNumber" className="block mb-2">
+                  <label htmlFor=" phoneNumber" className="block mb-2 font-bold text-gray-800">
                     Phone Number
                   </label>
                   <input
@@ -316,8 +324,9 @@ const AddStudentForm = ({ onClose }) => {
                     required="required"
                   />
                 </div>
-                <div>
-                  <label htmlFor="status" className="block mb-2">
+                </div>
+                <div className="mt-4">
+                  <label htmlFor="status" className="block mb-2 font-bold text-gray-800">
                     Status
                   </label>
                   <select
@@ -331,18 +340,18 @@ const AddStudentForm = ({ onClose }) => {
                     <StatusOptions />
                   </select>
                 </div>
-              </div>
-              <div className="col-span-full mt-6 flex justify-center font-bold">
+              
+                <div className="col-span-full mt-6 flex justify-center font-bold text-lg">
                 <button
                   type="submit"
-                  className="mr-4 bg-green-600 text-white px-8 py-1 rounded-md hover:bg-green-700 transition-colors duration-300 text-center"
+                  className="mr-3 bg-green-700 text-white px-10 py-1 rounded-md hover:bg-green-500 transition-colors duration-300 text-center uppercase"
                 >
                   Save
                 </button>
                 <button
                   type="button"
                   onClick={handleCancel}
-                  className="ml-4 bg-red-500 text-white px-8 py-1 rounded-md hover:bg-red-600 transition-colors duration-300 text-center"
+                  className="ml-4 bg-red-700 text-white px-10 py-1 rounded-md hover:bg-red-500 transition-colors duration-300 text-center uppercase"
                   onChange={handleChange}
                 >
                   Close

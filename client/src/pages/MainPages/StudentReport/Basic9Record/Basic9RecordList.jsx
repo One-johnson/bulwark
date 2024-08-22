@@ -40,7 +40,7 @@ const Basic9RecordList = () => {
             className="font-bold text-2xl bg-violet-800 
           rounded-lg px-4 py-2 text-gray-200"
           >
-            <h2>BASIC NINE (9) RECORDS LIST</h2>
+            <h2>BASIC NINE (9) STUDENTS' RECORDS</h2>
           </div>
           <button
             onClick={toggleFormVisibility}

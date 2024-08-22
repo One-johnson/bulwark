@@ -121,7 +121,7 @@ const Basic9RecordForm = ({onClose}) => {
   useEffect(() => {
     // Fetch Basic 9 students from the database
     axios
-      .get("http://localhost:3002/basic9") // Update with the correct endpoint
+      .get("http://localhost:3002/basic9") 
       .then((response) => {
         setStudents(response.data); // Assuming the API returns an array of students
       })
@@ -328,7 +328,7 @@ const handleCancel = () =>{
               <FaTimes size={20} />
             </button>
            
-            <h2 className="text-lg font-semibold mb-10 text-center">
+            <h2 className="text-2xl mb-10 text-center font-bold">
               Add Student Record
             </h2>
     <form onSubmit={handleSubmit} className="mx-auto">
@@ -362,9 +362,6 @@ const handleCancel = () =>{
                   />
                 </div>
 
-
-
-
       <div className="mb-4">
         <label className="block text-gray-700">Term</label>
         <select
@@ -386,8 +383,8 @@ const handleCancel = () =>{
      
 
       {subjects.map((subject) => (
-        <div key={subject} className="mb-6">
-          <h3 className="text-lg font-bold mb-2">{subject}</h3>
+        <div key={subject} className="mb-3">
+          <h3 className="text-white text-lg font-bold mb-2 bg-violet-900 rounded px-4 py-1">{subject}</h3>
           <div className="grid grid-cols-3 gap-4">
             <div>
               <label className="block text-gray-700">Class Score (%)</label>
