@@ -75,7 +75,6 @@ function generateEventID() {
   const paddedSuffix = String(randomSuffix).padStart(4, "0"); // Ensure the suffix has at least 4 digits
   return `EV${paddedSuffix}`;
 }
-
 //events
 app.get("/events", (req, res) => {
   const sql = "SELECT * FROM events";
@@ -750,3 +749,53 @@ app.delete("/basic9/delete/:customID", (req, res) => {
     return res.json(results);
   });
 });
+
+
+
+
+
+//basic 9 record
+app.get("/basic9record", (req, res) => {
+  const sql = "SELECT * FROM basic9record";
+  db.query(sql, (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+// Add a new student to nursery1
+app.post("/basic9record", (req, res) => {
+  const insertSql = "INSERT INTO basic9record SET ?";
+  const customID = generateRandomID();
+  const values = { ...req.body, customID };
+
+  db.query(insertSql, values, (err, results) => {
+    if (err) return res.json(err);
+    return res.json(results);
+  });
+});
+app.get("/basic9record/view/:customID", (req, res) => {
+  const sql = "SELECT * FROM basic9record WHERE customID = ?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.put("/basic9record/update/:customID", (req, res) => {
+  const sql = "UPDATE basic9record SET ? WHERE customID =?";
+  const customID = req.params.customID;
+  const values = req.body;
+  db.query(sql, [values, customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+app.delete("/basic9record/delete/:customID", (req, res) => {
+  const sql = "DELETE FROM basic9record WHERE customID =?";
+  const customID = req.params.customID;
+  db.query(sql, [customID], (err, results) => {
+    if (err) return res.json({ Message: "Error inside server" });
+    return res.json(results);
+  });
+});
+
