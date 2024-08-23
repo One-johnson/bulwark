@@ -32,39 +32,7 @@ const AddStudentForm = ({ onClose }) => {
     setValues({ ...values, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post("http://localhost:3002/kg1", values)
-      .then((res) => {
-        console.log(res);
-        // Show success toast
-        toast.success("Student added successfully!");
-        // Reset form fields
-        setValues({
-          registrationDate: "",
-          firstName: "",
-          middleName: "",
-          lastName: "",
-          dateOfBirth: "",
-          age: "",
-          sex: "",
-          nationality: "",
-          hometown: "",
-          parentGuardian: "",
-          address: "",
-          occupation: "",
-          religiousDenomination: "",
-          houseNumber: "",
-          phoneNumber: "",
-          status: "",
-        });
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const handleCancel = () => {
-    onClose();
+  const resetForm = () => {
     setValues({
       registrationDate: "",
       firstName: "",
@@ -85,17 +53,36 @@ const AddStudentForm = ({ onClose }) => {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:3002/kg1", values)
+      .then((res) => {
+        console.log(res);
+        // Show success toast
+        toast.success("Student added successfully!");
+        // Reset form fields
+        resetForm();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleCancel = () => {
+    onClose();
+    resetForm();
+  };
+
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-800 bg-opacity-80">
       <div className="flex items-center justify-center min-h-screen px-4">
         <div className="relative w-full max-w-4xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
-          <button
+            <button
               type="button"
               onClick={onClose}
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 focus:outline-none"
             >
-              <FaTimes size={20} title="close"/>
+              <FaTimes size={20} title="close" />
             </button>
             <h2 className="text-2xl mb-10 text-center font-bold text-violet-900">
               Add New Student
@@ -106,7 +93,10 @@ const AddStudentForm = ({ onClose }) => {
                 {/* Inputs for all fields */}
 
                 <div>
-                  <label htmlFor="registrationDate" className="block mb-2 font-bold text-gray-900">
+                  <label
+                    htmlFor="registrationDate"
+                    className="block mb-2 font-bold text-gray-900"
+                  >
                     Registration Date
                   </label>
                   <input
@@ -120,7 +110,10 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="firstName" className="block mb-2 font-bold text-gray-800">
+                  <label
+                    htmlFor="firstName"
+                    className="block mb-2 font-bold text-gray-800"
+                  >
                     First Name
                   </label>
                   <input
@@ -134,7 +127,10 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="middleName" className="block mb-2 font-bold text-gray-800">
+                  <label
+                    htmlFor="middleName"
+                    className="block mb-2 font-bold text-gray-800"
+                  >
                     Middle Name
                   </label>
                   <input
@@ -148,7 +144,10 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block mb-2 font-bold text-gray-800 ">
+                  <label
+                    htmlFor="lastName"
+                    className="block mb-2 font-bold text-gray-800 "
+                  >
                     Last Name
                   </label>
                   <input
@@ -162,7 +161,10 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="dateOfBirth" className="block mb-2 font-bold text-gray-800">
+                  <label
+                    htmlFor="dateOfBirth"
+                    className="block mb-2 font-bold text-gray-800"
+                  >
                     Date of Birth
                   </label>
                   <input
@@ -176,7 +178,10 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" age" className="block mb-2 font-bold text-gray-800">
+                  <label
+                    htmlFor=" age"
+                    className="block mb-2 font-bold text-gray-800"
+                  >
                     Age
                   </label>
                   <input
@@ -190,7 +195,10 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" sex" className="block mb-2 font-bold text-gray-800">
+                  <label
+                    htmlFor=" sex"
+                    className="block mb-2 font-bold text-gray-800"
+                  >
                     Sex
                   </label>
                   <select
@@ -209,7 +217,10 @@ const AddStudentForm = ({ onClose }) => {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor=" nationality" className="block mb-2 font-bold text-gray-800">
+                  <label
+                    htmlFor=" nationality"
+                    className="block mb-2 font-bold text-gray-800"
+                  >
                     Nationality
                   </label>
                   <input
@@ -223,7 +234,10 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" hometown" className="block mb-2 font-bold text-gray-800">
+                  <label
+                    htmlFor=" hometown"
+                    className="block mb-2 font-bold text-gray-800"
+                  >
                     Hometown
                   </label>
                   <input
@@ -237,7 +251,10 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" parentGuardian" className="block mb-2 font-bold text-gray-800">
+                  <label
+                    htmlFor=" parentGuardian"
+                    className="block mb-2 font-bold text-gray-800"
+                  >
                     Parent/Guardian
                   </label>
                   <input
@@ -251,7 +268,10 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" address" className="block mb-2 font-bold text-gray-800">
+                  <label
+                    htmlFor=" address"
+                    className="block mb-2 font-bold text-gray-800"
+                  >
                     Address
                   </label>
                   <input
@@ -266,7 +286,10 @@ const AddStudentForm = ({ onClose }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="  occupation" className="block mb-2 font-bold text-gray-800">
+                  <label
+                    htmlFor="  occupation"
+                    className="block mb-2 font-bold text-gray-800"
+                  >
                     Occupation
                   </label>
                   <input
@@ -297,7 +320,10 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" houseNumber" className="block mb-2 font-bold text-gray-800">
+                  <label
+                    htmlFor=" houseNumber"
+                    className="block mb-2 font-bold text-gray-800"
+                  >
                     House Number
                   </label>
                   <input
@@ -311,7 +337,10 @@ const AddStudentForm = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor=" phoneNumber" className="block mb-2 font-bold text-gray-800">
+                  <label
+                    htmlFor=" phoneNumber"
+                    className="block mb-2 font-bold text-gray-800"
+                  >
                     Phone Number
                   </label>
                   <input
@@ -324,24 +353,27 @@ const AddStudentForm = ({ onClose }) => {
                     required="required"
                   />
                 </div>
-                </div>
-                <div className="mt-4">
-                  <label htmlFor="status" className="block mb-2 font-bold text-gray-800">
-                    Status
-                  </label>
-                  <select
-                    id="status"
-                    name="status"
-                    value={values.status}
-                    onChange={handleChange}
-                    className={inputStyle}
-                    required="required"
-                  >
-                    <StatusOptions />
-                  </select>
-                </div>
-              
-                <div className="col-span-full mt-6 flex justify-center font-bold text-lg">
+              </div>
+              <div className="mt-4">
+                <label
+                  htmlFor="status"
+                  className="block mb-2 font-bold text-gray-800"
+                >
+                  Status
+                </label>
+                <select
+                  id="status"
+                  name="status"
+                  value={values.status}
+                  onChange={handleChange}
+                  className={inputStyle}
+                  required="required"
+                >
+                  <StatusOptions />
+                </select>
+              </div>
+
+              <div className="col-span-full mt-6 flex justify-center font-bold text-lg">
                 <button
                   type="submit"
                   className="mr-3 bg-green-700 text-white px-10 py-1 rounded-md hover:bg-green-500 transition-colors duration-300 text-center uppercase"
