@@ -5,6 +5,8 @@ import AddStudentForm from "./AddStudentForm";
 import CustomSelect from "../../assets/CustomSelect";
 import { FiSearch } from "react-icons/fi";
 import Sidebar from "../../Components/Sidebar";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa"; 
 
 const Nursery2StudentsList = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -14,6 +16,13 @@ const Nursery2StudentsList = () => {
     status: "",
     gender: "",
   });
+  const navigate = useNavigate();
+  
+  const handleBackClick = () => {
+    navigate("/Creche"); // Navigate to the "Creche" page
+  };
+
+
 
   const toggleFormVisibility = () => {
     setIsFormVisible(!isFormVisible);
@@ -37,6 +46,7 @@ const Nursery2StudentsList = () => {
       </div>
       <div className="w-full md:w-3/4 lg:w-4/5 mx-auto px-4 md:px-10 lg:px-16 xl:px-10 2xl:px-30 mt-32">
         <div className="flex justify-between items-center relative">
+        <FaArrowLeft size={30}  onClick={handleBackClick} className="mr-4 text-violet-900" title="back to Creche"/>
           <div
             className="font-bold text-2xl bg-violet-800 
           rounded-lg px-4 py-2 text-gray-200"
