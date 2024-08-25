@@ -2,8 +2,8 @@ const schema = () => {
   return (
     <div>
       <h1>Basic9Recordform</h1>
-      customID: ID,
-      studentName: dropdown,
+      customID: dropdown,
+      studentName: ,
       term: dropdown,
       Mathematics_classScore: number,
       Mathematics_examScore: number,
