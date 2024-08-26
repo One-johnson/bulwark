@@ -4,69 +4,128 @@ import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import { FaTimes } from "react-icons/fa";
 
+const subjects = ["Mathematics", "English"];
+
 const Basic9RecordForm = ({ onClose }) => {
   const [values, setValues] = useState({
     customID: "",
     studentName: "",
     term: "",
-    Mathematics_classScore: "",
-    Mathematics_examScore: "",
-    Mathematics_totalScore: "",
-    Mathematics_position: "",
-    Mathematics_grade: "",
-    Mathematics_remarks: "",
+    // Initialize state for each subject dynamically
+    ...subjects.reduce(
+      (acc, subject) => ({
+        ...acc,
+        [`${subject}_classScore`]: "",
+        [`${subject}_examScore`]: "",
+        [`${subject}_totalScore`]: "",
+        [`${subject}_position`]: "",
+        [`${subject}_grade`]: "",
+        [`${subject}_remarks`]: "",
+      }),
+      {}
+    ),
   });
+
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [students, setStudents] = useState([]);
 
   const terms = ["Term 1", "Term 2", "Term 3"];
 
-  const handleChange = (e) => {
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get("http://localhost:3002/basic9")
+      .then((response) => {
+        setStudents(response.data);
+        setLoading(false);
+      })
+      .catch(() => {
+        toast.error("Failed to fetch students.");
+        setLoading(false);
+      });
+  }, []);
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    const fieldType = name.split("_")[1]; // Extract the field type (classScore, examScore, etc.)
 
     setValues((prevData) => {
+      const [subject, field] = name.split("_");
       const updatedData = {
         ...prevData,
         [name]: value,
       };
 
-      if (fieldType === "classScore" || fieldType === "examScore") {
+      if (field === "classScore" || field === "examScore") {
         const classScore =
-          parseFloat(updatedData["Mathematics_classScore"]) || 0;
-        const examScore = parseFloat(updatedData["Mathematics_examScore"]) || 0;
-        updatedData["Mathematics_totalScore"] = classScore + examScore;
+          parseFloat(updatedData[`${subject}_classScore`]) || 0;
+        const examScore = parseFloat(updatedData[`${subject}_examScore`]) || 0;
+        updatedData[`${subject}_totalScore`] = classScore + examScore;
       }
 
       return updatedData;
     });
   };
 
-  const [students, setStudents] = useState([]); // State to store Basic 9 students
-
-  useEffect(() => {
-    // Fetch Basic 9 students from the database
-    axios
-      .get("http://localhost:3002/basic9")
-      .then((response) => {
-        setStudents(response.data); // Assuming the API returns an array of students
-      })
-      .catch((err) => {
-        toast.error("Failed to fetch students.");
-        console.error(err);
-      });
-  }, []);
-
   const handleStudentChange = (e) => {
-    const selectedStudentID = e.target.value;
+    const selectedID = e.target.value;
     const selectedStudent = students.find(
-      (student) => student.customID === selectedStudentID
+      (student) => student.customID === selectedID
     );
+
     setValues((prevData) => ({
       ...prevData,
-      customID: selectedStudentID,
+      customID: selectedID,
       studentName: selectedStudent
         ? `${selectedStudent.firstName} ${selectedStudent.lastName}`
         : "",
     }));
+  };
+
+  const validateForm = () => {
+    const validationErrors = {};
+
+    if (!values.customID) validationErrors.customID = "Student ID is required.";
+    if (!values.term) validationErrors.term = "Term is required.";
+
+    subjects.forEach((subject) => {
+      if (!values[`${subject}_classScore`])
+        validationErrors[
+          `${subject}_classScore`
+        ] = `${subject} class score is required.`;
+      if (!values[`${subject}_examScore`])
+        validationErrors[
+          `${subject}_examScore`
+        ] = `${subject} exam score is required.`;
+      if (!values[`${subject}_grade`])
+        validationErrors[`${subject}_grade`] = `${subject} grade is required.`;
+      if (!values[`${subject}_remarks`])
+        validationErrors[
+          `${subject}_remarks`
+        ] = `${subject} remarks are required.`;
+    });
+
+    setErrors(validationErrors);
+    return Object.keys(validationErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+
+    setLoading(true);
+    axios
+      .post("http://localhost:3002/basic9record", values)
+      .then(() => {
+        toast.success("Record added successfully!");
+        resetForm();
+        setLoading(false);
+      })
+      .catch(() => {
+        toast.error("Failed to add record.");
+        setLoading(false);
+      });
   };
 
   const resetForm = () => {
@@ -74,36 +133,30 @@ const Basic9RecordForm = ({ onClose }) => {
       customID: "",
       studentName: "",
       term: "",
-      Mathematics_classScore: "",
-      Mathematics_examScore: "",
-      Mathematics_totalScore: "",
-      Mathematics_position: "",
-      Mathematics_grade: "",
-      Mathematics_remarks: "",
+      ...subjects.reduce(
+        (acc, subject) => ({
+          ...acc,
+          [`${subject}_classScore`]: "",
+          [`${subject}_examScore`]: "",
+          [`${subject}_totalScore`]: "",
+          [`${subject}_position`]: "",
+          [`${subject}_grade`]: "",
+          [`${subject}_remarks`]: "",
+        }),
+        {}
+      ),
     });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post("http://localhost:3002/basic9record", values)
-      .then(() => {
-        toast.success("Record added successfully!");
-        resetForm();
-      })
-      .catch((err) => {
-        toast.error("Failed to add record.");
-        console.error(err);
-      });
+    setErrors({});
   };
 
   const handleCancel = () => {
-    onClose();
     resetForm();
+    onClose();
   };
 
-  const inputStyle =
-    "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border-2";
+  const inputClass =
+    "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none focus:border-violet-800 transition duration-300 hover:border-gray-500";
+  const errorClass = "text-red-500 text-sm";
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-800 bg-opacity-80">
@@ -112,16 +165,16 @@ const Basic9RecordForm = ({ onClose }) => {
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
             <button
               type="button"
-              onClick={onClose}
+              onClick={handleCancel}
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 focus:outline-none"
             >
               <FaTimes size={20} />
             </button>
             <h2 className="text-2xl mb-10 text-center font-bold text-violet-900">
               Basic 9 Exam Record
-              <p className="text-sm">(Enter records for Mathematics)</p>
+              <p className="text-sm">(Enter records for multiple subjects)</p>
             </h2>
-            <form onSubmit={handleSubmit} className="mx-auto">
+            <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-3 gap-4">
                 <div className="mb-4">
                   <label htmlFor="customID" className="block text-gray-700">
@@ -132,8 +185,8 @@ const Basic9RecordForm = ({ onClose }) => {
                     name="customID"
                     value={values.customID}
                     onChange={handleStudentChange}
-                    required
-                    className={inputStyle}
+                    className={inputClass}
+                    disabled={loading}
                   >
                     <option value="">Select Student</option>
                     {students.map((student) => (
@@ -142,6 +195,9 @@ const Basic9RecordForm = ({ onClose }) => {
                       </option>
                     ))}
                   </select>
+                  {errors.customID && (
+                    <p className={errorClass}>{errors.customID}</p>
+                  )}
                 </div>
                 <div className="mb-4">
                   <label htmlFor="studentName" className="block text-gray-700">
@@ -153,7 +209,8 @@ const Basic9RecordForm = ({ onClose }) => {
                     name="studentName"
                     value={values.studentName}
                     readOnly
-                    className="bg-gray-200 border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border-2 cursor-not-allowed"
+                    className="bg-gray-200 border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none cursor-not-allowed"
+                    disabled
                   />
                 </div>
                 <div className="mb-4">
@@ -164,9 +221,9 @@ const Basic9RecordForm = ({ onClose }) => {
                     id="term"
                     name="term"
                     value={values.term}
-                    onChange={handleChange}
-                    required
-                    className={inputStyle}
+                    onChange={handleInputChange}
+                    className={inputClass}
+                    disabled={loading}
                   >
                     <option value="">Select Term</option>
                     {terms.map((term, index) => (
@@ -175,132 +232,165 @@ const Basic9RecordForm = ({ onClose }) => {
                       </option>
                     ))}
                   </select>
+                  {errors.term && <p className={errorClass}>{errors.term}</p>}
                 </div>
               </div>
 
-              <div className="mb-3">
-                <h3 className="text-white text-lg font-bold mb-2 bg-violet-900 rounded px-4 py-1">
-                  Mathematics
-                </h3>
-                <div className="grid grid-cols-3 gap-4">
-                  <div>
-                    <label
-                      className="block text-gray-700"
-                      htmlFor="Mathematics_classScore"
-                    >
-                      Class Score (%)
-                    </label>
-                    <input
-                      id="Mathematics_classScore"
-                      type="number"
-                      name="Mathematics_classScore"
-                      value={values.Mathematics_classScore}
-                      onChange={handleChange}
-                      required
-                      className={inputStyle}
-                    />
+              {subjects.map((subject) => (
+                <div key={subject} className="mb-3">
+                  <h3 className="text-white text-lg font-bold mb-2 bg-violet-900 rounded px-4 py-1">
+                    {subject}
+                  </h3>
+                  <div className="grid grid-cols-3 gap-4">
+                    <div>
+                      <label
+                        className="block text-gray-700"
+                        htmlFor={`${subject}_classScore`}
+                      >
+                        Class Score (%)
+                      </label>
+                      <input
+                        id={`${subject}_classScore`}
+                        type="number"
+                        name={`${subject}_classScore`}
+                        value={values[`${subject}_classScore`]}
+                        onChange={handleInputChange}
+                        className={inputClass}
+                        disabled={loading}
+                      />
+                      {errors[`${subject}_classScore`] && (
+                        <p className={errorClass}>
+                          {errors[`${subject}_classScore`]}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label
+                        className="block text-gray-700"
+                        htmlFor={`${subject}_examScore`}
+                      >
+                        Exam Score (%)
+                      </label>
+                      <input
+                        id={`${subject}_examScore`}
+                        type="number"
+                        name={`${subject}_examScore`}
+                        value={values[`${subject}_examScore`]}
+                        onChange={handleInputChange}
+                        className={inputClass}
+                        disabled={loading}
+                      />
+                      {errors[`${subject}_examScore`] && (
+                        <p className={errorClass}>
+                          {errors[`${subject}_examScore`]}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label
+                        className="block text-gray-700"
+                        htmlFor={`${subject}_totalScore`}
+                      >
+                        Total Score
+                      </label>
+                      <input
+                        id={`${subject}_totalScore`}
+                        type="number"
+                        name={`${subject}_totalScore`}
+                        value={values[`${subject}_totalScore`]}
+                        readOnly
+                        className="bg-gray-200 border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none cursor-not-allowed"
+                        disabled
+                      />
+                    </div>
                   </div>
 
-                  <div>
-                    <label
-                      className="block text-gray-700"
-                      htmlFor="Mathematics_examScore"
-                    >
-                      Exam Score (%)
-                    </label>
-                    <input
-                      id="Mathematics_examScore"
-                      type="number"
-                      name="Mathematics_examScore"
-                      value={values.Mathematics_examScore}
-                      onChange={handleChange}
-                      required
-                      className={inputStyle}
-                    />
-                  </div>
+                  <div className="grid grid-cols-3 gap-4 mt-2">
+                    <div>
+                      <label
+                        className="block text-gray-700"
+                        htmlFor={`${subject}_grade`}
+                      >
+                        Grade
+                      </label>
+                      <input
+                        id={`${subject}_grade`}
+                        type="text"
+                        name={`${subject}_grade`}
+                        value={values[`${subject}_grade`]}
+                        onChange={handleInputChange}
+                        className={inputClass}
+                        disabled={loading}
+                      />
+                      {errors[`${subject}_grade`] && (
+                        <p className={errorClass}>
+                          {errors[`${subject}_grade`]}
+                        </p>
+                      )}
+                    </div>
 
-                  <div>
-                    <label
-                      className="block text-gray-700"
-                      htmlFor="Mathematics_totalScore"
-                    >
-                      Total Score (%)
-                    </label>
-                    <input
-                      id="Mathematics_totalScore"
-                      type="number"
-                      name="Mathematics_totalScore"
-                      value={values.Mathematics_totalScore}
-                      readOnly
-                      className="bg-gray-200 border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none cursor-not-allowed"
-                    />
-                  </div>
+                    <div>
+                      <label
+                        className="block text-gray-700"
+                        htmlFor={`${subject}_position`}
+                      >
+                        Position
+                      </label>
+                      <input
+                        id={`${subject}_position`}
+                        type="text"
+                        name={`${subject}_position`}
+                        value={values[`${subject}_position`]}
+                        onChange={handleInputChange}
+                        className={inputClass}
+                        disabled={loading}
+                      />
+                    </div>
 
-                  <div>
-                    <label
-                      className="block text-gray-700"
-                      htmlFor="Mathematics_position"
-                    >
-                      Position
-                    </label>
-                    <input
-                      id="Mathematics_position"
-                      type="number"
-                      name="Mathematics_position"
-                      value={values.Mathematics_position}
-                      onChange={handleChange}
-                      className={inputStyle}
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      className="block text-gray-700"
-                      htmlFor="Mathematics_grade"
-                    >
-                      Grade
-                    </label>
-                    <input
-                      id="Mathematics_grade"
-                      type="text"
-                      name="Mathematics_grade"
-                      value={values.Mathematics_grade}
-                      onChange={handleChange}
-                      required
-                      className={inputStyle}
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      className="block text-gray-700"
-                      htmlFor="Mathematics_remarks"
-                    >
-                      Remarks
-                    </label>
-                    <textarea
-                      id="Mathematics_remarks"
-                      name="Mathematics_remarks"
-                      value={values.Mathematics_remarks}
-                      onChange={handleChange}
-                      required
-                      className={inputStyle}
-                    />
+                    <div>
+                      <label
+                        className="block text-gray-700"
+                        htmlFor={`${subject}_remarks`}
+                      >
+                        Remarks
+                      </label>
+                      <input
+                        id={`${subject}_remarks`}
+                        type="text"
+                        name={`${subject}_remarks`}
+                        value={values[`${subject}_remarks`]}
+                        onChange={handleInputChange}
+                        className={inputClass}
+                        disabled={loading}
+                      />
+                      {errors[`${subject}_remarks`] && (
+                        <p className={errorClass}>
+                          {errors[`${subject}_remarks`]}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
 
-              <div className="col-span-full mt-6 flex justify-center font-bold text-lg">
+              <div className="flex justify-center mt-6  space-x-4">
+                
                 <button
                   type="submit"
-                  className="mr-3 bg-green-700 text-white px-10 py-1 rounded-md hover:bg-green-500 transition-colors duration-300"
+                  className={`px-4 py-2 bg-green-600 hover:bg-green-800  text-white rounded-md transition duration-300 uppercase font-bold ${
+                    loading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                  disabled={loading}
                 >
-                  Save
+                  {loading ? "Saving..." : "Save Record"}
                 </button>
                 <button
                   type="button"
                   onClick={handleCancel}
-                  className="bg-red-700 text-white px-10 py-1 rounded-md hover:bg-red-500 transition-colors duration-300"
+                  className="px-4 py-2 bg-red-600 hover:bg-red-800  text-white rounded-md transition duration-300 uppercase font-bold"
+                  disabled={loading}
                 >
                   Cancel
                 </button>

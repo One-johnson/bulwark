@@ -750,10 +750,6 @@ app.delete("/basic9/delete/:customID", (req, res) => {
   });
 });
 
-
-
-
-
 //basic 9 record
 app.get("/basic9record", (req, res) => {
   const sql = "SELECT * FROM basic9record";
@@ -765,9 +761,7 @@ app.get("/basic9record", (req, res) => {
 // Add a new student to nursery1
 app.post("/basic9record", (req, res) => {
   const insertSql = "INSERT INTO basic9record SET ?";
-  const customID = generateRandomID();
-  const values = { ...req.body, customID };
-
+  const values = { ...req.body };
   db.query(insertSql, values, (err, results) => {
     if (err) return res.json(err);
     return res.json(results);
@@ -798,4 +792,3 @@ app.delete("/basic9record/delete/:customID", (req, res) => {
     return res.json(results);
   });
 });
-
