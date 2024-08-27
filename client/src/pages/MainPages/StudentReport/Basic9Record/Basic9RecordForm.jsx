@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import { FaTimes } from "react-icons/fa";
 
-const subjects = ["Mathematics"];
+const subjects = ["Mathematics", "English"];
 
 const Basic9RecordForm = ({ onClose }) => {
   const [values, setValues] = useState({
