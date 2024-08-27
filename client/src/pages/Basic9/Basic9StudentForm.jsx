@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import StatusOptions from "../../Components/StatusOption";
 import { FaTimes } from "react-icons/fa";
 
-const AddStudentForm = ({ onClose }) => {
+const Basic9StudentForm = ({ onClose }) => {
   const [values, setValues] = useState({
     registrationDate: "",
     firstName: "",
@@ -365,7 +365,7 @@ const AddStudentForm = ({ onClose }) => {
   );
 };
 
-AddStudentForm.propTypes = {
+Basic9StudentForm.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
-export default AddStudentForm;
+export default Basic9StudentForm;

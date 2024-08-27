@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { RiAddLine } from "react-icons/ri";
 import StudentTable from "./StudentTable";
-import AddStudentForm from "./AddStudentForm";
 import CustomSelect from "../../assets/CustomSelect";
 import { FiSearch } from "react-icons/fi";
 import Sidebar from "../../Components/Sidebar";
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa"; 
+import { FaArrowLeft } from "react-icons/fa";
+import Basic9StudentForm from "./Basic9StudentForm";
 
 const Basic9StudentsList = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -18,7 +18,7 @@ const Basic9StudentsList = () => {
   });
 
   const navigate = useNavigate();
-  
+
   const handleBackClick = () => {
     navigate("/Jhs"); // Navigate to the "Creche" page
   };
@@ -40,12 +40,17 @@ const Basic9StudentsList = () => {
 
   return (
     <div className="flex min-h-screen">
-       <div className="w-full md:w-1/4 lg:w-1/6">
+      <div className="w-full md:w-1/4 lg:w-1/6">
         <Sidebar />
       </div>
       <div className="w-full md:w-3/4 lg:w-4/5 mx-auto px-4 md:px-10 lg:px-16 xl:px-10 2xl:px-30 mt-32">
         <div className="flex justify-between items-center relative">
-        <FaArrowLeft size={30}  onClick={handleBackClick} className="mr-4 text-violet-900" title="back to JHS"/>
+          <FaArrowLeft
+            size={30}
+            onClick={handleBackClick}
+            className="mr-4 text-violet-900"
+            title="back to JHS"
+          />
           <div
             className="font-bold text-2xl bg-violet-800 
           rounded-lg px-4 py-2 text-gray-200 "
@@ -60,7 +65,7 @@ const Basic9StudentsList = () => {
             <p className="font-semibold">Add</p>
             <RiAddLine className="text-xl" />
           </button>
-          {isFormVisible && <AddStudentForm onClose={handleCloseForm} />}
+          {isFormVisible && <Basic9StudentForm onClose={handleCloseForm} />}
         </div>
         <div className="flex items-center justify-between mt-[60px] flex-col md:flex-row">
           <div className="flex items-center space-x-4 p-2 ">
@@ -115,7 +120,7 @@ const Basic9StudentsList = () => {
         </div>
 
         <div className="mt-[20px] flex justify-center">
-        <div className="w-full border border-gray-200 rounded-lg px-3 py-3 shadow-md">
+          <div className="w-full border border-gray-200 rounded-lg px-3 py-3 shadow-md">
             <StudentTable filters={filters} searchText={searchText} />
           </div>
         </div>
