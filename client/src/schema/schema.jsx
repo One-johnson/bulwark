@@ -111,14 +111,12 @@ const schema = () => {
       phoneNumber: number,
       status: dropdown,
 
-      <h1>Register</h1>
+      <h1>Users</h1>
       email: email,
       username:text,
       password: password
 
-      <h1>Login</h1>
-      email:emil,
-      username:text
+    
     </div>
   );
 };
