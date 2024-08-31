@@ -67,7 +67,7 @@ const CustomSelect = ({ name, value, onChange, options }) => {
 };
 
 CustomSelect.propTypes = {
-  type: PropTypes.string.isRequired,
+
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
