@@ -20,7 +20,7 @@ export const StudentValidationSchema = Yup.object().shape({
     .matches(/^[0-9]+$/, "Must be a number")
     .min(10, "Must be at least 10 digits")
     .required("Required"),
-  status: Yup.number().required("Required"),
+  status: Yup.string().required("Required"),
 });
 
 export const TeacherValidationSchema = Yup.object().shape({
@@ -34,7 +34,7 @@ export const TeacherValidationSchema = Yup.object().shape({
     .matches(/^[0-9]+$/, "Must be a number")
     .min(10, "Must be at least 10 digits")
     .required("Required"),
-  email: Yup.email().required("Email is invalid"),
+  email: Yup.string().required("Email is invalid"),
   address: Yup.string().required("Required"),
   qualification: Yup.string().required("Required"),
   experience: Yup.string().required("Required"),
@@ -47,5 +47,5 @@ export const TeacherValidationSchema = Yup.object().shape({
     .matches(/^[0-9]+$/, "Must be a number")
     .min(10, "Must be at least 10 digits")
     .required("Required"),
-  status: Yup.number().required("Required"),
+  status: Yup.string().required("Required"),
 });
