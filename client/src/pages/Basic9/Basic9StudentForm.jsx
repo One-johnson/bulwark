@@ -42,7 +42,7 @@ const Basic9StudentForm = ({ onClose }) => {
             >
               {({ errors, touched, handleBlur, resetForm }) => (
                 <Form className="mx-auto">
-                  <div className="grid grid-cols-3 gap-5">
+                  <div className="grid grid-cols-3 gap-4">
                     {StudentFormConfig.fields.map((field) => (
                       <div key={field.name}>
                         <label
