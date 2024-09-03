@@ -22,8 +22,8 @@ const Basic9StudentForm = ({ onClose }) => {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-800 bg-opacity-80">
       <div className="flex items-center justify-center min-h-screen px-4">
-        <div className="relative w-full max-w-4xl mx-auto">
-          <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
+        <div className="relative w-full max-w-3xl mx-auto">
+          <div className="bg-white rounded-lg mt-20 mb-10 p-8 shadow-xl border transform transition-transform duration-300 ease-in-out">
             <button
               type="button"
               onClick={onClose}
@@ -31,10 +31,12 @@ const Basic9StudentForm = ({ onClose }) => {
             >
               <FaTimes size={20} title="close" />
             </button>
-            <h2 className="text-2xl mb-10 text-center font-bold text-violet-900">
-              Add New Student
-              <p className="text-sm">(Basic 9)</p>
-            </h2>
+            <div className="mb-10 text-center font-bold text-violet-900">
+              <h2 className="text-2xl">Add New Student</h2>
+              <p className="text-lg">(Basic 9)</p>
+              <p className="text-sm text-red-600 ">All fields are required</p>
+            </div>
+
             <Formik
               initialValues={StudentFormConfig.initialValues}
               validationSchema={StudentValidationSchema}
@@ -42,7 +44,7 @@ const Basic9StudentForm = ({ onClose }) => {
             >
               {({ errors, touched, handleBlur, resetForm }) => (
                 <Form className="mx-auto">
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-2 gap-5">
                     {StudentFormConfig.fields.map((field) => (
                       <div key={field.name}>
                         <label
@@ -84,7 +86,7 @@ const Basic9StudentForm = ({ onClose }) => {
                         )}
                       </div>
                     ))}
-                    <div className="col-span-full">
+                    <div className="w-full">
                       <label
                         htmlFor="status"
                         className="block mb-2 font-bold text-gray-800"
@@ -105,7 +107,7 @@ const Basic9StudentForm = ({ onClose }) => {
                       )}
                     </div>
                   </div>
-                  <div className="col-span-full mt-6 flex justify-center font-bold text-lg space-x-4">
+                  <div className="col-span-full mt-10 flex justify-center font-bold text-lg space-x-4">
                     <button
                       type="submit"
                       className="bg-green-700 text-white px-4 py-1 rounded-md hover:bg-green-500 transition-colors duration-300 text-center uppercase"

@@ -74,7 +74,7 @@ const Basic9UpdateForm = () => {
   const inputStyle =
     "border-2 border-gray-300 rounded-lg w-full py-2 px-3 focus:outline-none focus:border-violet-800 transition duration-300 focus:border-2 hover:border-gray-500 hover:border-2";
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-300 bg-opacity-75">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-800 bg-opacity-80">
       <div className="flex items-center justify-center min-h-screen px-4">
         <div className="relative w-full max-w-3xl mx-auto">
           <div className="bg-white rounded-lg mt-20 mb-10 p-6 shadow-xl border transform transition-transform duration-300 ease-in-out">
@@ -169,9 +169,9 @@ const Basic9UpdateForm = () => {
                     Sex
                   </label>
                   <select
-                    id="status"
-                    name="status"
-                    value={values.status}
+                    id="sex"
+                    name="sex"
+                    value={values.sex}
                     onChange={handleChange}
                     className={inputStyle}
                   >
